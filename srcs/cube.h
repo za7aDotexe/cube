@@ -20,7 +20,7 @@
 #define TWO_PI 6.28318530 
 
 #define TILE_SIZE 32
-#define MINIMAP_SCALE_FACTOR 0.2
+#define MINIMAP_SCALE_FACTOR 1
 #define MAP_NUM_ROWS 24
 #define MAP_NUM_COLS 24
 
@@ -47,6 +47,8 @@ void    ft_renderMap();
 void    ft_renderPlayer();
 
 void    ft_movePlayer();
+void    ft_castRays();
+int     mapHasWallAt(float x, float y);
 
 void    *mlx_ptr;
 void    *win_ptr;

@@ -10,6 +10,6 @@ void    ft_setup()
     player.walkUPDOWN = 0;
     player.walkLEFTRIGHT = 0;
     player.rotationAngle = PI / 2;
-    player.walkSpeed = 50;
-    player.turnSpeed = 45 * (PI / 180);
+    player.walkSpeed = 100;
+    player.turnSpeed = 30 * (PI / 180);
 }

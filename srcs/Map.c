@@ -59,3 +59,12 @@ void    ft_renderMap()
         j++;
 	}
 }
+
+int    mapHasWallAt(float x,float y)
+{
+    if (x < 0 || x > WINDOW_WIDTH || y < 0 || y > WINDOW_HEIGHT) 
+        return TRUE;
+    int mapGridIndexX = floor(x / TILE_SIZE);
+    int mapGridIndexY = floor(y / TILE_SIZE);
+    return map[mapGridIndexY][mapGridIndexX] != 0;
+}
