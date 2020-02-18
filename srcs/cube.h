@@ -19,7 +19,7 @@
 #define TWO_PI 6.28318530 
 
 #define TILE_SIZE 32
-#define MINIMAP_SCALE_FACTOR 0.3
+#define MINIMAP_SCALE_FACTOR 1
 #define MAP_NUM_ROWS 24
 #define MAP_NUM_COLS 24
 
@@ -31,6 +31,7 @@
 
 void	ft_img_pixel_put(void *img_ptr, float x, float y, int color);
 void    ft_draw_square(float x, float y, float w, float h);
+void    ft_draw_line(int x1, int y1, int x2, int y2);
 
 void    ft_setup();
 void    ft_render();
@@ -38,6 +39,7 @@ int     ft_update();
 int     ft_processinput(int key);
 
 void    ft_renderMap();
+void    ft_renderPlayer();
 
 
 void    *mlx_ptr;
