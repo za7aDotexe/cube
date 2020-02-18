@@ -17,33 +17,40 @@ void ft_draw_square(float x, float y, float w, float h)
 
 void ft_draw_line(int x1, int y1, int x2, int y2)
 {
-	float x,y,dx,dy,stp;
-	int i;
-
-	dx = x2-x1;
-	dy = y2-y1;
+  int dx; 
+  int sx; 
+  int dy; 
+  int sy;
+  int err;
+  int e2;
+  
+  dx = abs(x2-x1);
+  sx = x1<x2 ? 1 : -1;
+  dy = abs(y2-y1);
+  sy = y1<y2 ? 1 : -1; 
+  err = (dx>dy ? dx : -dy)/2; 
+  e2 = 0;
  
-	if(fabs(dx)>=fabs(dy))
-		stp = fabs(dx);
-	else
-		stp = fabs(dy);
-	dx=dx/stp;
-	dy=dy/stp;
- 
-	x=x1;
-	y=y1;
- 
-	i=1;
-	while(i<=stp)
-	{
-		ft_img_pixel_put(img_ptr, x, y, 0xFFFF00);
-		x=x+dx;
-		y=y+dy;
-		i=i+1;
+  while(1){
+    ft_img_pixel_put(img_ptr, x1,y1, 0xffff00);
+    if (x1==x2 && y1==y2) 
+		break;
+    e2 = err;
+    if (e2 >-dx)
+	{ 
+		err -= dy; 
+		x1 += sx; 
 	}
+    if (e2 < dy)
+	{ 
+		err += dx; 
+		y1 += sy; 
+	}
+  }
 }
 
-void	ft_img_pixel_put(void *img_ptr, float x, float y, int color)
+
+void	ft_img_pixel_put(void *img_ptr, int x, int y, int color)
 {
 	int *add;
 	int bpp;
