@@ -1,17 +1,16 @@
 #include "cube.h"
 
-
 void ft_draw_square(float x, float y, float w, float h)
 {
-    int i;
-    int j;
+    float i;
+    float j;
 
     i = 0;
     j = 0;
-	while(j++ <= h)
+	while (j++ <= h)
 	{
         i = 0;	
-		while(i++ <= w)
+		while (i++ <= w)
 			ft_img_pixel_put(img_ptr, x + i - 1, y + j - 1, 0xFF0000);
 	}
 }
@@ -26,8 +25,9 @@ void	ft_img_pixel_put(void *img_ptr, float x, float y, int color)
 
 	add = (int *)mlx_get_data_addr(img_ptr, &bpp, &sizeline, &endian);
 
-	if (x < screenWidth && y < screenHeight)
+	if (x < WINDOW_WIDTH && y < WINDOW_HEIGHT)
 	{
-		cord = (y * screenWidth+ x) ;
+		cord = (y * WINDOW_WIDTH + x) ;
 		add[cord] = color;
-	}}
+	}
+}
