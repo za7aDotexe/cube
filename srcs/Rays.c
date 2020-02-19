@@ -107,6 +107,7 @@ void castRay(float rayAngle, int stripId)
     xstep = TILE_SIZE;
     xstep *=  isRayFacingLeft ? -1 : 1;
 
+
     ystep = TILE_SIZE * tan(rayAngle);
     ystep *= (isRayFacingUp && ystep > 0) ? -1 : 1;
     ystep *= (isRayFacingDown && ystep < 0) ? -1 : 1;
@@ -142,7 +143,7 @@ void castRay(float rayAngle, int stripId)
     float vertHitDistance = foundVertWallHit 
     ? ft_distbpoints(player.x, player.y, vertWallHitX, vertWallHitY) : INT_MAX;
 
-    if (vertHitDistance < horzHitDistance)
+    if (vertHitDistance <= horzHitDistance)
     {
         rays[stripId].distance = vertHitDistance;
         rays[stripId].wallHitX = vertWallHitX;
@@ -193,15 +194,12 @@ void    ft_renderRays()
             player.x * MINIMAP_SCALE_FACTOR, 
             player.y * MINIMAP_SCALE_FACTOR,
             rays[i - 1].wallHitX * MINIMAP_SCALE_FACTOR,
-            rays[i  - 1].wallHitY * MINIMAP_SCALE_FACTOR 
+            rays[i  - 1].wallHitY * MINIMAP_SCALE_FACTOR,
+            twod_img
         );
     }
     
 }
-
-
-
-
 
 void    ft_renderMap()
 {
@@ -227,7 +225,8 @@ void    ft_renderMap()
                     tileX * MINIMAP_SCALE_FACTOR, 
                     tileY * MINIMAP_SCALE_FACTOR, 
                     TILE_SIZE * MINIMAP_SCALE_FACTOR,
-                    TILE_SIZE * MINIMAP_SCALE_FACTOR 
+                    TILE_SIZE * MINIMAP_SCALE_FACTOR,
+                    twod_img
                 );
             i++;
 		}

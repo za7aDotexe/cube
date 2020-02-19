@@ -1,6 +1,6 @@
 #include "cube.h"
 
-void ft_draw_square(float x, float y, float w, float h)
+void ft_draw_square(float x, float y, float w, float h, void *img_ptr)
 {
     float i;
     float j;
@@ -11,11 +11,11 @@ void ft_draw_square(float x, float y, float w, float h)
 	{
         i = 0;	
 		while (i++ <= w)
-			ft_img_pixel_put(img_ptr, x + i - 1, y + j - 1, 0xFF0000);
+			ft_img_pixel_put_2d(img_ptr, x + i - 1, y + j - 1, 0xFF0000);
 	}
 }
 
-void ft_draw_line(int x1, int y1, int x2, int y2)
+void ft_draw_line(int x1, int y1, int x2, int y2, void *img_ptr)
 {
   int dx; 
   int sx; 
@@ -32,7 +32,7 @@ void ft_draw_line(int x1, int y1, int x2, int y2)
   e2 = 0;
  
   while(1){
-    ft_img_pixel_put(img_ptr, x1,y1, 0xffff00);
+    ft_img_pixel_put_2d(img_ptr, x1,y1, 0xffff00);
     if (x1==x2 && y1==y2) 
 		break;
     e2 = err;
@@ -62,7 +62,7 @@ float ft_distbpoints(float x1, float y1, float x2, float y2)
 	return (sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1)));
 }
 
-void	ft_img_pixel_put(void *img_ptr, int x, int y, int color)
+void	ft_img_pixel_put_2d(void *img_ptr, int x, int y, int color)
 {
 	int *add;
 	int bpp;
@@ -72,9 +72,23 @@ void	ft_img_pixel_put(void *img_ptr, int x, int y, int color)
 
 	add = (int *)mlx_get_data_addr(img_ptr, &bpp, &sizeline, &endian);
 
-	if (x < WINDOW_WIDTH && y < WINDOW_HEIGHT)
+	if (x  < WINDOW_WIDTH * MINIMAP_SCALE_FACTOR  && y < WINDOW_HEIGHT * MINIMAP_SCALE_FACTOR) 
 	{
-		cord = (y * WINDOW_WIDTH + x) ;
+		cord = (y * sizeline / 4 + x);
 		add[cord] = color;
 	}
+}
+
+void	ft_img_pixel_put_3d(void *img_ptr, int x, int y, int color)
+{
+	int *add;
+	int bpp;
+	int sizeline;
+	int endian;
+	int cord;
+
+	add = (int *)mlx_get_data_addr(img_ptr, &bpp, &sizeline, &endian);
+
+	cord = (y * WINDOW_WIDTH + x) ;
+	add[cord] = color;
 }

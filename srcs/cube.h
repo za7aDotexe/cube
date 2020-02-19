@@ -21,7 +21,7 @@
 #define INT_MAX 2147483647
 
 #define TILE_SIZE 32
-#define MINIMAP_SCALE_FACTOR 0.2
+#define MINIMAP_SCALE_FACTOR 0.21
 #define MAP_NUM_ROWS 24
 #define MAP_NUM_COLS 24
 
@@ -29,13 +29,14 @@
 #define WINDOW_HEIGHT (TILE_SIZE * MAP_NUM_ROWS)
 
 #define FOV_ANGLE (60 * (PI / 180)) 
-#define NUM_RAYS (WINDOW_WIDTH * 2)
+#define NUM_RAYS (WINDOW_WIDTH * 1)
 
-#define globspeed 0.05
+#define globspeed 0.03
 
-void	ft_img_pixel_put(void *img_ptr, int x, int y, int color);
-void    ft_draw_square(float x, float y, float w, float h);
-void    ft_draw_line(int x1, int y1, int x2, int y2);
+void	ft_img_pixel_put_2d(void *img_ptr, int x, int y, int color);
+void    ft_img_pixel_put_3d(void *img_ptr, int x, int y, int colot);
+void    ft_draw_square(float x, float y, float w, float h, void *img_ptr);
+void    ft_draw_line(int x1, int y1, int x2, int y2, void *img_ptr);
 float   normalizeAngle(float Angle);
 int     mapHasWallAt(float x, float y);
 float   ft_distbpoints(float x1, float y1, float x2, float y2);
@@ -56,9 +57,12 @@ void    ft_movePlayer();
 void    ft_castAllRays();
 void    ft_renderRays();
 
+void ft_3Dprojection();
+
 void    *mlx_ptr;
 void    *win_ptr;
-void    *img_ptr;
+void    *twod_img;
+void    *threed_img;
 
 struct Player
 {

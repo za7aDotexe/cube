@@ -3,7 +3,7 @@ SRC = srcs/*.c
 NAME = cube
 
 CC1 = gcc -I /usr/local/include 
-CC2 = -L /usr/local/lib -lmlx -framework OpenGL -framework Appkit -o $(NAME)
+CC2 = -L /usr/local/lib -lmlx -framework OpenGL -framework Appkit -o  $(NAME)
 
 all : $(NAME)
 
