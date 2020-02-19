@@ -7,7 +7,7 @@ void    ft_render()
 
     ft_renderMap();
     ft_renderPlayer();
-    // ft_renderRays();
+    ft_renderRays();
 
     mlx_put_image_to_window(mlx_ptr, win_ptr, img_ptr, 0, 0);
 }

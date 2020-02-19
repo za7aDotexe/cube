@@ -49,6 +49,18 @@ void ft_draw_line(int x1, int y1, int x2, int y2)
   }
 }
 
+float normalizeAngle(float Angle)
+{
+	Angle = remainder(Angle , TWO_PI);
+	if (Angle < 0)
+		Angle = TWO_PI + TWO_PI;
+	return Angle;
+}
+
+float ft_distbpoints(float x1, float y1, float x2, float y2)
+{
+	return (sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1)));
+}
 
 void	ft_img_pixel_put(void *img_ptr, int x, int y, int color)
 {

@@ -17,7 +17,8 @@
 #define FALSE 0
 
 #define PI 3.14159265
-#define TWO_PI 6.28318530 
+#define TWO_PI 6.28318530
+#define INT_MAX 2147483647
 
 #define TILE_SIZE 32
 #define MINIMAP_SCALE_FACTOR 1
@@ -35,6 +36,10 @@
 void	ft_img_pixel_put(void *img_ptr, int x, int y, int color);
 void    ft_draw_square(float x, float y, float w, float h);
 void    ft_draw_line(int x1, int y1, int x2, int y2);
+float   normalizeAngle(float Angle);
+int     mapHasWallAt(float x, float y);
+float   ft_distbpoints(float x1, float y1, float x2, float y2);
+
 
 void    ft_setup();
 void    ft_render();
@@ -47,8 +52,9 @@ void    ft_renderMap();
 void    ft_renderPlayer();
 
 void    ft_movePlayer();
-void    ft_castRays();
-int     mapHasWallAt(float x, float y);
+
+void    ft_castAllRays();
+void    ft_renderRays();
 
 void    *mlx_ptr;
 void    *win_ptr;
@@ -67,5 +73,21 @@ struct Player
     float walkSpeed;
     float turnSpeed;
 }   player;
+
+struct Ray
+{
+    float rayAngle;
+    float wallHitX;
+    float wallHitY;
+    float distance;
+    int wasHitVertical;
+    int isRayFacingUp;
+    int isRayFacingDown;
+    int isRayFacingLeft;
+    int isRayFacingRight;
+    int wallHitContent;
+} rays[NUM_RAYS];
+
+const int map[MAP_NUM_ROWS][MAP_NUM_COLS];
 
 #endif
