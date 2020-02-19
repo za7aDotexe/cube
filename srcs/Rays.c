@@ -38,7 +38,6 @@ void castRay(float rayAngle, int stripId)
     int isRayFacingLeft = !isRayFacingRight;
 
 
-
     float xintercept, yintercept;
     float xstep, ystep;
 
@@ -167,18 +166,18 @@ void castRay(float rayAngle, int stripId)
 }
 
 
-
 void    ft_castAllRays()
 {
     float rayAngle;
     int stripId;
 
-    rayAngle = player.rotationAngle - (FOV_ANGLE / 2); 
+    rayAngle = player.rotationAngle - (FOV_ANGLE / 2.0); 
     stripId = 0;
-    while (stripId++ < NUM_RAYS)
+    while (stripId < NUM_RAYS)
     {
-        castRay(rayAngle, stripId - 1);
-        rayAngle += FOV_ANGLE / NUM_RAYS;
+        castRay(rayAngle, stripId);
+        rayAngle += FOV_ANGLE / (double)NUM_RAYS;
+        stripId++;
     }    
 }
 
