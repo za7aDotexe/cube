@@ -89,6 +89,6 @@ void	ft_img_pixel_put_3d(void *img_ptr, int x, int y, int color)
 
 	add = (int *)mlx_get_data_addr(img_ptr, &bpp, &sizeline, &endian);
 
-	cord = (y * WINDOW_WIDTH + x) ;
+	cord = (y * sizeline / 4 + x) ;
 	add[cord] = color;
 }

@@ -143,7 +143,7 @@ void castRay(float rayAngle, int stripId)
     float vertHitDistance = foundVertWallHit 
     ? ft_distbpoints(player.x, player.y, vertWallHitX, vertWallHitY) : INT_MAX;
 
-    if (vertHitDistance <= horzHitDistance)
+    if (vertHitDistance < horzHitDistance)
     {
         rays[stripId].distance = vertHitDistance;
         rays[stripId].wallHitX = vertWallHitX;

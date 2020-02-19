@@ -12,7 +12,6 @@ void    ft_render()
     ft_renderRays();
     ft_3Dprojection();
 
-
     mlx_put_image_to_window(mlx_ptr, win_ptr, threed_img, 0, 0);
     mlx_put_image_to_window(mlx_ptr, win_ptr, twod_img, 0, 0);
 }
