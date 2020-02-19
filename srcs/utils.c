@@ -52,14 +52,8 @@ void ft_draw_line(int x1, int y1, int x2, int y2)
 float normalizeAngle(float Angle)
 {
 	Angle = remainder(Angle, TWO_PI);
-	if (Angle)
+	if (Angle < 0)
 		Angle = TWO_PI + Angle;
-	
-	// while (Angle > TWO_PI)
-	// 	Angle -= TWO_PI;
-	// if (Angle < 0)
-	//  	Angle += TWO_PI;
-	// printf("%f\n",Angle);
 	return Angle;
 }
 

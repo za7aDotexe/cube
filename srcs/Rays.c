@@ -34,7 +34,7 @@ void castRay(float rayAngle, int stripId)
 
     int isRayFacingDown = rayAngle > 0 && rayAngle < PI;
     int isRayFacingUp = !isRayFacingDown;
-    int isRayFacingRight = rayAngle < PI * 0.5 || rayAngle >  PI * 2;
+    int isRayFacingRight = rayAngle < PI * 0.5 || rayAngle >  PI * 1.5;
     int isRayFacingLeft = !isRayFacingRight;
 
 

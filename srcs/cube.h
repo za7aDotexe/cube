@@ -21,7 +21,7 @@
 #define INT_MAX 2147483647
 
 #define TILE_SIZE 32
-#define MINIMAP_SCALE_FACTOR 1
+#define MINIMAP_SCALE_FACTOR 0.2
 #define MAP_NUM_ROWS 24
 #define MAP_NUM_COLS 24
 
@@ -29,7 +29,7 @@
 #define WINDOW_HEIGHT (TILE_SIZE * MAP_NUM_ROWS)
 
 #define FOV_ANGLE (60 * (PI / 180)) 
-#define NUM_RAYS WINDOW_WIDTH
+#define NUM_RAYS (WINDOW_WIDTH * 2)
 
 #define globspeed 0.05
 
@@ -87,7 +87,5 @@ struct Ray
     int isRayFacingRight;
     int wallHitContent;
 } rays[NUM_RAYS];
-
-const int map[MAP_NUM_ROWS][MAP_NUM_COLS];
 
 #endif
