@@ -27,17 +27,17 @@ void ft_3Dprojection()
         j = 0;
         while (j++ < wallTopPixel)
         {
-            ft_img_pixel_put_3d(threed_img, i - 1 , j - 1, 0x00ff00);
+            ft_img_pixel_put_3d(threed_img, i - 1 , j - 1, 0x87ceeb );
         }
         j = wallTopPixel;
         while (j++ < wallBottomPixel)
         {
-            ft_img_pixel_put_3d(threed_img, i - 1, j - 1, rays[i - 1].wasHitVertical ? 0xffffff : 0xffcccc);
+            ft_img_pixel_put_3d(threed_img, i - 1, j - 1, rays[i - 1].wasHitVertical ? 0x0BE597 : 0xEF7A9D);
         }
         j = wallBottomPixel;
         while (j++ < WINDOW_HEIGHT)
         {
-            ft_img_pixel_put_3d(threed_img, i - 1 , j - 1 , 0x0000ff );
+            ft_img_pixel_put_3d(threed_img, i - 1 , j - 1 ,  0xFCD871 );
         }
     }
 }

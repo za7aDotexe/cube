@@ -42,22 +42,22 @@ int     mapHasWallAt(float x, float y);
 float   ft_distbpoints(float x1, float y1, float x2, float y2);
 
 
-void    ft_setup();
-void    ft_render();
-int     ft_update();
+void    ft_setup(void);
+void    ft_render(void);
+int     ft_update(void);
 
 int     ft_presskey(int key);
 int     ft_releasekey(int key);
 
-void    ft_renderMap();
-void    ft_renderPlayer();
+void    ft_rendermap(void);
+void    ft_renderplayer(void);
 
-void    ft_movePlayer();
+void    ft_moveplayer(void);
 
-void    ft_castAllRays();
-void    ft_renderRays();
+void    ft_castallrays(void);
+void    ft_renderrays(void);
 
-void ft_3Dprojection();
+void ft_3Dprojection(void);
 
 void    *mlx_ptr;
 void    *win_ptr;
@@ -70,26 +70,26 @@ struct Player
     float y;
     float width;
     float height;
-    int   turnDirection;
-    int   walkUPDOWN;
-    int   walkLEFTRIGHT;
-    float rotationAngle;
-    float walkSpeed;
-    float turnSpeed;
+    int   turndirection;
+    int   walkupdown;
+    int   walkleftright;
+    float rotationangle;
+    float walkspeed;
+    float turnspeed;
 }   player;
 
 struct Ray
 {
-    float rayAngle;
-    float wallHitX;
-    float wallHitY;
+    float rayangle;
+    float wallhitx;
+    float wallhity;
     float distance;
-    int wasHitVertical;
-    int isRayFacingUp;
-    int isRayFacingDown;
-    int isRayFacingLeft;
-    int isRayFacingRight;
-    int wallHitContent;
+    int washitvertical;
+    int israyfacingup;
+    int israyfacingdown;
+    int israyfacingleft;
+    int israyfacingright;
+    int wallhitcontent;
 } rays[NUM_RAYS];
 
 #endif
