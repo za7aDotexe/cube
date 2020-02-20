@@ -1,171 +1,192 @@
-#include "cube.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rays.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: razaha <razaha@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/02/20 20:17:40 by razaha            #+#    #+#             */
+/*   Updated: 2020/02/20 23:02:46 by razaha           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../cube.h"
 
 const int map[MAP_NUM_ROWS][MAP_NUM_COLS] =
 {
-	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-	{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-	{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-	{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-	{1,0,0,0,0,0,2,2,2,2,2,0,0,0,0,3,0,3,0,3,0,0,0,1},
-	{1,0,0,0,0,0,2,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,1},
-	{1,0,0,0,0,0,2,0,0,0,2,0,0,0,0,3,0,0,0,3,0,0,0,1},
-	{1,0,0,0,0,0,2,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,1},
-	{1,0,0,0,0,0,2,2,0,2,2,0,0,0,0,3,0,3,0,3,0,0,0,1},
-	{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-	{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-	{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-	{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-	{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-	{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-	{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-	{1,4,4,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-	{1,4,0,4,0,0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-	{1,4,0,0,0,0,5,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-	{1,4,0,4,0,0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-	{1,4,0,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-	{1,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-	{1,4,4,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
+	{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+	{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+	{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+	{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+	{1, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 0, 0, 0, 0, 3, 0, 3, 0, 3, 0, 0, 0, 1},
+	{1, 0, 0, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+	{1, 0, 0, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0, 1},
+	{1, 0, 0, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+	{1, 0, 0, 0, 0, 0, 2, 2, 0, 2, 2, 0, 0, 0, 0, 3, 0, 3, 0, 3, 0, 0, 0, 1},
+	{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+	{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+	{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+	{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+	{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+	{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+	{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+	{1, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+	{1, 4, 0, 4, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+	{1, 4, 0, 0, 0, 0, 5, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+	{1, 4, 0, 4, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+	{1, 4, 0, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+	{1, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+	{1, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+	{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
 };
 
-void castRay(float rayAngle, int stripId)
+void	castray(float rayangle, int stripid)
 {
-	rayAngle = normalizeAngle(rayAngle);
+	int		israyfacingdown;
+	int		israyfacingup;
+	int		israyfacingright;
+	int		israyfacingleft;
+	float	verthitdistance;
+	float 	horzhitdistance;
+	float	xintercept;
+	float	yintercept;
+	float	xstep;
+	float	ystep;
+	int		foundhorzwallhit;
+	float	horzwallhitx;
+	float	horzwallhity;
+	int		horzwallcontent;
+	int		foundvertwallhit;
+	float	vertwallhitx;
+	float	vertwallhity;
+	int		vertwallcontent;
+	float	nexthorztouchx;
+	float	nexthorztouchy;
+	float	nextverttouchx;
+	float	nextverttouchy;
+	float	xtocheck;
+	float	ytocheck;
 
-	int isRayFacingDown = rayAngle > 0 && rayAngle < PI;
-	int isRayFacingUp = !isRayFacingDown;
-	int isRayFacingRight = rayAngle < PI * 0.5 || rayAngle >  PI * 1.5;
-	int isRayFacingLeft = !isRayFacingRight;
-
-
-	float xintercept, yintercept;
-	float xstep, ystep;
-
-	int foundHorzWallHit = FALSE;
-	float horzWallHitX = 0;
-	float horzWallHitY = 0;
-	int horzWallContent = 0;
-
+	rayangle = normalizeangle(rayangle);
+	israyfacingdown = rayangle > 0 && rayangle < PI;
+	israyfacingup = !israyfacingdown;
+	israyfacingright = rayangle < PI * 0.5 || rayangle > PI * 1.5;
+	israyfacingleft = !israyfacingright;
+	foundhorzwallhit = false;
+	horzwallhitx = 0;
+	horzwallhity = 0;
+	horzwallcontent = 0;
 	yintercept = floor(player.y / TILE_SIZE) * TILE_SIZE;
-	yintercept += isRayFacingDown ? TILE_SIZE : 0;
-
-	xintercept = player.x + (yintercept - player.y) / tan(rayAngle);
-
+	yintercept += israyfacingdown ? TILE_SIZE : 0;
+	xintercept = player.x + (yintercept - player.y) / tan(rayangle);
 	ystep = TILE_SIZE;
-	ystep *=  isRayFacingUp ? -1 : 1;
-
-	xstep = TILE_SIZE / tan(rayAngle);
-	xstep *= (isRayFacingLeft && xstep > 0) ? -1 : 1;
-	xstep *= (isRayFacingRight && xstep < 0) ? -1 : 1;
-
-	float nextHorzTouchX = xintercept;
-	float nextHorzTouchY = yintercept;
-
-	while (nextHorzTouchX >= 0 && nextHorzTouchX <= WINDOW_WIDTH && nextHorzTouchY >= 0 && nextHorzTouchY <= WINDOW_HEIGHT) 
+	ystep *= israyfacingup ? -1 : 1;
+	xstep = TILE_SIZE / tan(rayangle);
+	xstep *= (israyfacingleft && xstep > 0) ? -1 : 1;
+	xstep *= (israyfacingright && xstep < 0) ? -1 : 1;
+	nexthorztouchx = xintercept;
+	nexthorztouchy = yintercept;
+	while (nexthorztouchx >= 0 && nexthorztouchx <= WINDOW_WIDTH &&
+			nexthorztouchy >= 0 && nexthorztouchy <= WINDOW_HEIGHT)
 	{
-		float xTocheck = nextHorzTouchX;
-		float yTocheck = nextHorzTouchY + (isRayFacingUp ? -1 : 0 );    
-
-		if (mapHasWallAt(xTocheck, yTocheck)) 
+		xtocheck = nexthorztouchx;
+		ytocheck = nexthorztouchy + (israyfacingup ? -1 : 0);
+		if (maphaswallat(xtocheck, ytocheck))
 		{
-			foundHorzWallHit = TRUE;
-			horzWallHitX = nextHorzTouchX;
-			horzWallHitY = nextHorzTouchY;
-			horzWallContent = map[(int)floor(yTocheck / TILE_SIZE)][(int)floor(xTocheck / TILE_SIZE)];
-			break;
-		} 
-		else {
-			nextHorzTouchX += xstep;
-			nextHorzTouchY += ystep;
+			foundhorzwallhit = true;
+			horzwallhitx = nexthorztouchx;
+			horzwallhity = nexthorztouchy;
+			horzwallcontent =
+				map[(int)floor(ytocheck / TILE_SIZE)]
+				[(int)floor(xtocheck / TILE_SIZE)];
+			break ;
+		}
+		else
+		{
+			nexthorztouchx += xstep;
+			nexthorztouchy += ystep;
 		}
 	}
-
-
-	int foundVertWallHit = FALSE;
-	float vertWallHitX = 0;
-	float vertWallHitY = 0;
-	int vertWallContent = 0;
-
+	foundvertwallhit = false;
+	vertwallhitx = 0;
+	vertwallhity = 0;
+	vertwallcontent = 0;
 	xintercept = floor(player.x / TILE_SIZE) * TILE_SIZE;
-	xintercept += isRayFacingRight  ? TILE_SIZE : 0;
-
-	yintercept = player.y + (xintercept - player.x) * tan(rayAngle);
-
+	xintercept += israyfacingright ? TILE_SIZE : 0;
+	yintercept = player.y + (xintercept - player.x) * tan(rayangle);
 	xstep = TILE_SIZE;
-	xstep *=  isRayFacingLeft ? -1 : 1;
-
-
-	ystep = TILE_SIZE * tan(rayAngle);
-	ystep *= (isRayFacingUp && ystep > 0) ? -1 : 1;
-	ystep *= (isRayFacingDown && ystep < 0) ? -1 : 1;
-
-	float nextVertTouchX = xintercept;
-	float nextVertTouchY = yintercept;
-
-	while (nextVertTouchX >= 0 && nextVertTouchX <= WINDOW_WIDTH && nextVertTouchY >= 0 && nextVertTouchY <= WINDOW_HEIGHT) 
+	xstep *= israyfacingleft ? -1 : 1;
+	ystep = TILE_SIZE * tan(rayangle);
+	ystep *= (israyfacingup && ystep > 0) ? -1 : 1;
+	ystep *= (israyfacingdown && ystep < 0) ? -1 : 1;
+	nextverttouchx = xintercept;
+	nextverttouchy = yintercept;
+	while (nextverttouchx >= 0 && nextverttouchx <= WINDOW_WIDTH &&
+			nextverttouchy >= 0 && nextverttouchy <= WINDOW_HEIGHT)
 	{
-		float xTocheck = nextVertTouchX + (isRayFacingLeft  ? -1 : 0 );
-		float yTocheck = nextVertTouchY ;    
-
-		if (mapHasWallAt(xTocheck, yTocheck)) 
+		xtocheck = nextverttouchx + (israyfacingleft ? -1 : 0);
+		ytocheck = nextverttouchy;
+		if (maphaswallat(xtocheck, ytocheck))
 		{
-			foundVertWallHit = TRUE;
-			vertWallHitX = nextVertTouchX;
-			vertWallHitY = nextVertTouchY;
-			vertWallContent = map[(int)floor(yTocheck / TILE_SIZE)][(int)floor(xTocheck / TILE_SIZE)];
-			break;
-		} 
-		else {
-			nextVertTouchX += xstep;
-			nextVertTouchY += ystep;
+			foundvertwallhit = true;
+			vertwallhitx = nextverttouchx;
+			vertwallhity = nextverttouchy;
+			vertwallcontent =
+				map[(int)floor(ytocheck / TILE_SIZE)]
+				[(int)floor(xtocheck / TILE_SIZE)];
+			break ;
+		}
+		else
+		{
+			nextverttouchx += xstep;
+			nextverttouchy += ystep;
 		}
 	}
-
-	float horzHitDistance =  foundHorzWallHit
-		? ft_distbpoints(player.x, player.y, horzWallHitX, horzWallHitY) : INT_MAX;
-	float vertHitDistance = foundVertWallHit 
-		? ft_distbpoints(player.x, player.y, vertWallHitX, vertWallHitY) : INT_MAX;
-
-	if (vertHitDistance < horzHitDistance)
+	horzhitdistance = foundhorzwallhit ?
+		ft_distbpoints(player.x, player.y, horzwallhitx, horzwallhity)
+		: INT_MAX;
+	verthitdistance = foundvertwallhit ?
+		ft_distbpoints(player.x, player.y, vertwallhitx, vertwallhity)
+		: INT_MAX;
+	if (verthitdistance < horzhitdistance)
 	{
-		rays[stripId].distance = vertHitDistance;
-		rays[stripId].wallHitX = vertWallHitX;
-		rays[stripId].wallHitY  = vertWallHitY;
-		rays[stripId].wallHitContent = vertWallContent;
-		rays[stripId].wasHitVertical = TRUE;
+		rays[stripid].distance = verthitdistance;
+		rays[stripid].wallhitx = vertwallhitx;
+		rays[stripid].wallhity = vertwallhity;
+		rays[stripid].wallhitcontent = vertwallcontent;
+		rays[stripid].washitvertical = true;
 	}
 	else
 	{
-		rays[stripId].distance = horzHitDistance;
-		rays[stripId].wallHitX = horzWallHitX;
-		rays[stripId].wallHitY  = horzWallHitY;
-		rays[stripId].wallHitContent = horzWallContent;
-		rays[stripId].wasHitVertical = FALSE;
+		rays[stripid].distance = horzhitdistance;
+		rays[stripid].wallhitx = horzwallhitx;
+		rays[stripid].wallhity = horzwallhity;
+		rays[stripid].wallhitcontent = horzwallcontent;
+		rays[stripid].washitvertical = false;
 	}
-	rays[stripId].rayAngle = rayAngle;
-	rays[stripId].isRayFacingDown = isRayFacingDown;
-	rays[stripId].isRayFacingUp = isRayFacingUp;
-	rays[stripId].isRayFacingRight = isRayFacingRight;
-	rays[stripId].isRayFacingLeft = isRayFacingLeft;
+	rays[stripid].rayangle = rayangle;
+	rays[stripid].israyfacingdown = israyfacingdown;
+	rays[stripid].israyfacingup = israyfacingup;
+	rays[stripid].israyfacingright = israyfacingright;
+	rays[stripid].israyfacingleft = israyfacingleft;
 }
 
-
-void    ft_castAllRays()
+void	ft_castallrays(void)
 {
-	float rayAngle;
-	int stripId;
+	int		stripid;
+	float	rayangle;
 
-	rayAngle = player.rotationAngle - (FOV_ANGLE / 2.0); 
-	stripId = 0;
-	while (stripId < NUM_RAYS)
+	rayangle = player.rotationangle - (FOV_ANGLE / 2.0);
+	stripid = 0;
+	while (stripid < NUM_RAYS)
 	{
-		castRay(rayAngle, stripId);
-		rayAngle += FOV_ANGLE / (double)NUM_RAYS;
-		stripId++;
-	}    
+		castray(rayangle, stripid);
+		rayangle += FOV_ANGLE / (double)NUM_RAYS;
+		stripid++;
+	}
 }
 
-void    ft_renderRays()
+void	ft_renderrays(void)
 {
 	int i;
 
@@ -173,24 +194,23 @@ void    ft_renderRays()
 	while (i++ < NUM_RAYS)
 	{
 		ft_draw_line(
-				player.x * MINIMAP_SCALE_FACTOR, 
+				player.x * MINIMAP_SCALE_FACTOR,
 				player.y * MINIMAP_SCALE_FACTOR,
-				rays[i - 1].wallHitX * MINIMAP_SCALE_FACTOR,
-				rays[i  - 1].wallHitY * MINIMAP_SCALE_FACTOR,
+				rays[i - 1].wallhitx * MINIMAP_SCALE_FACTOR,
+				rays[i - 1].wallhity * MINIMAP_SCALE_FACTOR,
 				twod_img);
-	}   
+	}
 }
 
-void    ft_renderMap()
+void	ft_rendermap(void)
 {
-	int i;
-	int j;
-	float tilex;
-	float tiley;
+	int		i;
+	int		j;
+	float	tilex;
+	float	tiley;
 
 	i = 0;
 	j = 0;
-
 	tilex = 0;
 	tiley = 0;
 	while (j++ < MAP_NUM_ROWS)
@@ -198,25 +218,27 @@ void    ft_renderMap()
 		i = 0;
 		while (i++ < MAP_NUM_COLS)
 		{
-			tileY = (j - 1) * TILE_SIZE;
-			tileX = (i - 1) * TILE_SIZE;
+			tiley = (j - 1) * TILE_SIZE;
+			tilex = (i - 1) * TILE_SIZE;
 			if (map[j - 1][i - 1])
 				ft_draw_square(
-						tilex * MINIMAP_SCALE_FACTOR, 
-						tiley * MINIMAP_SCALE_FACTOR, 
+						tilex * MINIMAP_SCALE_FACTOR,
+						tiley * MINIMAP_SCALE_FACTOR,
 						TILE_SIZE * MINIMAP_SCALE_FACTOR,
 						TILE_SIZE * MINIMAP_SCALE_FACTOR,
-						twod_img
-						);
+						twod_img);
 		}
 	}
 }
 
-int    maphaswallat(float x,float y)
+int		maphaswallat(float x, float y)
 {
-	if (x < 0 || x > WINDOW_WIDTH || y < 0 || y > WINDOW_HEIGHT) 
-		return TRUE;
-	int mapgridindexx = floor(x / TILE_SIZE);
-	int mapgridindexy = floor(y / TILE_SIZE);
-	return map[mapgridindexy][mapgridindexx] != 0;
+	int mapgridindexx;
+	int mapgridindexy;
+
+	if (x < 0 || x > WINDOW_WIDTH || y < 0 || y > WINDOW_HEIGHT)
+		return (true);
+	mapgridindexx = floor(x / TILE_SIZE);
+	mapgridindexy = floor(y / TILE_SIZE);
+	return (map[mapgridindexy][mapgridindexx] != 0);
 }

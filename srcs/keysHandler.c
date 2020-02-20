@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   keyshandler.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: razaha <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: razaha <razaha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 20:05:59 by razaha            #+#    #+#             */
-/*   Updated: 2020/02/20 20:12:20 by razaha           ###   ########.fr       */
+/*   Updated: 2020/02/20 22:03:14 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube.h"
+#include "../cube.h"
 
 int	ft_presskey(int key)
 {

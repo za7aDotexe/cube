@@ -1,10 +1,21 @@
-#include "cube.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   update.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: razaha <razaha@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/02/20 21:42:30 by razaha            #+#    #+#             */
+/*   Updated: 2020/02/20 22:17:44 by razaha           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-int     ft_update()
+#include "../cube.h"
+
+int	ft_update(void)
 {
-    ft_movePlayer();
-    ft_castAllRays();
-
-    ft_render();
-    return (0);
+	ft_moveplayer();
+	ft_castallrays();
+	ft_render();
+	return (0);
 }

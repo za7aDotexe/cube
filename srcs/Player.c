@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: razaha <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: razaha <razaha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 19:54:01 by razaha            #+#    #+#             */
-/*   Updated: 2020/02/20 20:04:38 by razaha           ###   ########.fr       */
+/*   Updated: 2020/02/20 22:14:56 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube.h"
+#include "../cube.h"
 
 void	ft_renderplayer(void)
 {
@@ -23,9 +23,9 @@ void	ft_renderplayer(void)
 	ft_draw_line(
 			player.x * MINIMAP_SCALE_FACTOR,
 			player.y * MINIMAP_SCALE_FACTOR,
-			player.x * MINIMAP_SCALE_FACTOR + cos(player.rotationAngle) * 40
+			player.x * MINIMAP_SCALE_FACTOR + cos(player.rotationangle) * 40
 			* MINIMAP_SCALE_FACTOR,
-			player.y * MINIMAP_SCALE_FACTOR + sin(player.rotationAngle) * 40
+			player.y * MINIMAP_SCALE_FACTOR + sin(player.rotationangle) * 40
 			* MINIMAP_SCALE_FACTOR,
 			twod_img);
 }
@@ -38,22 +38,22 @@ void	ft_moveplayer(void)
 
 	newplayerx = player.x;
 	newplayery = player.y;
-	player.rotationAngle += player.turnDirection * player.turnSpeed * globspeed;
-	if (player.walkUPDOWN)
+	player.rotationangle += player.turndirection * player.turnspeed * globspeed;
+	if (player.walkupdown)
 	{
-		moveStep = player.walkUPDOWN * player.walkSpeed * globspeed;
-		newPlayerX += cos(player.rotationAngle) * moveStep;
-		newPlayerY += sin(player.rotationAngle) * moveStep;
+		movestep = player.walkupdown * player.walkspeed * globspeed;
+		newplayerx += cos(player.rotationangle) * movestep;
+		newplayery += sin(player.rotationangle) * movestep;
 	}
-	if (player.walkLEFTRIGHT)
+	if (player.walkleftright)
 	{
-		movestep = player.walkLEFTRIGHT * player.walkSpeed * globspeed;
-		newplayerx -= sin(player.rotationAngle) * moveStep;
-		newPlayery += cos(player.rotationAngle) * moveStep;
+		movestep = player.walkleftright * player.walkspeed * globspeed;
+		newplayerx -= sin(player.rotationangle) * movestep;
+		newplayery += cos(player.rotationangle) * movestep;
 	}
-	if (!mapHasWallAt(newPlayerX, newPlayerY))
+	if (!maphaswallat(newplayerx, newplayery))
 	{
-		player.x = newPlayerX;
-		player.y = newPlayerY;
+		player.x = newplayerx;
+		player.y = newplayery;
 	}
 }
