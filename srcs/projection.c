@@ -6,11 +6,19 @@
 /*   By: razaha <razaha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 21:44:33 by razaha            #+#    #+#             */
-/*   Updated: 2020/02/29 15:06:07 by razaha           ###   ########.fr       */
+/*   Updated: 2020/02/29 22:05:07 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cube.h"
+
+int	ft_texture(int offx, int offy)
+{
+	// printf("offx--> %d\n offy-->%d\n", offx, offy);
+	// return (0);
+	
+	return (textu.data[textu.width * offy + offx  *2]);
+}
 
 void	ft_projection(void)
 {
@@ -27,6 +35,7 @@ void	ft_projection(void)
 	int texttureOffestX;
 	int texttureOffestY;
 	int distancefromtop;
+	
 	i = 0;
 	while (i++ < NUM_RAYS)
 	{
@@ -53,10 +62,11 @@ void	ft_projection(void)
 		while (j++ < wallbottompixel)
 		{
 			distancefromtop = j + (wallstripheight / 2) - (WINDOW_HEIGHT / 2);
-			texttureOffestY = (j - walltoppixel) * ((float)TEXTURE_HEIGHT / wallstripheight); 
+			texttureOffestY = distancefromtop * ((float)TEXTURE_HEIGHT / wallstripheight); 
 			
-			ft_img_pixel_put_3d(threed_img, i - 1, j - 1,
-					rays[i - 1].washitvertical ? 0x0BE597 : 0xEF7A9D);
+			// ft_img_pixel_put_3d(threed_img, i - 1, j - 1,
+			// 		rays[i - 1].washitvertical ? 0x0BE597 : 0xEF7A9D);
+			ft_img_pixel_put_3d(threed_img, i - 1, j - 1, ft_texture(texttureOffestX, texttureOffestY));
 		}
 		j = wallbottompixel;
 		while (j++ < WINDOW_HEIGHT)

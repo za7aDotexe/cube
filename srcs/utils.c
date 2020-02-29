@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 21:24:52 by razaha            #+#    #+#             */
-/*   Updated: 2020/02/20 22:03:14 by razaha           ###   ########.fr       */
+/*   Updated: 2020/02/29 21:51:16 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,12 +83,10 @@ void	ft_img_pixel_put_2d(void *img_ptr, int x, int y, int color)
 	int cord;
 
 	add = (int *)mlx_get_data_addr(img_ptr, &bpp, &sizeline, &endian);
+	cord = (y * sizeline / 4 + x);
 	if (x < WINDOW_WIDTH * MINIMAP_SCALE_FACTOR && y < WINDOW_HEIGHT *
 			MINIMAP_SCALE_FACTOR)
-	{
-		cord = (y * sizeline / 4 + x);
 		add[cord] = color;
-	}
 }
 
 void	ft_img_pixel_put_3d(void *img_ptr, int x, int y, int color)
@@ -98,8 +96,8 @@ void	ft_img_pixel_put_3d(void *img_ptr, int x, int y, int color)
 	int sizeline;
 	int endian;
 	int cord;
-
 	add = (int *)mlx_get_data_addr(img_ptr, &bpp, &sizeline, &endian);
 	cord = (y * sizeline / 4 + x);
-	add[cord] = color;
+	if (x < WINDOW_WIDTH  && x >= 0 && y >= 0  && y < WINDOW_HEIGHT )
+		add[cord] = color;
 }

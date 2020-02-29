@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 21:58:31 by razaha            #+#    #+#             */
-/*   Updated: 2020/02/29 15:13:46 by razaha           ###   ########.fr       */
+/*   Updated: 2020/02/29 22:06:25 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,13 @@
 #define TEXTURE_HEIGHT 64
 #define TEXTURE_WIDTH 64
 
-#define EAGLE "images/eagle.png"
+#define EAGLE "images/eagle.xpm"
 
 void    *mlx_ptr;
 void    *win_ptr;
 void    *twod_img;
 void    *threed_img;
+void	*textu_img;
 
 struct Player
 {
@@ -83,6 +84,16 @@ struct Ray
 	int israyfacingright;
 	int wallhitcontent;
 } rays[NUM_RAYS];
+
+struct	Textu
+{
+	void *img;
+	int	*data;
+	int width;
+	int height;
+		int sizeline;
+
+}	textu;
 
 
 

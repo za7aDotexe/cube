@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 20:05:59 by razaha            #+#    #+#             */
-/*   Updated: 2020/02/20 22:03:14 by razaha           ###   ########.fr       */
+/*   Updated: 2020/02/29 22:08:22 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ int	ft_presskey(int key)
 		if (key == 0)
 			player.walkleftright = -1;
 		if (key == 124)
-			player.turndirection = +1;
+			player.turndirection = +2;
 		if (key == 123)
-			player.turndirection = -1;
+			player.turndirection = -2;
 	}
 	return (0);
 }
