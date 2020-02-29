@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 21:44:33 by razaha            #+#    #+#             */
-/*   Updated: 2020/02/20 22:03:14 by razaha           ###   ########.fr       */
+/*   Updated: 2020/02/29 15:06:07 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,10 @@ void	ft_projection(void)
 	int		walltoppixel;
 	int		wallbottompixel;
 
+	
+	int texttureOffestX;
+	int texttureOffestY;
+	int distancefromtop;
 	i = 0;
 	while (i++ < NUM_RAYS)
 	{
@@ -39,10 +43,21 @@ void	ft_projection(void)
 		j = 0;
 		while (j++ < walltoppixel)
 			ft_img_pixel_put_3d(threed_img, i - 1, j - 1, 0x87ceeb);
+
+		if (rays[i].washitvertical)
+			texttureOffestX = (int)rays[i].wallhity % TILE_SIZE;
+		else
+			texttureOffestX = (int)rays[i].wallhitx % TILE_SIZE;
+		
 		j = walltoppixel;
 		while (j++ < wallbottompixel)
+		{
+			distancefromtop = j + (wallstripheight / 2) - (WINDOW_HEIGHT / 2);
+			texttureOffestY = (j - walltoppixel) * ((float)TEXTURE_HEIGHT / wallstripheight); 
+			
 			ft_img_pixel_put_3d(threed_img, i - 1, j - 1,
 					rays[i - 1].washitvertical ? 0x0BE597 : 0xEF7A9D);
+		}
 		j = wallbottompixel;
 		while (j++ < WINDOW_HEIGHT)
 			ft_img_pixel_put_3d(threed_img, i - 1, j - 1, 0xFCD871);

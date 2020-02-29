@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 21:58:31 by razaha            #+#    #+#             */
-/*   Updated: 2020/02/20 22:14:07 by razaha           ###   ########.fr       */
+/*   Updated: 2020/02/29 15:13:46 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <string.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <fcntl.h>
 
 # define buttonpressmask (1L<<0)
 # define keyreleasemask	(1L<<1) 
@@ -44,6 +45,11 @@
 #define NUM_RAYS (WINDOW_WIDTH * 1)
 
 #define globspeed 0.03
+
+#define TEXTURE_HEIGHT 64
+#define TEXTURE_WIDTH 64
+
+#define EAGLE "images/eagle.png"
 
 void    *mlx_ptr;
 void    *win_ptr;
