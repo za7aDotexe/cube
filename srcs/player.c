@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 19:54:01 by razaha            #+#    #+#             */
-/*   Updated: 2020/02/20 22:14:56 by razaha           ###   ########.fr       */
+/*   Updated: 2020/03/01 17:10:47 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,14 @@ void	ft_renderplayer(void)
 			player.x * MINIMAP_SCALE_FACTOR,
 			player.y * MINIMAP_SCALE_FACTOR,
 			player.width * MINIMAP_SCALE_FACTOR,
-			player.height * MINIMAP_SCALE_FACTOR,
-			twod_img);
+			player.height * MINIMAP_SCALE_FACTOR);
 	ft_draw_line(
 			player.x * MINIMAP_SCALE_FACTOR,
 			player.y * MINIMAP_SCALE_FACTOR,
 			player.x * MINIMAP_SCALE_FACTOR + cos(player.rotationangle) * 40
 			* MINIMAP_SCALE_FACTOR,
 			player.y * MINIMAP_SCALE_FACTOR + sin(player.rotationangle) * 40
-			* MINIMAP_SCALE_FACTOR,
-			twod_img);
+			* MINIMAP_SCALE_FACTOR);
 }
 
 void	ft_moveplayer(void)

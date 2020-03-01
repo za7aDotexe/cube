@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 21:41:46 by razaha            #+#    #+#             */
-/*   Updated: 2020/02/29 22:02:55 by razaha           ###   ########.fr       */
+/*   Updated: 2020/03/01 17:25:42 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,8 @@ void	ft_setup(void)
 	player.rotationangle = PI / 2;
 	player.walkspeed = 100;
 	player.turnspeed = 30 * (PI / 180);
-
-	int bpp;
-	int endian;
-
-	textu.img = mlx_xpm_file_to_image(mlx_ptr, EAGLE, &textu.width , &textu.height);
-	textu.data = (int *)mlx_get_data_addr(textu.img, &bpp, &textu.sizeline, &endian);
+	textu.img = mlx_xpm_file_to_image(mlx_ptr, EAGLE, &textu.width,
+			&textu.height);
+	textu.data = (int *)mlx_get_data_addr(textu.img, &textu.bpp,
+			&textu.sizeline, &textu.endian);
 }
