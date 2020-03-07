@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersection.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: razaha <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: razaha <razaha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/01 17:54:34 by razaha            #+#    #+#             */
-/*   Updated: 2020/03/01 17:56:38 by razaha           ###   ########.fr       */
+/*   Updated: 2020/03/07 23:59:57 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	horinter2(void)
 	{
 		inter.xtocheck = inter.nexthorztouchx;
 		inter.ytocheck = inter.nexthorztouchy + (inter.israyfacingup ? -1 : 0);
-		if (maphaswallat(inter.xtocheck, inter.ytocheck))
+		if (mapinter(inter.xtocheck, inter.ytocheck) == 1 || mapinter(inter.xtocheck, inter.ytocheck) == 2)
 		{
 			inter.foundhorzwallhit = true;
 			inter.horzwallhitx = inter.nexthorztouchx;
@@ -34,12 +34,51 @@ void	horinter2(void)
 			inter.nexthorztouchx += inter.xstep;
 			inter.nexthorztouchy += inter.ystep;
 		}
+		if (mapinter(inter.xtocheck, inter.ytocheck) == 3)
+		{
+			inter.foundhorspritehit = true;
+			inter.horzspritehitx = inter.nexthorztouchx;
+			inter.horzspritehity = inter.nexthorztouchy;
+		}
+	}
+}
+
+void	verinter2(void)
+{
+	while (inter.nextverttouchx >= 0 && inter.nextverttouchx <= WINDOW_WIDTH &&
+			inter.nextverttouchy >= 0 && inter.nextverttouchy <= WINDOW_HEIGHT)
+	{
+		inter.xtocheck = inter.nextverttouchx +
+			(inter.israyfacingleft ? -1 : 0);
+		inter.ytocheck = inter.nextverttouchy;
+		if (mapinter(inter.xtocheck, inter.ytocheck) == 1 || mapinter(inter.xtocheck, inter.ytocheck) == 2)
+		{
+			inter.foundvertwallhit = true;
+			inter.vertwallhitx = inter.nextverttouchx;
+			inter.vertwallhity = inter.nextverttouchy;
+			inter.vertwallcontent =
+				g_map[(int)floor(inter.ytocheck / TILE_SIZE)]
+				[(int)floor(inter.xtocheck / TILE_SIZE)];
+			break ;
+		}
+		else
+		{
+			inter.nextverttouchx += inter.xstep;
+			inter.nextverttouchy += inter.ystep;
+		}
+		if (mapinter(inter.xtocheck, inter.ytocheck) == 3)
+		{
+			inter.foundverspritehit = true;
+			inter.verspritehitx = inter.nextverttouchx;
+			inter.verspritehity = inter.nextverttouchy;
+		}
 	}
 }
 
 void	horinter(float rayangle)
 {
 	inter.foundhorzwallhit = false;
+	inter.foundhorspritehit = false;
 	inter.horzwallhitx = 0;
 	inter.horzwallhity = 0;
 	inter.horzwallcontent = 0;
@@ -56,35 +95,10 @@ void	horinter(float rayangle)
 	horinter2();
 }
 
-void	verinter2(void)
-{
-	while (inter.nextverttouchx >= 0 && inter.nextverttouchx <= WINDOW_WIDTH &&
-			inter.nextverttouchy >= 0 && inter.nextverttouchy <= WINDOW_HEIGHT)
-	{
-		inter.xtocheck = inter.nextverttouchx +
-			(inter.israyfacingleft ? -1 : 0);
-		inter.ytocheck = inter.nextverttouchy;
-		if (maphaswallat(inter.xtocheck, inter.ytocheck))
-		{
-			inter.foundvertwallhit = true;
-			inter.vertwallhitx = inter.nextverttouchx;
-			inter.vertwallhity = inter.nextverttouchy;
-			inter.vertwallcontent =
-				g_map[(int)floor(inter.ytocheck / TILE_SIZE)]
-				[(int)floor(inter.xtocheck / TILE_SIZE)];
-			break ;
-		}
-		else
-		{
-			inter.nextverttouchx += inter.xstep;
-			inter.nextverttouchy += inter.ystep;
-		}
-	}
-}
-
 void	verinter(float rayangle)
 {
 	inter.foundvertwallhit = false;
+	inter.foundverspritehit = false;
 	inter.vertwallhitx = 0;
 	inter.vertwallhity = 0;
 	inter.vertwallcontent = 0;

@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 21:41:46 by razaha            #+#    #+#             */
-/*   Updated: 2020/03/01 17:25:42 by razaha           ###   ########.fr       */
+/*   Updated: 2020/03/03 23:03:46 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,8 @@ void	ft_setup(void)
 			&textu.height);
 	textu.data = (int *)mlx_get_data_addr(textu.img, &textu.bpp,
 			&textu.sizeline, &textu.endian);
+	sprit.img = mlx_xpm_file_to_image(mlx_ptr, SPRIT, &sprit.width,
+			&sprit.height);
+	sprit.data = (int *)mlx_get_data_addr(sprit.img, &sprit.bpp,
+			&sprit.sizeline, &sprit.endian);
 }

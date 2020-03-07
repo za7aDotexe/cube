@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 21:58:31 by razaha            #+#    #+#             */
-/*   Updated: 2020/03/01 18:03:08 by razaha           ###   ########.fr       */
+/*   Updated: 2020/03/08 00:04:16 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@
 #define TEXTURE_WIDTH 64
 
 #define EAGLE "images/redbrick.xpm"
+#define SPRIT "images/barrel.xpm"
 
 extern const int g_map[MAP_NUM_ROWS][MAP_NUM_COLS];
 
@@ -78,7 +79,10 @@ struct Ray
 	float rayangle;
 	float wallhitx;
 	float wallhity;
-	float distance;
+	float spritehitx;
+	float spritehity;
+	float walldistance;
+	float spritedistance;
 	int washitvertical;
 	int israyfacingup;
 	int israyfacingdown;
@@ -95,17 +99,25 @@ struct Inter
 	int		israyfacingleft;
 	float	verthitdistance;
 	float 	horzhitdistance;
+	float	vertsphitdistance;
+	float 	horzsphitdistance;
 	float	xintercept;
 	float	yintercept;
 	float	xstep;
 	float	ystep;
 	int		foundhorzwallhit;
+	int		foundhorspritehit;
 	float	horzwallhitx;
 	float	horzwallhity;
+	float	horzspritehitx;
+	float	horzspritehity;
 	int		horzwallcontent;
 	int		foundvertwallhit;
+	int		foundverspritehit;
 	float	vertwallhitx;
 	float	vertwallhity;
+	float	verspritehitx;
+	float	verspritehity;
 	int		vertwallcontent;
 	float	nexthorztouchx;
 	float	nexthorztouchy;
@@ -142,6 +154,17 @@ struct	Textu
 	int sizeline;
 }	textu;
 
+struct	Sprit
+{
+	void *img;
+	int	*data;
+	int width;
+	int height;
+	int bpp;
+	int endian;
+	int sizeline;
+}	sprit;
+
 struct line
 {
 	int dx;
@@ -173,5 +196,7 @@ void    ft_renderrays(void);
 void	ft_projection(void);
 void	horinter(float rayangle);
 void	verinter(float rayangle);
+
+int		mapinter(float x, float y);
 
 #endif

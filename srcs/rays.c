@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 20:17:40 by razaha            #+#    #+#             */
-/*   Updated: 2020/03/01 18:01:11 by razaha           ###   ########.fr       */
+/*   Updated: 2020/03/08 00:06:21 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,23 @@ void	castray2(float rayangle, int stripid)
 {
 	if (inter.verthitdistance < inter.horzhitdistance)
 	{
-		rays[stripid].distance = inter.verthitdistance;
+		rays[stripid].walldistance = inter.verthitdistance;
+		rays[stripid].spritedistance = inter.vertsphitdistance;
 		rays[stripid].wallhitx = inter.vertwallhitx;
 		rays[stripid].wallhity = inter.vertwallhity;
+		rays[stripid].spritehitx = inter.verspritehitx;
+		rays[stripid].spritehity = inter.verspritehity;
 		rays[stripid].wallhitcontent = inter.vertwallcontent;
 		rays[stripid].washitvertical = true;
 	}
 	else
 	{
-		rays[stripid].distance = inter.horzhitdistance;
+		rays[stripid].walldistance = inter.horzhitdistance;
+		rays[stripid].spritedistance = inter.horzsphitdistance;
 		rays[stripid].wallhitx = inter.horzwallhitx;
 		rays[stripid].wallhity = inter.horzwallhity;
+		rays[stripid].spritehitx = inter.horzspritehitx;
+		rays[stripid].spritehity = inter.horzspritehity;
 		rays[stripid].wallhitcontent = inter.horzwallcontent;
 		rays[stripid].washitvertical = false;
 	}
@@ -50,6 +56,10 @@ void	castray(float rayangle, int stripid)
 			player.y, inter.horzwallhitx, inter.horzwallhity) : INT_MAX;
 	inter.verthitdistance = inter.foundvertwallhit ? ft_distbpoints(player.x,
 			player.y, inter.vertwallhitx, inter.vertwallhity) : INT_MAX;
+	inter.horzsphitdistance = inter.foundhorspritehit ? ft_distbpoints(player.x,
+			player.y, inter.horzspritehitx, inter.horzspritehity) : INT_MAX;
+	inter.vertsphitdistance = inter.foundverspritehit ? ft_distbpoints(player.x,
+			player.y, inter.verspritehitx, inter.verspritehity) : INT_MAX;
 	castray2(rayangle, stripid);
 }
 
