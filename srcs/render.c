@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 21:38:24 by razaha            #+#    #+#             */
-/*   Updated: 2020/03/07 19:34:31 by razaha           ###   ########.fr       */
+/*   Updated: 2020/03/10 21:30:53 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	ft_render(void)
 	ft_renderplayer();
 	ft_renderrays();
 	ft_projection();
+	ft_draw_sprites();
 	mlx_put_image_to_window(mlx_ptr, win_ptr, threed_img, 0, 0);
 	mlx_put_image_to_window(mlx_ptr, win_ptr, twod_img, 0, 0);
 }

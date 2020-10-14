@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 21:58:31 by razaha            #+#    #+#             */
-/*   Updated: 2020/03/08 00:04:16 by razaha           ###   ########.fr       */
+/*   Updated: 2020/03/12 21:51:46 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
+# include "gnl/get_next_line.h"
 
 # define buttonpressmask (1L<<0)
 # define keyreleasemask	(1L<<1) 
@@ -33,26 +34,42 @@
 #define TWO_PI 6.28318530
 #define INT_MAX 2147483647
 
+
+//tileheight = scren h / map h
+//tilewidth = screen w / map w
 #define TILE_SIZE 32
 #define MINIMAP_SCALE_FACTOR 0.25
 #define MAP_NUM_ROWS 24
 #define MAP_NUM_COLS 24
 
-#define WINDOW_WIDTH (TILE_SIZE * MAP_NUM_COLS)
-#define WINDOW_HEIGHT (TILE_SIZE * MAP_NUM_ROWS)
+// extern int MAP_NUM_ROWS;
+// extern int MAP_NUM_COLS;
+
+// #define WINDOW_WIDTH (TILE_SIZE * MAP_NUM_COLS)
+// #define WINDOW_HEIGHT (TILE_SIZE * MAP_NUM_ROWS)
+
+int WINDOW_WIDTH;
+int WINDOW_HEIGHT;
+int cols;
+int rows;
 
 #define FOV_ANGLE (60 * (PI / 180)) 
-#define NUM_RAYS (WINDOW_WIDTH * 1)
+#define NUM_RAYS (768 * 1)
 
-#define globspeed 0.03
+#define globspeed 0.01
 
 #define TEXTURE_HEIGHT 64
 #define TEXTURE_WIDTH 64
 
-#define EAGLE "images/redbrick.xpm"
-#define SPRIT "images/barrel.xpm"
+char *NTXT;
+char *STXT;
+char *WTXT;
+char *ETXT;
+char *SPRIT;
+int FCOL;
+int CCOL;
 
-extern const int g_map[MAP_NUM_ROWS][MAP_NUM_COLS];
+extern const int g_map[0][0];
 
 void    *mlx_ptr;
 void    *win_ptr;
@@ -89,6 +106,9 @@ struct Ray
 	int israyfacingleft;
 	int israyfacingright;
 	int wallhitcontent;
+	int foundhorspritehit;
+	int foundverspritehit;
+	int wassphitvertical;
 } rays[NUM_RAYS];
 
 struct Inter
@@ -142,7 +162,6 @@ struct Projec
 	int		distancefromtop;
 }	projec;
 
-
 struct	Textu
 {
 	void *img;
@@ -175,9 +194,26 @@ struct line
 	int e2;
 }	line;
 
+typedef struct		s_vector
+{
+	float x;
+	float y;
+}					t_vector;
+
+typedef struct		s_sprite
+{
+	int x;
+	int y;
+	int	px;
+	int	py;
+	int scale;
+	struct s_sprite *next;
+}					t_sprite;
+
+t_sprite *g_sprites;
 
 void	ft_img_pixel_put_2d(int x, int y, int color);
-void    ft_img_pixel_put_3d(int x, int y, int colot);
+void    ft_img_pixel_put_3d(int x, int y, int color);
 void    ft_draw_square(float x, float y, float w, float h);
 void    ft_draw_line(int x1, int y1, int x2, int y2);
 float   normalizeangle(float Angle);
@@ -194,9 +230,14 @@ void    ft_moveplayer(void);
 void    ft_castallrays(void);
 void    ft_renderrays(void);
 void	ft_projection(void);
-void	horinter(float rayangle);
-void	verinter(float rayangle);
-
+void	horinter(float rayangle, int stripid);
+void	verinter(float rayangle, int stripid);
 int		mapinter(float x, float y);
-
+float	ft_get_angleabc(t_vector a, t_vector b, t_vector c);
+int		ft_get_pixel(int x, int y);
+void	ft_draw_sprite(int x, int y, int scale);
+void    ft_fill_sprite(int stripid, int sx, int sy);
+void    ft_draw_sprites(void);
+char	**ft_split(char const *s, char c);
+int	ft_atoi(const char *str);
 #endif

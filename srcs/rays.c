@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 20:17:40 by razaha            #+#    #+#             */
-/*   Updated: 2020/03/08 00:06:21 by razaha           ###   ########.fr       */
+/*   Updated: 2020/03/12 17:55:16 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void	castray2(float rayangle, int stripid)
 	if (inter.verthitdistance < inter.horzhitdistance)
 	{
 		rays[stripid].walldistance = inter.verthitdistance;
-		rays[stripid].spritedistance = inter.vertsphitdistance;
 		rays[stripid].wallhitx = inter.vertwallhitx;
 		rays[stripid].wallhity = inter.vertwallhity;
 		rays[stripid].spritehitx = inter.verspritehitx;
@@ -28,13 +27,30 @@ void	castray2(float rayangle, int stripid)
 	else
 	{
 		rays[stripid].walldistance = inter.horzhitdistance;
-		rays[stripid].spritedistance = inter.horzsphitdistance;
 		rays[stripid].wallhitx = inter.horzwallhitx;
 		rays[stripid].wallhity = inter.horzwallhity;
 		rays[stripid].spritehitx = inter.horzspritehitx;
 		rays[stripid].spritehity = inter.horzspritehity;
 		rays[stripid].wallhitcontent = inter.horzwallcontent;
 		rays[stripid].washitvertical = false;
+	}
+	if (inter.vertsphitdistance < inter.horzsphitdistance)
+	{
+		rays[stripid].spritedistance = inter.vertsphitdistance;
+		rays[stripid].foundverspritehit = inter.foundverspritehit;
+		rays[stripid].wassphitvertical = true;
+
+	}
+	else
+	{
+		rays[stripid].spritedistance = inter.horzsphitdistance;
+		rays[stripid].foundverspritehit = inter.foundhorspritehit;
+		rays[stripid].wassphitvertical = false;
+	}
+	if(rays[stripid].walldistance < rays[stripid].spritedistance)
+	{
+		rays[stripid].foundhorspritehit = false;
+		rays[stripid].foundverspritehit = false;
 	}
 	rays[stripid].rayangle = rayangle;
 	rays[stripid].israyfacingdown = inter.israyfacingdown;
@@ -50,8 +66,10 @@ void	castray(float rayangle, int stripid)
 	inter.israyfacingup = !inter.israyfacingdown;
 	inter.israyfacingright = rayangle < PI * 0.5 || rayangle > PI * 1.5;
 	inter.israyfacingleft = !inter.israyfacingright;
-	horinter(rayangle);
-	verinter(rayangle);
+	rays[stripid].foundhorspritehit = false;
+	rays[stripid].foundverspritehit = false;
+	horinter(rayangle, stripid);
+	verinter(rayangle, stripid);
 	inter.horzhitdistance = inter.foundhorzwallhit ? ft_distbpoints(player.x,
 			player.y, inter.horzwallhitx, inter.horzwallhity) : INT_MAX;
 	inter.verthitdistance = inter.foundvertwallhit ? ft_distbpoints(player.x,

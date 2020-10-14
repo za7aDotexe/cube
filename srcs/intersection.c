@@ -6,13 +6,13 @@
 /*   By: razaha <razaha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/01 17:54:34 by razaha            #+#    #+#             */
-/*   Updated: 2020/03/07 23:59:57 by razaha           ###   ########.fr       */
+/*   Updated: 2020/03/10 23:20:52 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cube.h"
 
-void	horinter2(void)
+void	horinter2(int stripid)
 {
 	while (inter.nexthorztouchx >= 0 && inter.nexthorztouchx <= WINDOW_WIDTH &&
 			inter.nexthorztouchy >= 0 && inter.nexthorztouchy <= WINDOW_HEIGHT)
@@ -38,12 +38,13 @@ void	horinter2(void)
 		{
 			inter.foundhorspritehit = true;
 			inter.horzspritehitx = inter.nexthorztouchx;
-			inter.horzspritehity = inter.nexthorztouchy;
+			inter.horzspritehity =inter.nexthorztouchy;
+			ft_fill_sprite(stripid, (int)floor(inter.xtocheck / TILE_SIZE), (int)floor(inter.ytocheck / TILE_SIZE));
 		}
 	}
 }
 
-void	verinter2(void)
+void	verinter2(int stripid)
 {
 	while (inter.nextverttouchx >= 0 && inter.nextverttouchx <= WINDOW_WIDTH &&
 			inter.nextverttouchy >= 0 && inter.nextverttouchy <= WINDOW_HEIGHT)
@@ -71,11 +72,12 @@ void	verinter2(void)
 			inter.foundverspritehit = true;
 			inter.verspritehitx = inter.nextverttouchx;
 			inter.verspritehity = inter.nextverttouchy;
+			ft_fill_sprite(stripid, (int)floor(inter.xtocheck / TILE_SIZE), (int)floor(inter.ytocheck / TILE_SIZE));
 		}
 	}
 }
 
-void	horinter(float rayangle)
+void	horinter(float rayangle, int stripid)
 {
 	inter.foundhorzwallhit = false;
 	inter.foundhorspritehit = false;
@@ -92,10 +94,10 @@ void	horinter(float rayangle)
 	inter.xstep *= (inter.israyfacingright && inter.xstep < 0) ? -1 : 1;
 	inter.nexthorztouchx = inter.xintercept;
 	inter.nexthorztouchy = inter.yintercept;
-	horinter2();
+	horinter2(stripid);
 }
 
-void	verinter(float rayangle)
+void	verinter(float rayangle, int stripid)
 {
 	inter.foundvertwallhit = false;
 	inter.foundverspritehit = false;
@@ -112,5 +114,5 @@ void	verinter(float rayangle)
 	inter.ystep *= (inter.israyfacingdown && inter.ystep < 0) ? -1 : 1;
 	inter.nextverttouchx = inter.xintercept;
 	inter.nextverttouchy = inter.yintercept;
-	verinter2();
+	verinter2(stripid);
 }

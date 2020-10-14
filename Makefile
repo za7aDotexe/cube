@@ -1,8 +1,8 @@
-SRC = srcs/*.c
+SRC = srcs/*.c gnl/*.c libft.a
 
 NAME = cube
 
-CC1 = gcc -I /usr/local/include 
+CC1 = gcc -I /usr/local/include
 CC2 = -L /usr/local/lib -lmlx -framework OpenGL -framework Appkit -o  $(NAME)
 
 all : $(NAME)

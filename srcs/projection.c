@@ -6,13 +6,13 @@
 /*   By: razaha <razaha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 21:44:33 by razaha            #+#    #+#             */
-/*   Updated: 2020/03/08 00:03:49 by razaha           ###   ########.fr       */
+/*   Updated: 2020/03/11 15:29:44 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cube.h"
 
-void ft_projectwall(void)
+void	ft_projection2(void)
 {
 	projec.j = 0;
 	while (projec.j++ < projec.walltoppixel)
@@ -34,25 +34,7 @@ void ft_projectwall(void)
 	projec.j = projec.wallbottompixel;
 	while (projec.j++ < WINDOW_HEIGHT)
 		ft_img_pixel_put_3d(projec.i - 1, projec.j - 1, 0xFCD871);
-}
-void ft_projectsprite(void)
-{
-	projec.j = 0;
-	while (projec.j++ < projec.wallbottompixel)
-	{
-		projec.distancefromtop = projec.j + (projec.wallstripheight / 2)
-			- (WINDOW_HEIGHT / 2);
-		projec.texttureoffesty = projec.distancefromtop *
-			((float)TEXTURE_HEIGHT / projec.wallstripheight);
-		ft_img_pixel_put_3d(projec.i - 1, projec.j - 1, 0x0000ff);
-	}
-}
 
-void	ft_projection2(void)
-{
-	ft_projectwall();
-	// if(rays[projec.i].wallhitcontent == 3)
-	// 	ft_projectsprite();
 }
 
 void	ft_projection(void)
@@ -75,5 +57,5 @@ void	ft_projection(void)
 		projec.wallbottompixel = projec.wallbottompixel > WINDOW_HEIGHT ?
 			WINDOW_HEIGHT : projec.wallbottompixel;
 		ft_projection2();
-	}
+	}	
 }

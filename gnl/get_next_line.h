@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: razaha <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: razaha <razaha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/10 16:51:42 by razaha            #+#    #+#             */
-/*   Updated: 2019/11/14 23:29:12 by razaha           ###   ########.fr       */
+/*   Updated: 2020/03/11 10:37:58 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@
 # include <fcntl.h>
 # include <sys/types.h>
 # include <sys/uio.h>
+
+# define INT_MAX 2147483647
+# define BUFFER_SIZE INT_MAX
 
 int		get_next_line(int fd, char **line);
 char	*ft_strjoin(char *s1, char *s2);

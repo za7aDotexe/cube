@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 21:41:46 by razaha            #+#    #+#             */
-/*   Updated: 2020/03/03 23:03:46 by razaha           ###   ########.fr       */
+/*   Updated: 2020/03/12 18:38:14 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ void	ft_setup(void)
 	player.rotationangle = PI / 2;
 	player.walkspeed = 100;
 	player.turnspeed = 30 * (PI / 180);
-	textu.img = mlx_xpm_file_to_image(mlx_ptr, EAGLE, &textu.width,
+	g_sprites = NULL;
+	textu.img = mlx_xpm_file_to_image(mlx_ptr, NTXT, &textu.width,
 			&textu.height);
 	textu.data = (int *)mlx_get_data_addr(textu.img, &textu.bpp,
 			&textu.sizeline, &textu.endian);
