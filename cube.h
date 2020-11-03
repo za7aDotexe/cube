@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 21:58:31 by razaha            #+#    #+#             */
-/*   Updated: 2020/03/12 21:51:46 by razaha           ###   ########.fr       */
+/*   Updated: 2020/11/03 20:53:40 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,11 @@
 # include "gnl/get_next_line.h"
 
 # define buttonpressmask (1L<<0)
-# define keyreleasemask	(1L<<1) 
+# define keyreleasemask	(1L<<1)
+# define destroynotifymask (0L)
 # define buttonpress 2
 # define keyrelease	3
+# define destroynotify 17
 
 #define true 1
 #define false 0
@@ -61,15 +63,15 @@ int rows;
 #define TEXTURE_HEIGHT 64
 #define TEXTURE_WIDTH 64
 
-char *NTXT;
-char *STXT;
-char *WTXT;
-char *ETXT;
+char *NOTXT;
+char *SOTXT;
+char *WETXT;
+char *EATXT;
 char *SPRIT;
 int FCOL;
 int CCOL;
 
-extern const int g_map[0][0];
+extern const char g_map[24][24];
 
 void    *mlx_ptr;
 void    *win_ptr;
@@ -162,7 +164,7 @@ struct Projec
 	int		distancefromtop;
 }	projec;
 
-struct	Textu
+typedef struct	Textu
 {
 	void *img;
 	int	*data;
@@ -172,17 +174,6 @@ struct	Textu
 	int endian;
 	int sizeline;
 }	textu;
-
-struct	Sprit
-{
-	void *img;
-	int	*data;
-	int width;
-	int height;
-	int bpp;
-	int endian;
-	int sizeline;
-}	sprit;
 
 struct line
 {
@@ -211,6 +202,7 @@ typedef struct		s_sprite
 }					t_sprite;
 
 t_sprite *g_sprites;
+textu g_textures[5];
 
 void	ft_img_pixel_put_2d(int x, int y, int color);
 void    ft_img_pixel_put_3d(int x, int y, int color);
@@ -224,6 +216,7 @@ void    ft_render(void);
 int     ft_update(void);
 int     ft_presskey(int key);
 int     ft_releasekey(int key);
+int		ft_destroywindown(void);
 void    ft_rendermap(void);
 void    ft_renderplayer(void);
 void    ft_moveplayer(void);
@@ -239,5 +232,7 @@ void	ft_draw_sprite(int x, int y, int scale);
 void    ft_fill_sprite(int stripid, int sx, int sy);
 void    ft_draw_sprites(void);
 char	**ft_split(char const *s, char c);
-int	ft_atoi(const char *str);
+int		ft_atoi(const char *str);
+void	ft_read_cub_file(int filedesc);
+int		rgb_to_hex(int r, int g, int b);
 #endif

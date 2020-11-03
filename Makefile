@@ -1,4 +1,4 @@
-SRC = srcs/*.c gnl/*.c libft.a
+SRC = srcs/*.c gnl/*.c libft.a parse/*.c
 
 NAME = cube
 

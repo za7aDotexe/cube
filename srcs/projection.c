@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 21:44:33 by razaha            #+#    #+#             */
-/*   Updated: 2020/03/11 15:29:44 by razaha           ###   ########.fr       */
+/*   Updated: 2020/11/03 20:58:27 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_projection2(void)
 {
 	projec.j = 0;
 	while (projec.j++ < projec.walltoppixel)
-		ft_img_pixel_put_3d(projec.i - 1, projec.j - 1, 0x87ceeb);
+		ft_img_pixel_put_3d(projec.i - 1, projec.j - 1, CCOL);
 	if (rays[projec.i].washitvertical)
 		projec.texttureoffestx = (int)rays[projec.i].wallhity % TILE_SIZE;
 	else
@@ -28,13 +28,12 @@ void	ft_projection2(void)
 			- (WINDOW_HEIGHT / 2);
 		projec.texttureoffesty = projec.distancefromtop *
 			((float)TEXTURE_HEIGHT / projec.wallstripheight);
-		ft_img_pixel_put_3d(projec.i - 1, projec.j - 1, textu.data[textu.width
+		ft_img_pixel_put_3d(projec.i - 1, projec.j - 1, g_textures[0].data[g_textures[0].width
 			* projec.texttureoffesty + projec.texttureoffestx * 2]);
 	}
 	projec.j = projec.wallbottompixel;
 	while (projec.j++ < WINDOW_HEIGHT)
-		ft_img_pixel_put_3d(projec.i - 1, projec.j - 1, 0xFCD871);
-
+		ft_img_pixel_put_3d(projec.i - 1, projec.j - 1, FCOL);
 }
 
 void	ft_projection(void)

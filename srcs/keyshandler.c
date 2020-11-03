@@ -6,16 +6,22 @@
 /*   By: razaha <razaha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 20:05:59 by razaha            #+#    #+#             */
-/*   Updated: 2020/03/01 14:54:46 by razaha           ###   ########.fr       */
+/*   Updated: 2020/11/03 18:38:09 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cube.h"
 
+int	ft_destroywindown(void)
+{
+	exit(0);
+	return (0);
+}
+
 int	ft_presskey(int key)
 {
 	if (key == 53)
-		exit(0);
+		ft_destroywindown();
 	if (key == 0 || key == 1 || key == 2 || key == 13 || key == 123
 			|| key == 124)
 	{
@@ -33,6 +39,7 @@ int	ft_presskey(int key)
 			player.turndirection = -2;
 	}
 	return (0);
+	
 }
 
 int	ft_releasekey(int key)

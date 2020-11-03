@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/01 17:21:38 by razaha            #+#    #+#             */
-/*   Updated: 2020/03/13 20:44:23 by razaha           ###   ########.fr       */
+/*   Updated: 2020/11/03 18:59:47 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,7 @@ float	ft_get_angleabc(t_vector a, t_vector b, t_vector c)
 	return (ang < 0 ? ang + 360 : ang);
 }
 
-int 	ft_rgbtohex(int rgb)
+int		rgb_to_hex(int r, int g, int b)
 {
-	int hex;
-	
+	return(r << 16 | g << 8 | b);
 }

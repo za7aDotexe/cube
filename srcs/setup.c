@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 21:41:46 by razaha            #+#    #+#             */
-/*   Updated: 2020/03/12 18:38:14 by razaha           ###   ########.fr       */
+/*   Updated: 2020/11/03 20:57:35 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@ void	ft_setup(void)
 	player.walkspeed = 100;
 	player.turnspeed = 30 * (PI / 180);
 	g_sprites = NULL;
-	textu.img = mlx_xpm_file_to_image(mlx_ptr, NTXT, &textu.width,
-			&textu.height);
-	textu.data = (int *)mlx_get_data_addr(textu.img, &textu.bpp,
-			&textu.sizeline, &textu.endian);
-	sprit.img = mlx_xpm_file_to_image(mlx_ptr, SPRIT, &sprit.width,
-			&sprit.height);
-	sprit.data = (int *)mlx_get_data_addr(sprit.img, &sprit.bpp,
-			&sprit.sizeline, &sprit.endian);
+	g_textures[0].img = mlx_xpm_file_to_image(mlx_ptr, NOTXT, &g_textures[0].width,
+			&g_textures[0].height);
+	g_textures[0].data = (int *)mlx_get_data_addr(g_textures[0].img, &g_textures[0].bpp,
+			&g_textures[0].sizeline, &g_textures[0].endian);
+	g_textures[4].img = mlx_xpm_file_to_image(mlx_ptr, SPRIT, &g_textures[0].width,
+			&g_textures[4].height);
+	g_textures[4].data = (int *)mlx_get_data_addr(g_textures[4].img, &g_textures[4].bpp,
+			&g_textures[4].sizeline, &g_textures[4].endian);
 }
