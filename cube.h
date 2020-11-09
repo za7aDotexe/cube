@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 21:58:31 by razaha            #+#    #+#             */
-/*   Updated: 2020/11/03 20:53:40 by razaha           ###   ########.fr       */
+/*   Updated: 2020/11/08 18:52:20 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
-# include "gnl/get_next_line.h"
+# include "parse/parser.h"
 
 # define buttonpressmask (1L<<0)
 # define keyreleasemask	(1L<<1)
@@ -36,19 +36,8 @@
 #define TWO_PI 6.28318530
 #define INT_MAX 2147483647
 
-
-//tileheight = scren h / map h
-//tilewidth = screen w / map w
 #define TILE_SIZE 32
 #define MINIMAP_SCALE_FACTOR 0.25
-#define MAP_NUM_ROWS 24
-#define MAP_NUM_COLS 24
-
-// extern int MAP_NUM_ROWS;
-// extern int MAP_NUM_COLS;
-
-// #define WINDOW_WIDTH (TILE_SIZE * MAP_NUM_COLS)
-// #define WINDOW_HEIGHT (TILE_SIZE * MAP_NUM_ROWS)
 
 int WINDOW_WIDTH;
 int WINDOW_HEIGHT;
@@ -56,7 +45,7 @@ int cols;
 int rows;
 
 #define FOV_ANGLE (60 * (PI / 180)) 
-#define NUM_RAYS (768 * 1)
+#define NUM_RAYS (WINDOW_WIDTH * 1)
 
 #define globspeed 0.01
 
@@ -70,8 +59,6 @@ char *EATXT;
 char *SPRIT;
 int FCOL;
 int CCOL;
-
-extern const char g_map[24][24];
 
 void    *mlx_ptr;
 void    *win_ptr;
@@ -111,7 +98,9 @@ struct Ray
 	int foundhorspritehit;
 	int foundverspritehit;
 	int wassphitvertical;
-} rays[NUM_RAYS];
+};
+
+struct Ray *rays;
 
 struct Inter
 {
@@ -183,7 +172,7 @@ struct line
 	int sy;
 	int err;
 	int e2;
-}	line;
+}	g_line;
 
 typedef struct		s_vector
 {
@@ -235,4 +224,5 @@ char	**ft_split(char const *s, char c);
 int		ft_atoi(const char *str);
 void	ft_read_cub_file(int filedesc);
 int		rgb_to_hex(int r, int g, int b);
+int		get_next_line(int fd, char **line);
 #endif

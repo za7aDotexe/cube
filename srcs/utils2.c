@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/01 17:21:38 by razaha            #+#    #+#             */
-/*   Updated: 2020/11/03 18:59:47 by razaha           ###   ########.fr       */
+/*   Updated: 2020/11/04 16:26:07 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ int			ft_get_pixel(int x, int y)
 	int	*p;
 	int i;
 
-	if (x >= sprit.width || x < 0 || y >= sprit.height || y < 0)
+	if (x >= g_textures[4].width || x < 0 || y >= g_textures[4].height || y < 0)
 		return (-1);
-	i = x + (sprit.sizeline / 4) * y;
-	p = (int *)sprit.data;
+	i = x + (g_textures[4].sizeline / 4) * y;
+	p = (int *)g_textures[4].data;
 	return (p[i]);
 }
 

@@ -1,8 +1,10 @@
 #include "../cube.h"
 
-void ft_fill_vars(char *line)
+void ft_fill_vars(char *line,char **ptr)
 {
-	if (*line == 'R')
+    // char *save;
+
+	if(*line == 'R')
 	{
 		char **s1 = ft_split(line, ' ');
 		WINDOW_WIDTH = ft_atoi(*(s1+1));
@@ -34,7 +36,7 @@ void ft_fill_vars(char *line)
 		line = line+2;
 		while (*line == ' ' && *line != '\n')
 			line++;
-		EATXT = line+3;
+		EATXT = line;
 	}
 	if (*line == 'S')
 	{
@@ -52,7 +54,7 @@ void ft_fill_vars(char *line)
         int b = ft_atoi(*(s2+2));
 		FCOL = rgb_to_hex(r, g, b);
 	}
-    	if (*line == 'C')
+    if (*line == 'C')
 	{
         char **s1 = ft_split(line, ' ');
         char **s2 = ft_split(*(s1+1), ',');
@@ -61,9 +63,16 @@ void ft_fill_vars(char *line)
         int b = ft_atoi(*(s2+2));
 		CCOL = rgb_to_hex(r, g, b);
 	}
-	if(*line == '1' || *line ==  ' ')
+
+	if(*line == '1' || *line == ' ' || *line == '0')
 	{
-		cols = cols < ft_strlen(line) ? ft_strlen(line) : cols;
+		cols = ft_strlen(line) > cols ? ft_strlen(line) : cols;
+		// save = line;
+		line = ft_strjoin(line, "\n");
+		// free(save);
+		// save = *ptr;
+		*ptr = ft_strjoin(*ptr, line);
+		// free(save);
 		rows++;
 	}
 }
@@ -71,9 +80,14 @@ void ft_fill_vars(char *line)
 void ft_read_cub_file(int filedesc)
 {
 	char *line;
-	cols = 0;
+	char *ptr;
 	rows = 0;
-	
+	cols = 0;
+
+	ptr = ft_strdup("");
+
 	while(get_next_line(filedesc , &line) != 0)
-		ft_fill_vars(line);
+		ft_fill_vars(line, &ptr);
+	ft_fill_vars(line, &ptr);
+	ft_fill_map(ptr, rows, cols);
 }

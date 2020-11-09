@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 21:38:24 by razaha            #+#    #+#             */
-/*   Updated: 2020/03/10 21:30:53 by razaha           ###   ########.fr       */
+/*   Updated: 2020/11/08 19:06:27 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ void	ft_render(void)
 {
 	mlx_destroy_image(mlx_ptr, twod_img);
 	mlx_destroy_image(mlx_ptr, threed_img);
-	twod_img = mlx_new_image(mlx_ptr, WINDOW_WIDTH * MINIMAP_SCALE_FACTOR,
-			WINDOW_HEIGHT * MINIMAP_SCALE_FACTOR);
+	twod_img = mlx_new_image(mlx_ptr, cols * TILE_SIZE * MINIMAP_SCALE_FACTOR,
+			rows * TILE_SIZE * MINIMAP_SCALE_FACTOR);
 	threed_img = mlx_new_image(mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT);
 	ft_rendermap();
 	ft_renderplayer();

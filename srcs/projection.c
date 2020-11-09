@@ -6,21 +6,44 @@
 /*   By: razaha <razaha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 21:44:33 by razaha            #+#    #+#             */
-/*   Updated: 2020/11/03 20:58:27 by razaha           ###   ########.fr       */
+/*   Updated: 2020/11/08 18:54:27 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cube.h"
+
+void	ft_right_texture(void)
+{
+	int text_id;
+	if(!rays[projec.i - 1].washitvertical)
+	{
+		if (rays[projec.i - 1].israyfacingdown   )
+			text_id = 0;
+		if (rays[projec.i - 1].israyfacingup)
+			text_id = 1;
+	}
+	if(rays[projec.i - 1].washitvertical)
+	{
+		if(rays[projec.i - 1].israyfacingright)
+			text_id = 2;
+		if(rays[projec.i - 1].israyfacingleft)
+			text_id = 3;
+	}
+	if ((g_textures[text_id].width
+	* projec.texttureoffesty + projec.texttureoffestx * 2) < 4096)
+	ft_img_pixel_put_3d(projec.i - 1, projec.j - 1, g_textures[text_id].data[g_textures[text_id].width
+	* projec.texttureoffesty + projec.texttureoffestx * 2]);
+}
 
 void	ft_projection2(void)
 {
 	projec.j = 0;
 	while (projec.j++ < projec.walltoppixel)
 		ft_img_pixel_put_3d(projec.i - 1, projec.j - 1, CCOL);
-	if (rays[projec.i].washitvertical)
-		projec.texttureoffestx = (int)rays[projec.i].wallhity % TILE_SIZE;
+	if (rays[projec.i - 1].washitvertical)
+		projec.texttureoffestx = (int)rays[projec.i - 1].wallhity % TILE_SIZE;
 	else
-		projec.texttureoffestx = (int)rays[projec.i].wallhitx % TILE_SIZE;
+		projec.texttureoffestx = (int)rays[projec.i - 1].wallhitx % TILE_SIZE;
 	projec.j = projec.walltoppixel;
 	while (projec.j++ < projec.wallbottompixel)
 	{
@@ -28,8 +51,7 @@ void	ft_projection2(void)
 			- (WINDOW_HEIGHT / 2);
 		projec.texttureoffesty = projec.distancefromtop *
 			((float)TEXTURE_HEIGHT / projec.wallstripheight);
-		ft_img_pixel_put_3d(projec.i - 1, projec.j - 1, g_textures[0].data[g_textures[0].width
-			* projec.texttureoffesty + projec.texttureoffestx * 2]);
+		ft_right_texture();
 	}
 	projec.j = projec.wallbottompixel;
 	while (projec.j++ < WINDOW_HEIGHT)

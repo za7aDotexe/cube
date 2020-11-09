@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 21:24:52 by razaha            #+#    #+#             */
-/*   Updated: 2020/03/01 17:16:28 by razaha           ###   ########.fr       */
+/*   Updated: 2020/11/08 19:09:34 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,27 +29,27 @@ void	ft_draw_square(float x, float y, float w, float h)
 
 void	ft_draw_line(int x1, int y1, int x2, int y2)
 {
-	line.dx = abs(x2 - x1);
-	line.sx = x1 < x2 ? 1 : -1;
-	line.dy = abs(y2 - y1);
-	line.sy = y1 < y2 ? 1 : -1;
-	line.err = (line.dx > line.dy ? line.dx : -line.dy) / 2;
-	line.e2 = 0;
+	g_line.dx = abs(x2 - x1);
+	g_line.sx = x1 < x2 ? 1 : -1;
+	g_line.dy = abs(y2 - y1);
+	g_line.sy = y1 < y2 ? 1 : -1;
+	g_line.err = (g_line.dx > g_line.dy ? g_line.dx : -g_line.dy) / 2;
+	g_line.e2 = 0;
 	while (1)
 	{
 		ft_img_pixel_put_2d(x1, y1, 0xffff00);
 		if (x1 == x2 && y1 == y2)
 			break ;
-		line.e2 = line.err;
-		if (line.e2 > -line.dx)
+		g_line.e2 = g_line.err;
+		if (g_line.e2 > -g_line.dx)
 		{
-			line.err -= line.dy;
-			x1 += line.sx;
+			g_line.err -= g_line.dy;
+			x1 += g_line.sx;
 		}
-		if (line.e2 < line.dy)
+		if (g_line.e2 < g_line.dy)
 		{
-			line.err += line.dx;
-			y1 += line.sy;
+			g_line.err += g_line.dx;
+			y1 += g_line.sy;
 		}
 	}
 }
@@ -64,7 +64,7 @@ void	ft_img_pixel_put_2d(int x, int y, int color)
 
 	add = (int *)mlx_get_data_addr(twod_img, &bpp, &sizeline, &endian);
 	cord = (y * sizeline / 4 + x);
-	if (x < WINDOW_WIDTH * MINIMAP_SCALE_FACTOR && y < WINDOW_HEIGHT *
+	if (x < cols * TILE_SIZE * MINIMAP_SCALE_FACTOR && y < rows * TILE_SIZE *
 			MINIMAP_SCALE_FACTOR)
 		add[cord] = color;
 }

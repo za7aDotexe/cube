@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/01 17:54:34 by razaha            #+#    #+#             */
-/*   Updated: 2020/11/03 18:17:51 by razaha           ###   ########.fr       */
+/*   Updated: 2020/11/09 17:25:30 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 void	horinter2(int stripid)
 {
-	while (inter.nexthorztouchx >= 0 && inter.nexthorztouchx <= WINDOW_WIDTH &&
-			inter.nexthorztouchy >= 0 && inter.nexthorztouchy <= WINDOW_HEIGHT)
+	while (inter.nexthorztouchx >= 0 && inter.nexthorztouchx <= cols * TILE_SIZE &&
+			inter.nexthorztouchy >= 0 && inter.nexthorztouchy <= rows * TILE_SIZE)
 	{
 		inter.xtocheck = inter.nexthorztouchx;
 		inter.ytocheck = inter.nexthorztouchy + (inter.israyfacingup ? -1 : 0);
-		if (mapinter(inter.xtocheck, inter.ytocheck) == 1 || mapinter(inter.xtocheck, inter.ytocheck) == 2)
+		if (mapinter(inter.xtocheck, inter.ytocheck) == '1' || mapinter(inter.xtocheck, inter.ytocheck) == '2')
 		{
 			inter.foundhorzwallhit = true;
 			inter.horzwallhitx = inter.nexthorztouchx;
@@ -34,7 +34,7 @@ void	horinter2(int stripid)
 			inter.nexthorztouchx += inter.xstep;
 			inter.nexthorztouchy += inter.ystep;
 		}
-		if (mapinter(inter.xtocheck, inter.ytocheck) == 3)
+		if (mapinter(inter.xtocheck, inter.ytocheck) == '3')
 		{
 			inter.foundhorspritehit = true;
 			inter.horzspritehitx = inter.nexthorztouchx;
@@ -46,13 +46,13 @@ void	horinter2(int stripid)
 
 void	verinter2(int stripid)
 {
-	while (inter.nextverttouchx >= 0 && inter.nextverttouchx <= WINDOW_WIDTH &&
-			inter.nextverttouchy >= 0 && inter.nextverttouchy <= WINDOW_HEIGHT)
+	while (inter.nextverttouchx >= 0 && inter.nextverttouchx <= cols * TILE_SIZE &&
+			inter.nextverttouchy >= 0 && inter.nextverttouchy <= rows * TILE_SIZE)
 	{
 		inter.xtocheck = inter.nextverttouchx +
 			(inter.israyfacingleft ? -1 : 0);
 		inter.ytocheck = inter.nextverttouchy;
-		if (mapinter(inter.xtocheck, inter.ytocheck) == 1 || mapinter(inter.xtocheck, inter.ytocheck) == 2)
+		if (mapinter(inter.xtocheck, inter.ytocheck) == '1' || mapinter(inter.xtocheck, inter.ytocheck) == '2')
 		{
 			inter.foundvertwallhit = true;
 			inter.vertwallhitx = inter.nextverttouchx;
@@ -67,7 +67,7 @@ void	verinter2(int stripid)
 			inter.nextverttouchx += inter.xstep;
 			inter.nextverttouchy += inter.ystep;
 		}
-		if (mapinter(inter.xtocheck, inter.ytocheck) == 3)
+		if (mapinter(inter.xtocheck, inter.ytocheck) == '3')
 		{
 			inter.foundverspritehit = true;
 			inter.verspritehitx = inter.nextverttouchx;
