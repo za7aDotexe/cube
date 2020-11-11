@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/10 15:20:34 by razaha            #+#    #+#             */
-/*   Updated: 2020/11/09 17:17:00 by razaha           ###   ########.fr       */
+/*   Updated: 2020/11/11 20:43:18 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,9 @@ void		ft_draw_sprite(int x, int y, int scale)
 				(rays[x + (int)i - 1].foundhorspritehit || rays[x + (int)i - 1].foundverspritehit))
 			{
 				int color = ft_get_pixel(g_textures[4].width * (i / scale), g_textures[4].height * (j / scale));
+				// int color = i + 300;
 				if (color && color != -1)
-					ft_img_pixel_put_3d(x + i - 1, y + j - 1, color);
+					ft_img_pixel_put_3d(x + (int)i - 1, y + (int)j - 1, color);
 			}
 		}
 	}

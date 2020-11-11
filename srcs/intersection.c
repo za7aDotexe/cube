@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/01 17:54:34 by razaha            #+#    #+#             */
-/*   Updated: 2020/11/09 17:25:30 by razaha           ###   ########.fr       */
+/*   Updated: 2020/11/11 20:52:41 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	horinter2(int stripid)
 		if (mapinter(inter.xtocheck, inter.ytocheck) == '3')
 		{
 			inter.foundhorspritehit = true;
+			rays[stripid].foundhorspritehit = true;
 			inter.horzspritehitx = inter.nexthorztouchx;
 			inter.horzspritehity =inter.nexthorztouchy;
 			ft_fill_sprite(stripid, (int)floor(inter.xtocheck / TILE_SIZE), (int)floor(inter.ytocheck / TILE_SIZE));
@@ -70,6 +71,7 @@ void	verinter2(int stripid)
 		if (mapinter(inter.xtocheck, inter.ytocheck) == '3')
 		{
 			inter.foundverspritehit = true;
+			rays[stripid].foundverspritehit = true;
 			inter.verspritehitx = inter.nextverttouchx;
 			inter.verspritehity = inter.nextverttouchy;
 			ft_fill_sprite(stripid, (int)floor(inter.xtocheck / TILE_SIZE), (int)floor(inter.ytocheck / TILE_SIZE));

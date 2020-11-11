@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 21:44:33 by razaha            #+#    #+#             */
-/*   Updated: 2020/11/08 18:54:27 by razaha           ###   ########.fr       */
+/*   Updated: 2020/11/11 20:43:43 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,8 @@ void	ft_right_texture(void)
 		if(rays[projec.i - 1].israyfacingleft)
 			text_id = 3;
 	}
-	if ((g_textures[text_id].width
-	* projec.texttureoffesty + projec.texttureoffestx * 2) < 4096)
-	ft_img_pixel_put_3d(projec.i - 1, projec.j - 1, g_textures[text_id].data[g_textures[text_id].width
-	* projec.texttureoffesty + projec.texttureoffestx * 2]);
+	//if ((g_textures[text_id].width * projec.texttureoffesty + projec.texttureoffestx * 2) >= 4096)
+		ft_img_pixel_put_3d(projec.i - 1, projec.j - 1, g_textures[text_id].data[g_textures[text_id].width * projec.texttureoffesty + projec.texttureoffestx * 2]);
 }
 
 void	ft_projection2(void)

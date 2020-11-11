@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 20:17:40 by razaha            #+#    #+#             */
-/*   Updated: 2020/03/12 17:55:16 by razaha           ###   ########.fr       */
+/*   Updated: 2020/11/11 20:55:43 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,20 +37,20 @@ void	castray2(float rayangle, int stripid)
 	if (inter.vertsphitdistance < inter.horzsphitdistance)
 	{
 		rays[stripid].spritedistance = inter.vertsphitdistance;
-		rays[stripid].foundverspritehit = inter.foundverspritehit;
+		// rays[stripid].foundverspritehit = inter.foundverspritehit;
 		rays[stripid].wassphitvertical = true;
 
 	}
 	else
 	{
 		rays[stripid].spritedistance = inter.horzsphitdistance;
-		rays[stripid].foundverspritehit = inter.foundhorspritehit;
+		// rays[stripid].foundverspritehit = inter.foundhorspritehit;
 		rays[stripid].wassphitvertical = false;
 	}
 	if(rays[stripid].walldistance < rays[stripid].spritedistance)
 	{
 		rays[stripid].foundhorspritehit = false;
-		rays[stripid].foundverspritehit = false;
+		// rays[stripid].foundverspritehit = false;
 	}
 	rays[stripid].rayangle = rayangle;
 	rays[stripid].israyfacingdown = inter.israyfacingdown;
