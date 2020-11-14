@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 21:58:31 by razaha            #+#    #+#             */
-/*   Updated: 2020/11/08 18:52:20 by razaha           ###   ########.fr       */
+/*   Updated: 2020/11/14 11:26:24 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int rows;
 #define FOV_ANGLE (60 * (PI / 180)) 
 #define NUM_RAYS (WINDOW_WIDTH * 1)
 
-#define globspeed 0.01
+#define globspeed 0.03
 
 #define TEXTURE_HEIGHT 64
 #define TEXTURE_WIDTH 64
@@ -88,19 +88,29 @@ struct Ray
 	float spritehitx;
 	float spritehity;
 	float walldistance;
-	float spritedistance;
 	int washitvertical;
 	int israyfacingup;
 	int israyfacingdown;
 	int israyfacingleft;
 	int israyfacingright;
 	int wallhitcontent;
-	int foundhorspritehit;
-	int foundverspritehit;
 	int wassphitvertical;
 };
 
 struct Ray *rays;
+
+
+typedef	struct tmp_sprite
+{
+	int			hit_horz;
+	int			hit_vert;
+	double		hit_x;
+	double		hit_y;
+	double		distance;
+	int			index_x;
+	int			index_y;
+
+} TMP_SPRITE;
 
 struct Inter
 {
@@ -110,25 +120,17 @@ struct Inter
 	int		israyfacingleft;
 	float	verthitdistance;
 	float 	horzhitdistance;
-	float	vertsphitdistance;
-	float 	horzsphitdistance;
 	float	xintercept;
 	float	yintercept;
 	float	xstep;
 	float	ystep;
 	int		foundhorzwallhit;
-	int		foundhorspritehit;
 	float	horzwallhitx;
 	float	horzwallhity;
-	float	horzspritehitx;
-	float	horzspritehity;
 	int		horzwallcontent;
 	int		foundvertwallhit;
-	int		foundverspritehit;
 	float	vertwallhitx;
 	float	vertwallhity;
-	float	verspritehitx;
-	float	verspritehity;
 	int		vertwallcontent;
 	float	nexthorztouchx;
 	float	nexthorztouchy;
@@ -136,7 +138,10 @@ struct Inter
 	float	nextverttouchy;
 	float	xtocheck;
 	float	ytocheck;
+	TMP_SPRITE	*tmp_sprite;
+	int				i_sp;
 }	inter;
+
 
 struct Projec
 {
@@ -182,11 +187,13 @@ typedef struct		s_vector
 
 typedef struct		s_sprite
 {
-	int x;
-	int y;
-	int	px;
-	int	py;
-	int scale;
+	double	x;
+	double	y;
+	int		index_x;
+	int		index_y;
+	double	distance;
+	int		num_ray;
+	double	angle;
 	struct s_sprite *next;
 }					t_sprite;
 
@@ -217,8 +224,7 @@ void	verinter(float rayangle, int stripid);
 int		mapinter(float x, float y);
 float	ft_get_angleabc(t_vector a, t_vector b, t_vector c);
 int		ft_get_pixel(int x, int y);
-void	ft_draw_sprite(int x, int y, int scale);
-void    ft_fill_sprite(int stripid, int sx, int sy);
+void    ft_fill_sprite();
 void    ft_draw_sprites(void);
 char	**ft_split(char const *s, char c);
 int		ft_atoi(const char *str);

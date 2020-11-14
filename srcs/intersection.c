@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/01 17:54:34 by razaha            #+#    #+#             */
-/*   Updated: 2020/11/11 20:52:41 by razaha           ###   ########.fr       */
+/*   Updated: 2020/11/14 17:41:36 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,15 @@ void	horinter2(int stripid)
 	{
 		inter.xtocheck = inter.nexthorztouchx;
 		inter.ytocheck = inter.nexthorztouchy + (inter.israyfacingup ? -1 : 0);
+		if (mapinter(inter.xtocheck, inter.ytocheck) == '3')
+		{
+			inter.tmp_sprite[inter.i_sp].index_x = inter.xtocheck / TILE_SIZE;
+			inter.tmp_sprite[inter.i_sp].index_y = (inter.ytocheck) / TILE_SIZE;
+			inter.tmp_sprite[inter.i_sp].hit_x = (inter.tmp_sprite[inter.i_sp].index_x * TILE_SIZE) + (TILE_SIZE / 2);
+			inter.tmp_sprite[inter.i_sp].hit_y = (inter.tmp_sprite[inter.i_sp].index_y * TILE_SIZE) + (TILE_SIZE / 2);
+			inter.tmp_sprite[inter.i_sp].distance= ft_distbpoints(player.x, player.y, inter.tmp_sprite[inter.i_sp].hit_x, inter.tmp_sprite[inter.i_sp].hit_y);
+			inter.i_sp++;
+		}
 		if (mapinter(inter.xtocheck, inter.ytocheck) == '1' || mapinter(inter.xtocheck, inter.ytocheck) == '2')
 		{
 			inter.foundhorzwallhit = true;
@@ -34,14 +43,6 @@ void	horinter2(int stripid)
 			inter.nexthorztouchx += inter.xstep;
 			inter.nexthorztouchy += inter.ystep;
 		}
-		if (mapinter(inter.xtocheck, inter.ytocheck) == '3')
-		{
-			inter.foundhorspritehit = true;
-			rays[stripid].foundhorspritehit = true;
-			inter.horzspritehitx = inter.nexthorztouchx;
-			inter.horzspritehity =inter.nexthorztouchy;
-			ft_fill_sprite(stripid, (int)floor(inter.xtocheck / TILE_SIZE), (int)floor(inter.ytocheck / TILE_SIZE));
-		}
 	}
 }
 
@@ -53,6 +54,15 @@ void	verinter2(int stripid)
 		inter.xtocheck = inter.nextverttouchx +
 			(inter.israyfacingleft ? -1 : 0);
 		inter.ytocheck = inter.nextverttouchy;
+		if (mapinter(inter.xtocheck, inter.ytocheck) == '3')
+		{
+			inter.tmp_sprite[inter.i_sp].index_x = inter.xtocheck / TILE_SIZE;
+			inter.tmp_sprite[inter.i_sp].index_y = (inter.ytocheck) / TILE_SIZE;
+			inter.tmp_sprite[inter.i_sp].hit_x = (inter.tmp_sprite[inter.i_sp].index_x * TILE_SIZE) + (TILE_SIZE / 2);
+			inter.tmp_sprite[inter.i_sp].hit_y = (inter.tmp_sprite[inter.i_sp].index_y * TILE_SIZE) + (TILE_SIZE / 2);
+			inter.tmp_sprite[inter.i_sp].distance= ft_distbpoints(player.x, player.y, inter.tmp_sprite[inter.i_sp].hit_x, inter.tmp_sprite[inter.i_sp].hit_y);
+			inter.i_sp++;
+		}
 		if (mapinter(inter.xtocheck, inter.ytocheck) == '1' || mapinter(inter.xtocheck, inter.ytocheck) == '2')
 		{
 			inter.foundvertwallhit = true;
@@ -68,21 +78,12 @@ void	verinter2(int stripid)
 			inter.nextverttouchx += inter.xstep;
 			inter.nextverttouchy += inter.ystep;
 		}
-		if (mapinter(inter.xtocheck, inter.ytocheck) == '3')
-		{
-			inter.foundverspritehit = true;
-			rays[stripid].foundverspritehit = true;
-			inter.verspritehitx = inter.nextverttouchx;
-			inter.verspritehity = inter.nextverttouchy;
-			ft_fill_sprite(stripid, (int)floor(inter.xtocheck / TILE_SIZE), (int)floor(inter.ytocheck / TILE_SIZE));
-		}
 	}
 }
 
 void	horinter(float rayangle, int stripid)
 {
 	inter.foundhorzwallhit = false;
-	inter.foundhorspritehit = false;
 	inter.horzwallhitx = 0;
 	inter.horzwallhity = 0;
 	inter.horzwallcontent = 0;
@@ -102,7 +103,6 @@ void	horinter(float rayangle, int stripid)
 void	verinter(float rayangle, int stripid)
 {
 	inter.foundvertwallhit = false;
-	inter.foundverspritehit = false;
 	inter.vertwallhitx = 0;
 	inter.vertwallhity = 0;
 	inter.vertwallcontent = 0;

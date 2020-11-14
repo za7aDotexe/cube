@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 21:41:46 by razaha            #+#    #+#             */
-/*   Updated: 2020/11/08 18:52:32 by razaha           ###   ########.fr       */
+/*   Updated: 2020/11/13 11:38:51 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 void	ft_setup(void)
 {
-	player.x = WINDOW_WIDTH / 2;
-	player.y = WINDOW_HEIGHT / 2;
+	player.x = WINDOW_WIDTH;
+	player.y = WINDOW_HEIGHT;
 	player.width = 1;
 	player.height = 1;
 	player.turndirection = 0;
 	player.walkupdown = 0;
 	player.walkleftright = 0;
-	player.rotationangle = -PI / 2;
+	player.rotationangle = PI /2;
 	player.walkspeed = 100;
 	player.turnspeed = 30 * (PI / 180);
 	rays = malloc(WINDOW_WIDTH * sizeof(struct Ray));

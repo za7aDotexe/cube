@@ -25,13 +25,13 @@ void ft_check_map(int rows, int cols)
             if (i-1 == 0 || j-1 == 0 || i-1 == rows-1 || j-1 == cols-1)
                 if(g_map[i-1][j-1] == '0')
                 {
-                    printf("map borders m7lol at i: %d  j: %d\n", i-1, j-1);
+                    // printf("map borders m7lol at i: %d  j: %d\n", i-1, j-1);
                     exit(EXIT_FAILURE);
                 }
             if(g_map[i-1][j-1] == ' ')
                 if(!ft_check_arr_space(i-1, j-1,rows,cols))
                 {
-                    printf("map m7looool\n");
+                    // printf("map m7looool\n");
                     exit(EXIT_FAILURE);
                 }
         }

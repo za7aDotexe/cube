@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 21:44:33 by razaha            #+#    #+#             */
-/*   Updated: 2020/11/11 20:43:43 by razaha           ###   ########.fr       */
+/*   Updated: 2020/11/13 12:12:06 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ft_right_texture(void)
 		if(rays[projec.i - 1].israyfacingleft)
 			text_id = 3;
 	}
-	//if ((g_textures[text_id].width * projec.texttureoffesty + projec.texttureoffestx * 2) >= 4096)
+	if ((g_textures[text_id].width * projec.texttureoffesty + projec.texttureoffestx * 2) < 4096)
 		ft_img_pixel_put_3d(projec.i - 1, projec.j - 1, g_textures[text_id].data[g_textures[text_id].width * projec.texttureoffesty + projec.texttureoffestx * 2]);
 }
 
@@ -61,20 +61,14 @@ void	ft_projection(void)
 	projec.i = 0;
 	while (projec.i++ < NUM_RAYS)
 	{
-		projec.perpdistance = rays[projec.i - 1].walldistance *
-			cos(rays[projec.i - 1].rayangle - player.rotationangle);
+		projec.perpdistance = rays[projec.i - 1].walldistance * cos(rays[projec.i - 1].rayangle - player.rotationangle);
 		projec.distanceprojplane = (WINDOW_WIDTH / 2) / tan(FOV_ANGLE / 2);
-		projec.projectedwallheight = (TILE_SIZE / projec.perpdistance)
-			* projec.distanceprojplane;
+		projec.projectedwallheight = (TILE_SIZE / projec.perpdistance) * projec.distanceprojplane;
 		projec.wallstripheight = (int)projec.projectedwallheight;
-		projec.walltoppixel = (WINDOW_HEIGHT / 2) -
-			(projec.wallstripheight / 2);
-		projec.walltoppixel = projec.walltoppixel < 0 ? 0
-			: projec.walltoppixel;
-		projec.wallbottompixel = (WINDOW_HEIGHT / 2) +
-			(projec.wallstripheight / 2);
-		projec.wallbottompixel = projec.wallbottompixel > WINDOW_HEIGHT ?
-			WINDOW_HEIGHT : projec.wallbottompixel;
+		projec.walltoppixel = (WINDOW_HEIGHT / 2) - (projec.wallstripheight / 2);
+		projec.walltoppixel = projec.walltoppixel < 0 ? 0 : projec.walltoppixel;
+		projec.wallbottompixel = (WINDOW_HEIGHT / 2) + (projec.wallstripheight / 2);
+		projec.wallbottompixel = projec.wallbottompixel > WINDOW_HEIGHT ? WINDOW_HEIGHT : projec.wallbottompixel;
 		ft_projection2();
 	}	
 }
