@@ -1,9 +1,7 @@
 #include "../cube.h"
 
-void ft_fill_vars(char *line,char **ptr)
+void ft_fill_vars(char *line,char **map)
 {
-    // char *save;
-
 	if(*line == 'R')
 	{
 		char **s1 = ft_split(line, ' ');
@@ -67,12 +65,8 @@ void ft_fill_vars(char *line,char **ptr)
 	if(*line == '1' || *line == ' ' || *line == '0')
 	{
 		cols = ft_strlen(line) > cols ? ft_strlen(line) : cols;
-		// save = line;
 		line = ft_strjoin(line, "\n");
-		// free(save);
-		// save = *ptr;
-		*ptr = ft_strjoin(*ptr, line);
-		// free(save);
+		*map = ft_strjoin(*map, line);
 		rows++;
 	}
 }
@@ -80,14 +74,14 @@ void ft_fill_vars(char *line,char **ptr)
 void ft_read_cub_file(int filedesc)
 {
 	char *line;
-	char *ptr;
+	char *map;
 	rows = 0;
 	cols = 0;
 
-	ptr = ft_strdup("");
+	map = ft_strdup("");
 
 	while(get_next_line(filedesc , &line) != 0)
-		ft_fill_vars(line, &ptr);
-	ft_fill_vars(line, &ptr);
-	ft_fill_map(ptr, rows, cols);
+		ft_fill_vars(line, &map);
+	ft_fill_vars(line, &map);
+	ft_fill_map(map, rows, cols);
 }

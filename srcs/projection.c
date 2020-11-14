@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   projection.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: razaha <razaha@student.42.fr>              +#+  +:+       +#+        */
+/*   By: razaha <razaha@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 21:44:33 by razaha            #+#    #+#             */
-/*   Updated: 2020/11/13 12:12:06 by razaha           ###   ########.fr       */
+/*   Updated: 2020/11/14 20:44:05 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_right_texture(void)
 	int text_id;
 	if(!rays[projec.i - 1].washitvertical)
 	{
-		if (rays[projec.i - 1].israyfacingdown   )
+		if (rays[projec.i - 1].israyfacingdown)
 			text_id = 0;
 		if (rays[projec.i - 1].israyfacingup)
 			text_id = 1;
@@ -29,6 +29,7 @@ void	ft_right_texture(void)
 		if(rays[projec.i - 1].israyfacingleft)
 			text_id = 3;
 	}
+	
 	if ((g_textures[text_id].width * projec.texttureoffesty + projec.texttureoffestx * 2) < 4096)
 		ft_img_pixel_put_3d(projec.i - 1, projec.j - 1, g_textures[text_id].data[g_textures[text_id].width * projec.texttureoffesty + projec.texttureoffestx * 2]);
 }

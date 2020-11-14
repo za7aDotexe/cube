@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   mapcheckerror.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: razaha <razaha@student.1337.ma>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/11/14 19:56:13 by razaha            #+#    #+#             */
+/*   Updated: 2020/11/14 20:49:45 by razaha           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "parser.h"
 
 int ft_check_arr_space(int i, int j, int rows, int cols)
@@ -15,25 +27,28 @@ int ft_check_arr_space(int i, int j, int rows, int cols)
 
 void ft_check_map(int rows, int cols)
 {
-    int i = 0;
-    int j = 0;
+    int i;
+    int j;
+
+    i = 0;
+    j = 0;
+    num_sp = 0;
     while (i++ < rows)
     {
         j = 0;
         while (j++ < cols)
         {
-            if (i-1 == 0 || j-1 == 0 || i-1 == rows-1 || j-1 == cols-1)
+            if (i-1 == 0 || j-1 == 0 || i-1 == rows-1 || j-1 == cols-1)//MAP BORDERS CHECK 
                 if(g_map[i-1][j-1] == '0')
                 {
-                    // printf("map borders m7lol at i: %d  j: %d\n", i-1, j-1);
                     exit(EXIT_FAILURE);
                 }
             if(g_map[i-1][j-1] == ' ')
                 if(!ft_check_arr_space(i-1, j-1,rows,cols))
                 {
-                    // printf("map m7looool\n");
                     exit(EXIT_FAILURE);
                 }
+                g_map[i-1][j-1] == '3' ? num_sp++ :  num_sp ;
         }
         
     }

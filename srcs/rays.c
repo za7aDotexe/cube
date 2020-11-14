@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rays.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: razaha <razaha@student.42.fr>              +#+  +:+       +#+        */
+/*   By: razaha <razaha@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 20:17:40 by razaha            #+#    #+#             */
-/*   Updated: 2020/11/14 17:43:41 by razaha           ###   ########.fr       */
+/*   Updated: 2020/11/14 20:50:07 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	castray(float rayangle, int stripid)
 	inter.israyfacingright = rayangle < PI * 0.5 || rayangle > PI * 1.5;
 	inter.israyfacingleft = !inter.israyfacingright;
 	inter.i_sp = 0;
-	inter.tmp_sprite = (TMP_SPRITE *)(malloc(100 /*change this with g nu of spr*/ * 2 * sizeof(TMP_SPRITE *)));
+	inter.tmp_sprite = (TMP_SPRITE *)(malloc(num_sp * NUM_RAYS/2 * sizeof(TMP_SPRITE *)));
 	horinter(rayangle, stripid);
 	verinter(rayangle, stripid);
 	inter.horzhitdistance = inter.foundhorzwallhit ? ft_distbpoints(player.x,

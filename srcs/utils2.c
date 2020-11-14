@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: razaha <razaha@student.42.fr>              +#+  +:+       +#+        */
+/*   By: razaha <razaha@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/01 17:21:38 by razaha            #+#    #+#             */
-/*   Updated: 2020/11/04 16:26:07 by razaha           ###   ########.fr       */
+/*   Updated: 2020/11/14 19:55:53 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int			ft_get_pixel(int x, int y)
 	return (p[i]);
 }
 
-float	normalizeangle(float angle)
+float		normalizeangle(float angle)
 {
 	angle = remainder(angle, TWO_PI);
 	if (angle < 0)
@@ -32,12 +32,12 @@ float	normalizeangle(float angle)
 	return (angle);
 }
 
-float	ft_distbpoints(float x1, float y1, float x2, float y2)
+float		ft_distbpoints(float x1, float y1, float x2, float y2)
 {
 	return (sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1)));
 }
 
-float	ft_get_angleabc(t_vector a, t_vector b, t_vector c)
+float		ft_get_angleabc(t_vector a, t_vector b, t_vector c)
 {
 	float		ang;
 	float		dot;
@@ -57,7 +57,7 @@ float	ft_get_angleabc(t_vector a, t_vector b, t_vector c)
 	return (ang < 0 ? ang + 360 : ang);
 }
 
-int		rgb_to_hex(int r, int g, int b)
+int			rgb_to_hex(int r, int g, int b)
 {
 	return(r << 16 | g << 8 | b);
 }

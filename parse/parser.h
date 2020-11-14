@@ -8,6 +8,8 @@
 #include "libft.h"
 
 char **g_map;
+int num_sp;
+
 
 int		get_next_line(int fd, char **line);
 void    ft_fill_map(char *ptr, int rows, int cols);

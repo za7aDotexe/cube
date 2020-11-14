@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keyshandler.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: razaha <razaha@student.42.fr>              +#+  +:+       +#+        */
+/*   By: razaha <razaha@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 20:05:59 by razaha            #+#    #+#             */
-/*   Updated: 2020/11/03 18:38:09 by razaha           ###   ########.fr       */
+/*   Updated: 2020/11/14 19:54:41 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ int	ft_presskey(int key)
 			player.turndirection = -2;
 	}
 	return (0);
-	
 }
 
 int	ft_releasekey(int key)

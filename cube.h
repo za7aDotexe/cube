@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: razaha <razaha@student.42.fr>              +#+  +:+       +#+        */
+/*   By: razaha <razaha@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 21:58:31 by razaha            #+#    #+#             */
-/*   Updated: 2020/11/14 11:26:24 by razaha           ###   ########.fr       */
+/*   Updated: 2020/11/14 19:54:20 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,7 +142,6 @@ struct Inter
 	int				i_sp;
 }	inter;
 
-
 struct Projec
 {
 	int		i;
@@ -226,6 +225,11 @@ float	ft_get_angleabc(t_vector a, t_vector b, t_vector c);
 int		ft_get_pixel(int x, int y);
 void    ft_fill_sprite();
 void    ft_draw_sprites(void);
+void	ft_lstclear(void);
+void	ft_swap_list(t_sprite **current ,t_sprite **index);
+int		ft_sprite_exist(int index_x, int index_y);
+void	ft_sprite_add_sorted(t_sprite *new);
+void	ft_new_sprite(TMP_SPRITE tmp_sprite, int num_ray, float angle);
 char	**ft_split(char const *s, char c);
 int		ft_atoi(const char *str);
 void	ft_read_cub_file(int filedesc);
