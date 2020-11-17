@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/01 17:21:38 by razaha            #+#    #+#             */
-/*   Updated: 2020/11/14 19:55:53 by razaha           ###   ########.fr       */
+/*   Updated: 2020/11/16 18:14:00 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,7 @@ float		ft_get_angleabc(t_vector a, t_vector b, t_vector c)
 	float		dot;
 	float		cross;
 	float		alpha;
-	t_vector	ab;
-	t_vector	cb;
+
 
 	ab.x = b.x - a.x;
 	ab.y = b.y - a.y;
@@ -59,5 +58,5 @@ float		ft_get_angleabc(t_vector a, t_vector b, t_vector c)
 
 int			rgb_to_hex(int r, int g, int b)
 {
-	return(r << 16 | g << 8 | b);
+	return (r << 16 | g << 8 | b);
 }

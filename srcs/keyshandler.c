@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 20:05:59 by razaha            #+#    #+#             */
-/*   Updated: 2020/11/14 19:54:41 by razaha           ###   ########.fr       */
+/*   Updated: 2020/11/16 18:20:02 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_destroywindown(void)
 {
-	exit(0);
+	exit(EXIT_SUCCESS);
 	return (0);
 }
 

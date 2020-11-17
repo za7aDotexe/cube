@@ -1,16 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_fill_map.c                                      :+:      :+:    :+:   */
+/*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: razaha <razaha@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/14 19:56:08 by razaha            #+#    #+#             */
-/*   Updated: 2020/11/14 19:56:09 by razaha           ###   ########.fr       */
+/*   Updated: 2020/11/17 17:03:51 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
+#include "../cube.h"
+
 
 void    ft_fill_map(char *ptr, int rows, int cols)
 {
@@ -20,11 +22,10 @@ void    ft_fill_map(char *ptr, int rows, int cols)
     int var;
     
     g_map = malloc(sizeof(char *) * rows);
-    while(i++ < rows)
-        g_map[i-1] = malloc(sizeof(char) * cols);
-    i = 0;
+
     while(i++ < rows)
     {
+        g_map[i-1] = malloc(sizeof(char) * cols);
         j = 0;
         var = ft_strlen(line[i-1]);
         while (j++ < cols)
@@ -35,5 +36,4 @@ void    ft_fill_map(char *ptr, int rows, int cols)
                 g_map[i-1][j-1] = line[i-1][j-1];
         }
     }
-   ft_check_map(rows, cols);
 }

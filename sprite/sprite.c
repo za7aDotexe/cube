@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/14 19:52:42 by razaha            #+#    #+#             */
-/*   Updated: 2020/11/14 19:53:56 by razaha           ###   ########.fr       */
+/*   Updated: 2020/11/16 18:15:34 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,14 +65,12 @@ void    ft_draw_sprites(void)
 int     get_ray_hit_sp(float s_x, float s_y)
 {
     double   alpha;
-    t_vector v_ray1;
-    t_vector v_sp;
 
-    v_ray1.x = rays[0].wallhitx - player.x;
-    v_ray1.y = rays[0].wallhity - player.y;
-    v_sp.x = s_x - player.x;
-    v_sp.y = s_y - player.y;
-    alpha = -atan2(v_ray1.y, v_ray1.x) + atan2(v_sp.y, v_sp.x);
+    ab.x = rays[0].wallhitx - player.x;
+    ab.y = rays[0].wallhity - player.y;
+    cb.x = s_x - player.x;
+    cb.y = s_y - player.y;
+    alpha = -atan2(ab.y, ab.x) + atan2(cb.y, cb.x);
     if (alpha > M_PI)
         alpha -= M_PI * 2;
     else if (alpha < -M_PI)

@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 21:24:52 by razaha            #+#    #+#             */
-/*   Updated: 2020/11/14 19:55:14 by razaha           ###   ########.fr       */
+/*   Updated: 2020/11/16 14:23:21 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,8 @@ void	ft_img_pixel_put_2d(int x, int y, int color)
 
 	add = (int *)mlx_get_data_addr(twod_img, &bpp, &sizeline, &endian);
 	cord = (y * sizeline / 4 + x);
-	if (x < cols * TILE_SIZE * MINIMAP_SCALE_FACTOR && y < rows * TILE_SIZE *
-			MINIMAP_SCALE_FACTOR)
+	if (x < cols * TILE_SIZE * MMAP_SCE_FACTOR && y < rows * TILE_SIZE *
+			MMAP_SCE_FACTOR)
 		add[cord] = color;
 }
 

@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 21:58:31 by razaha            #+#    #+#             */
-/*   Updated: 2020/11/14 19:54:20 by razaha           ###   ########.fr       */
+/*   Updated: 2020/11/17 16:53:56 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,45 +20,40 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
+# include <errno.h>
 # include "parse/parser.h"
 
 # define buttonpressmask (1L<<0)
 # define keyreleasemask	(1L<<1)
-# define destroynotifymask (0L)
+# define destroypressmask (0L)
 # define buttonpress 2
 # define keyrelease	3
-# define destroynotify 17
-
+# define destroypress 17
 #define true 1
 #define false 0
-
 #define PI 3.14159265
 #define TWO_PI 6.28318530
 #define INT_MAX 2147483647
-
 #define TILE_SIZE 32
-#define MINIMAP_SCALE_FACTOR 0.25
-
-int WINDOW_WIDTH;
-int WINDOW_HEIGHT;
-int cols;
-int rows;
-
+#define MMAP_SCE_FACTOR 0.1
 #define FOV_ANGLE (60 * (PI / 180)) 
 #define NUM_RAYS (WINDOW_WIDTH * 1)
-
 #define globspeed 0.03
-
 #define TEXTURE_HEIGHT 64
 #define TEXTURE_WIDTH 64
 
-char *NOTXT;
-char *SOTXT;
-char *WETXT;
-char *EATXT;
-char *SPRIT;
-int FCOL;
-int CCOL;
+
+char	*NOTXT;
+char	*SOTXT;
+char	*WETXT;
+char	*EATXT;
+char	*SPRIT;
+int		FCOL;
+int		CCOL;
+int		WINDOW_WIDTH;
+int		WINDOW_HEIGHT;
+int		cols;
+int		rows;
 
 void    *mlx_ptr;
 void    *win_ptr;
@@ -68,6 +63,7 @@ void	*textu_img;
 
 struct Player
 {
+	int player;
 	float x;
 	float y;
 	float width;
@@ -96,9 +92,6 @@ struct Ray
 	int wallhitcontent;
 	int wassphitvertical;
 };
-
-struct Ray *rays;
-
 
 typedef	struct tmp_sprite
 {
@@ -138,8 +131,8 @@ struct Inter
 	float	nextverttouchy;
 	float	xtocheck;
 	float	ytocheck;
+	int		i_sp;
 	TMP_SPRITE	*tmp_sprite;
-	int				i_sp;
 }	inter;
 
 struct Projec
@@ -196,12 +189,15 @@ typedef struct		s_sprite
 	struct s_sprite *next;
 }					t_sprite;
 
+struct Ray *rays;
+t_vector	ab;
+t_vector	cb;
 t_sprite *g_sprites;
 textu g_textures[5];
 
 void	ft_img_pixel_put_2d(int x, int y, int color);
 void    ft_img_pixel_put_3d(int x, int y, int color);
-void    ft_draw_square(float x, float y, float w, float h);
+void	ft_draw_square(float x, float y, float w, float h);
 void    ft_draw_line(int x1, int y1, int x2, int y2);
 float   normalizeangle(float Angle);
 int     maphaswallat(float x, float y);

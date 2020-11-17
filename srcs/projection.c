@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 21:44:33 by razaha            #+#    #+#             */
-/*   Updated: 2020/11/14 20:44:05 by razaha           ###   ########.fr       */
+/*   Updated: 2020/11/16 13:20:31 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,26 @@
 void	ft_right_texture(void)
 {
 	int text_id;
-	if(!rays[projec.i - 1].washitvertical)
+
+	if (!rays[projec.i - 1].washitvertical)
 	{
 		if (rays[projec.i - 1].israyfacingdown)
 			text_id = 0;
 		if (rays[projec.i - 1].israyfacingup)
 			text_id = 1;
 	}
-	if(rays[projec.i - 1].washitvertical)
+	if (rays[projec.i - 1].washitvertical)
 	{
-		if(rays[projec.i - 1].israyfacingright)
+		if (rays[projec.i - 1].israyfacingright)
 			text_id = 2;
-		if(rays[projec.i - 1].israyfacingleft)
+		if (rays[projec.i - 1].israyfacingleft)
 			text_id = 3;
 	}
-	
-	if ((g_textures[text_id].width * projec.texttureoffesty + projec.texttureoffestx * 2) < 4096)
-		ft_img_pixel_put_3d(projec.i - 1, projec.j - 1, g_textures[text_id].data[g_textures[text_id].width * projec.texttureoffesty + projec.texttureoffestx * 2]);
+	if ((g_textures[text_id].width * projec.texttureoffesty
+	+ projec.texttureoffestx * 2) < 4096)
+		ft_img_pixel_put_3d(projec.i - 1,
+		projec.j - 1, g_textures[text_id].data[g_textures[text_id].width
+		* projec.texttureoffesty + projec.texttureoffestx * 2]);
 }
 
 void	ft_projection2(void)
@@ -62,14 +65,20 @@ void	ft_projection(void)
 	projec.i = 0;
 	while (projec.i++ < NUM_RAYS)
 	{
-		projec.perpdistance = rays[projec.i - 1].walldistance * cos(rays[projec.i - 1].rayangle - player.rotationangle);
-		projec.distanceprojplane = (WINDOW_WIDTH / 2) / tan(FOV_ANGLE / 2);
-		projec.projectedwallheight = (TILE_SIZE / projec.perpdistance) * projec.distanceprojplane;
+		projec.perpdistance = rays[projec.i - 1].walldistance
+		* cos(rays[projec.i - 1].rayangle - player.rotationangle);
+		projec.distanceprojplane = (WINDOW_WIDTH / 2)
+		/ tan(FOV_ANGLE / 2);
+		projec.projectedwallheight = (TILE_SIZE / projec.perpdistance)
+		* projec.distanceprojplane;
 		projec.wallstripheight = (int)projec.projectedwallheight;
-		projec.walltoppixel = (WINDOW_HEIGHT / 2) - (projec.wallstripheight / 2);
+		projec.walltoppixel = (WINDOW_HEIGHT / 2)
+		- (projec.wallstripheight / 2);
 		projec.walltoppixel = projec.walltoppixel < 0 ? 0 : projec.walltoppixel;
-		projec.wallbottompixel = (WINDOW_HEIGHT / 2) + (projec.wallstripheight / 2);
-		projec.wallbottompixel = projec.wallbottompixel > WINDOW_HEIGHT ? WINDOW_HEIGHT : projec.wallbottompixel;
+		projec.wallbottompixel = (WINDOW_HEIGHT / 2)
+		+ (projec.wallstripheight / 2);
+		projec.wallbottompixel = projec.wallbottompixel > WINDOW_HEIGHT
+		? WINDOW_HEIGHT : projec.wallbottompixel;
 		ft_projection2();
-	}	
+	}
 }

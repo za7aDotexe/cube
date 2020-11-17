@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 19:54:01 by razaha            #+#    #+#             */
-/*   Updated: 2020/11/14 19:54:55 by razaha           ###   ########.fr       */
+/*   Updated: 2020/11/16 14:22:24 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,17 @@
 void	ft_renderplayer(void)
 {
 	ft_draw_square(
-			player.x * MINIMAP_SCALE_FACTOR,
-			player.y * MINIMAP_SCALE_FACTOR,
-			player.width * MINIMAP_SCALE_FACTOR,
-			player.height * MINIMAP_SCALE_FACTOR);
+			player.x * MMAP_SCE_FACTOR,
+			player.y * MMAP_SCE_FACTOR,
+			player.width * MMAP_SCE_FACTOR,
+			player.height * MMAP_SCE_FACTOR);
 	ft_draw_line(
-			player.x * MINIMAP_SCALE_FACTOR,
-			player.y * MINIMAP_SCALE_FACTOR,
-			player.x * MINIMAP_SCALE_FACTOR + cos(player.rotationangle) * 40
-			* MINIMAP_SCALE_FACTOR,
-			player.y * MINIMAP_SCALE_FACTOR + sin(player.rotationangle) * 40
-			* MINIMAP_SCALE_FACTOR);
+			player.x * MMAP_SCE_FACTOR,
+			player.y * MMAP_SCE_FACTOR,
+			player.x * MMAP_SCE_FACTOR + cos(player.rotationangle) * 40
+			* MMAP_SCE_FACTOR,
+			player.y * MMAP_SCE_FACTOR + sin(player.rotationangle) * 40
+			* MMAP_SCE_FACTOR);
 }
 
 void	ft_moveplayer(void)
