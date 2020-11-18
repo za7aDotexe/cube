@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 21:58:31 by razaha            #+#    #+#             */
-/*   Updated: 2020/11/17 16:53:56 by razaha           ###   ########.fr       */
+/*   Updated: 2020/11/18 19:33:40 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,11 @@
 #define MMAP_SCE_FACTOR 0.1
 #define FOV_ANGLE (60 * (PI / 180)) 
 #define NUM_RAYS (WINDOW_WIDTH * 1)
-#define globspeed 0.03
 #define TEXTURE_HEIGHT 64
 #define TEXTURE_WIDTH 64
 
 
+#define globspeed 0.03
 char	*NOTXT;
 char	*SOTXT;
 char	*WETXT;

@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/17 17:02:40 by razaha            #+#    #+#             */
-/*   Updated: 2020/11/17 17:04:38 by razaha           ###   ########.fr       */
+/*   Updated: 2020/11/18 12:57:48 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 
 void        ft_check()
 {
-    ft_check_elements();
     ft_check_map(rows, cols);
+    ft_check_elements();
 }

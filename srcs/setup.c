@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 21:41:46 by razaha            #+#    #+#             */
-/*   Updated: 2020/11/17 19:01:33 by razaha           ###   ########.fr       */
+/*   Updated: 2020/11/18 20:15:06 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,9 @@
 
 void	ft_setup(void)
 {
-	// if (!player.player)
-	// {
-	// 	perror("player not found!");
-	// 	exit(EXIT_FAILURE);
-	// }
-	player.width = 1;
-	player.height = 1;
+
+	player.width = 3;
+	player.height = 3;
 	player.turndirection = 0;
 	player.walkupdown = 0;
 	player.walkleftright = 0;

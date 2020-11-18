@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/16 20:01:53 by razaha            #+#    #+#             */
-/*   Updated: 2020/11/17 13:47:05 by razaha           ###   ########.fr       */
+/*   Updated: 2020/11/18 19:12:08 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,19 @@
 
 void ft_parse(char *line,char **map)
 {
-	if(*line == 'R')
-		ft_fill_resolution(line);
-	if ((*line == 'N' && *(line+1) == 'O') || (*line == 'S' && *(line+1) == 'O') || (*line == 'W' && *(line+1) == 'E') || (*line == 'E' && *(line+1) == 'A') || (*line == 'S' && *(line+1) == ' '))
-		ft_textu(*line, *(line+1), line);
-	if ((*line == 'F' || *line == 'C') && *(line+1) == ' ')
-		ft_fill_floorciel_color(line);
+	if (!**map) 
+	{
+		while (*line == ' ')
+			line++;
+		if(*line == 'R')
+			ft_fill_resolution(line);
+		if ((*line == 'N' && *(line+1) == 'O') || (*line == 'S'
+		&& *(line+1) == 'O') || (*line == 'W' && *(line+1) == 'E')
+		|| (*line == 'E' && *(line+1) == 'A') || (*line == 'S' && *(line+1) == ' '))
+			ft_textu(*line, *(line+1), line);
+		if ((*line == 'F' || *line == 'C') && *(line+1) == ' ')
+			ft_fill_floorciel_color(line);
+	}
 	if (WINDOW_WIDTH && WINDOW_HEIGHT && NOTXT && SOTXT && WETXT && EATXT
 	&& SPRIT && FCOL && CCOL)
 	{

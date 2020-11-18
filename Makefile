@@ -2,8 +2,8 @@ SRC = srcs/*.c gnl.a libft.a parse/*.c sprite/*.c
 
 NAME = cube
 
-CC1 = gcc -I /usr/local/include
-CC2 = -L /usr/local/lib -lmlx -framework OpenGL -framework Appkit -o  $(NAME)
+CC1 = gcc  -I /usr/local/include
+CC2 = -L /usr/local/lib -lmlx -framework OpenGL -framework Appkit -o  $(NAME) #-g -fsanitize=address
 
 all : $(NAME)
 

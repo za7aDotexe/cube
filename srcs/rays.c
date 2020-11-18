@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 20:17:40 by razaha            #+#    #+#             */
-/*   Updated: 2020/11/16 13:15:59 by razaha           ###   ########.fr       */
+/*   Updated: 2020/11/18 20:42:18 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	castray(float rayangle, int stripid)
 	inter.israyfacingright = rayangle < PI * 0.5 || rayangle > PI * 1.5;
 	inter.israyfacingleft = !inter.israyfacingright;
 	inter.i_sp = 0;
-	inter.tmp_sprite = (TMP_SPRITE *)(malloc(num_sp * NUM_RAYS / 2
+	inter.tmp_sprite = (TMP_SPRITE *)(malloc(num_sp * NUM_RAYS
 	* sizeof(TMP_SPRITE *)));
 	horinter(rayangle, stripid);
 	verinter(rayangle, stripid);

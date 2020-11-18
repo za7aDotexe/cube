@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 20:05:59 by razaha            #+#    #+#             */
-/*   Updated: 2020/11/16 18:20:02 by razaha           ###   ########.fr       */
+/*   Updated: 2020/11/18 20:08:27 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	ft_presskey(int key)
 	if (key == 53)
 		ft_destroywindown();
 	if (key == 0 || key == 1 || key == 2 || key == 13 || key == 123
-			|| key == 124)
+			|| key == 124 || key == 116 || key == 125)
 	{
 		if (key == 13)
 			player.walkupdown = +1;
