@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
-#include "libft.h"
+#include "../libft.h"
 
 char **g_map;
 int num_sp;
@@ -20,7 +20,6 @@ void	ft_textu(char c, char c2, char *line);
 void     ft_check();
 void    ft_check_elements();
 int	    ft_puterror(char *error);
-
 
 #endif
 

@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 21:58:31 by razaha            #+#    #+#             */
-/*   Updated: 2020/11/18 19:33:40 by razaha           ###   ########.fr       */
+/*   Updated: 2020/11/21 11:04:16 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define CUBE_H_
 
 # include "mlx.h"
+# include "libft.h"
+# include "parse/parser.h"
 # include <math.h>
 # include <stdio.h>
 # include <string.h>
@@ -21,7 +23,6 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <errno.h>
-# include "parse/parser.h"
 
 # define buttonpressmask (1L<<0)
 # define keyreleasemask	(1L<<1)
@@ -52,12 +53,13 @@ int		FCOL;
 int		CCOL;
 int		WINDOW_WIDTH;
 int		WINDOW_HEIGHT;
+int		MINIMAP_WIDTH;
+int		MINIMAP_HEIGHT;
 int		cols;
 int		rows;
 
 void    *mlx_ptr;
 void    *win_ptr;
-void    *twod_img;
 void    *threed_img;
 void	*textu_img;
 
@@ -189,16 +191,16 @@ typedef struct		s_sprite
 	struct s_sprite *next;
 }					t_sprite;
 
+
 struct Ray *rays;
 t_vector	ab;
 t_vector	cb;
 t_sprite *g_sprites;
 textu g_textures[5];
 
-void	ft_img_pixel_put_2d(int x, int y, int color);
+t_list *g_grbg;
+
 void    ft_img_pixel_put_3d(int x, int y, int color);
-void	ft_draw_square(float x, float y, float w, float h);
-void    ft_draw_line(int x1, int y1, int x2, int y2);
 float   normalizeangle(float Angle);
 int     maphaswallat(float x, float y);
 float   ft_distbpoints(float x1, float y1, float x2, float y2);
@@ -208,11 +210,8 @@ int     ft_update(void);
 int     ft_presskey(int key);
 int     ft_releasekey(int key);
 int		ft_destroywindown(void);
-void    ft_rendermap(void);
-void    ft_renderplayer(void);
 void    ft_moveplayer(void);
 void    ft_castallrays(void);
-void    ft_renderrays(void);
 void	ft_projection(void);
 void	horinter(float rayangle, int stripid);
 void	verinter(float rayangle, int stripid);
@@ -221,7 +220,7 @@ float	ft_get_angleabc(t_vector a, t_vector b, t_vector c);
 int		ft_get_pixel(int x, int y);
 void    ft_fill_sprite();
 void    ft_draw_sprites(void);
-void	ft_lstclear(void);
+void	ft_sprite_clear(void);
 void	ft_swap_list(t_sprite **current ,t_sprite **index);
 int		ft_sprite_exist(int index_x, int index_y);
 void	ft_sprite_add_sorted(t_sprite *new);
@@ -231,4 +230,5 @@ int		ft_atoi(const char *str);
 void	ft_read_cub_file(int filedesc);
 int		rgb_to_hex(int r, int g, int b);
 int		get_next_line(int fd, char **line);
+
 #endif

@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/15 13:07:16 by razaha            #+#    #+#             */
-/*   Updated: 2020/11/15 20:46:26 by razaha           ###   ########.fr       */
+/*   Updated: 2020/11/19 17:34:00 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	horspinter(void)
 {
-	if (mapinter(inter.xtocheck, inter.ytocheck) == '3')
+	if (mapinter(inter.xtocheck, inter.ytocheck) == '2')
 	{
 		inter.tmp_sprite[inter.i_sp].index_x = inter.xtocheck / TILE_SIZE;
 		inter.tmp_sprite[inter.i_sp].index_y = (inter.ytocheck) / TILE_SIZE;
@@ -39,8 +39,7 @@ void	horinter2(int stripid)
 		inter.ytocheck = inter.nexthorztouchy +
 		(inter.israyfacingup ? -1 : 0);
 		horspinter();
-		if (mapinter(inter.xtocheck, inter.ytocheck) == '1'
-		|| mapinter(inter.xtocheck, inter.ytocheck) == '2')
+		if (mapinter(inter.xtocheck, inter.ytocheck) == '1')
 		{
 			inter.foundhorzwallhit = true;
 			inter.horzwallhitx = inter.nexthorztouchx;

@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/01 17:54:34 by razaha            #+#    #+#             */
-/*   Updated: 2020/11/18 20:42:13 by razaha           ###   ########.fr       */
+/*   Updated: 2020/11/19 17:34:09 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	verspinter(void)
 {
-	if (mapinter(inter.xtocheck, inter.ytocheck) == '3')
+	if (mapinter(inter.xtocheck, inter.ytocheck) == '2')
 	{
 		inter.tmp_sprite[inter.i_sp].index_x = inter.xtocheck / TILE_SIZE;
 		inter.tmp_sprite[inter.i_sp].index_y = (inter.ytocheck) / TILE_SIZE;
@@ -39,8 +39,7 @@ void	verinter2(int stripid)
 		(inter.israyfacingleft ? -1 : 0);
 		inter.ytocheck = inter.nextverttouchy;
 		verspinter();
-		if (mapinter(inter.xtocheck, inter.ytocheck) == '1'
-		|| mapinter(inter.xtocheck, inter.ytocheck) == '2')
+		if (mapinter(inter.xtocheck, inter.ytocheck) == '1')
 		{
 			inter.foundvertwallhit = true;
 			inter.vertwallhitx = inter.nextverttouchx;

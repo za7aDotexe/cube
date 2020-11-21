@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 20:17:40 by razaha            #+#    #+#             */
-/*   Updated: 2020/11/18 20:42:18 by razaha           ###   ########.fr       */
+/*   Updated: 2020/11/21 11:14:41 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,8 @@ void	castray(float rayangle, int stripid)
 		if (inter.tmp_sprite[i - 1].distance <= rays[stripid].walldistance)
 			ft_fill_sprite(inter.tmp_sprite[i - 1]);
 	}
-	/* if (inter.tmp_sprite)  */
-	/* free(inter.tmp_sprite);*/
+	if (inter.tmp_sprite)
+		free(inter.tmp_sprite);
 }
 
 void	ft_castallrays(void)
@@ -78,20 +78,5 @@ void	ft_castallrays(void)
 		castray(rayangle, stripid);
 		rayangle += FOV_ANGLE / (double)NUM_RAYS;
 		stripid++;
-	}
-}
-
-void	ft_renderrays(void)
-{
-	int i;
-
-	i = 0;
-	while (i++ < NUM_RAYS)
-	{
-		ft_draw_line(
-				player.x * MMAP_SCE_FACTOR,
-				player.y * MMAP_SCE_FACTOR,
-				rays[i - 1].wallhitx * MMAP_SCE_FACTOR,
-				rays[i - 1].wallhity * MMAP_SCE_FACTOR);
 	}
 }

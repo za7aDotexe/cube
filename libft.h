@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: razaha <razaha@student.42.fr>              +#+  +:+       +#+        */
+/*   By: razaha <razaha@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 23:05:51 by razaha            #+#    #+#             */
-/*   Updated: 2020/11/07 20:51:39 by razaha           ###   ########.fr       */
+/*   Updated: 2020/11/21 11:44:03 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,4 +70,6 @@ char			*ft_itoa(int n);
 char			*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 t_list			*ft_lstnew(void *content);
 t_list			*ft_lstlast(t_list *lst);
+void			ft_lstclear(t_list **lst, void (*del)(void*));
+void	ft_free(char **s);
 #endif

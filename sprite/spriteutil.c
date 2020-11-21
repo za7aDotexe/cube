@@ -6,13 +6,15 @@
 /*   By: razaha <razaha@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/10 15:20:34 by razaha            #+#    #+#             */
-/*   Updated: 2020/11/14 19:54:01 by razaha           ###   ########.fr       */
+/*   Updated: 2020/11/21 11:32:05 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cube.h"
 
-void	ft_lstclear(void)
+
+
+void	ft_sprite_clear(void)
 {
 	t_sprite *temp;
 	t_sprite *beg;

@@ -6,39 +6,11 @@
 /*   By: razaha <razaha@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 1010/01/10 11:07:01 by razaha            #+#    #+#             */
-/*   Updated: 2020/11/16 14:21:06 by razaha           ###   ########.fr       */
+/*   Updated: 2020/11/19 20:09:09 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cube.h"
-
-void	ft_rendermap(void)
-{
-	int		i;
-	int		j;
-	float	tilex;
-	float	tiley;
-
-	i = 0;
-	j = 0;
-	tilex = 0;
-	tiley = 0;
-	while (j++ < rows)
-	{
-		i = 0;
-		while (i++ < cols)
-		{
-			tiley = (j - 1) * TILE_SIZE;
-			tilex = (i - 1) * TILE_SIZE;
-			if (g_map[j - 1][i - 1] == '1' || g_map[j - 1][i - 1] == '2'
-			|| g_map[j - 1][i - 1] == '3')
-				ft_draw_square(
-						tilex * MMAP_SCE_FACTOR, tiley * MMAP_SCE_FACTOR,
-						TILE_SIZE * MMAP_SCE_FACTOR,
-						TILE_SIZE * MMAP_SCE_FACTOR);
-		}
-	}
-}
 
 int		maphaswallat(float x, float y)
 {
@@ -50,7 +22,7 @@ int		maphaswallat(float x, float y)
 	mapgridindexx = floor(x / TILE_SIZE);
 	mapgridindexy = floor(y / TILE_SIZE);
 	if (g_map[mapgridindexy][mapgridindexx] == '1'
-	|| g_map[mapgridindexy][mapgridindexx] == '3')
+	|| g_map[mapgridindexy][mapgridindexx] == '2')
 		return (true);
 	return (false);
 }

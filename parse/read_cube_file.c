@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/16 20:01:53 by razaha            #+#    #+#             */
-/*   Updated: 2020/11/18 19:12:08 by razaha           ###   ########.fr       */
+/*   Updated: 2020/11/21 11:48:31 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,10 @@
 
 void ft_parse(char *line,char **map)
 {
-	if (!**map) 
+	char *temp;
+	char *temp2;
+	if (!WINDOW_WIDTH || !WINDOW_HEIGHT || !NOTXT || !SOTXT || !WETXT
+	|| !EATXT || !SPRIT || !FCOL || !CCOL)
 	{
 		while (*line == ' ')
 			line++;
@@ -24,21 +27,29 @@ void ft_parse(char *line,char **map)
 		if ((*line == 'N' && *(line+1) == 'O') || (*line == 'S'
 		&& *(line+1) == 'O') || (*line == 'W' && *(line+1) == 'E')
 		|| (*line == 'E' && *(line+1) == 'A') || (*line == 'S' && *(line+1) == ' '))
+		{
 			ft_textu(*line, *(line+1), line);
+		}
 		if ((*line == 'F' || *line == 'C') && *(line+1) == ' ')
 			ft_fill_floorciel_color(line);
 	}
-	if (WINDOW_WIDTH && WINDOW_HEIGHT && NOTXT && SOTXT && WETXT && EATXT
-	&& SPRIT && FCOL && CCOL)
+	else
 	{
+		if (**map && *line == '\0')
+			ft_puterror(".cub file must END with a map row !");
 		if(*line == '1' || *line == ' ' || *line == '0')
 		{
 			cols = ft_strlen(line) > cols ? ft_strlen(line) : cols;
+			temp2 = line;
 			line = ft_strjoin(line, "\n");
+			temp = *map;
 			*map = ft_strjoin(*map, line);
+			free(temp2);
+			free(temp);
 			rows++;
 		}
 	}
+	free(line);
 }
 
 void ft_read_cub_file(int filedesc)
@@ -50,7 +61,8 @@ void ft_read_cub_file(int filedesc)
 
 	map = ft_strdup("");
 	while (get_next_line(filedesc , &line) != 0)
-		ft_parse(line, &map);
+		ft_parse(line, &map);	
 	ft_parse(line, &map);
 	ft_fill_map(map, rows, cols);
+	free(map);
 }

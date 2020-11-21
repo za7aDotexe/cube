@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/14 19:52:42 by razaha            #+#    #+#             */
-/*   Updated: 2020/11/16 18:15:34 by razaha           ###   ########.fr       */
+/*   Updated: 2020/11/21 11:03:46 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void    ft_draw_sprites(void)
 			projectedspriteheight , beg->distance);
 		beg = beg->next;
 	}
-	ft_lstclear();
+	ft_sprite_clear();
 }
 
 int     get_ray_hit_sp(float s_x, float s_y)

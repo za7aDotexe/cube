@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 21:41:46 by razaha            #+#    #+#             */
-/*   Updated: 2020/11/18 20:15:06 by razaha           ###   ########.fr       */
+/*   Updated: 2020/11/21 10:55:52 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	ft_setup(void)
 	player.turnspeed = 30 * (PI / 180);
 	rays = malloc(WINDOW_WIDTH * sizeof(struct Ray));
 	g_sprites = NULL;
+	g_grbg = NULL;
 	g_textures[0].img = mlx_xpm_file_to_image(mlx_ptr, NOTXT,
 	&g_textures[0].width, &g_textures[0].height);
 	g_textures[0].data = (int *)mlx_get_data_addr(g_textures[0].img,
