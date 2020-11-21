@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 21:58:31 by razaha            #+#    #+#             */
-/*   Updated: 2020/11/21 11:04:16 by razaha           ###   ########.fr       */
+/*   Updated: 2020/11/21 20:07:22 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,17 +30,17 @@
 # define buttonpress 2
 # define keyrelease	3
 # define destroypress 17
-#define true 1
-#define false 0
-#define PI 3.14159265
-#define TWO_PI 6.28318530
-#define INT_MAX 2147483647
-#define TILE_SIZE 32
-#define MMAP_SCE_FACTOR 0.1
-#define FOV_ANGLE (60 * (PI / 180)) 
-#define NUM_RAYS (WINDOW_WIDTH * 1)
-#define TEXTURE_HEIGHT 64
-#define TEXTURE_WIDTH 64
+# define true 1
+# define false 0
+# define PI 3.14159265
+# define TWO_PI 6.28318530
+# define INT_MAX 2147483647
+# define TILE_SIZE 32
+# define MMAP_SCE_FACTOR 0.1
+# define FOV_ANGLE (60 * (PI / 180)) 
+# define NUM_RAYS (WINDOW_WIDTH * 1)
+# define TEXTURE_HEIGHT 64
+# define TEXTURE_WIDTH 64
 
 
 #define globspeed 0.03
@@ -57,7 +57,7 @@ int		MINIMAP_WIDTH;
 int		MINIMAP_HEIGHT;
 int		cols;
 int		rows;
-
+int		g_save;
 void    *mlx_ptr;
 void    *win_ptr;
 void    *threed_img;
@@ -200,11 +200,11 @@ textu g_textures[5];
 
 t_list *g_grbg;
 
+void    ft_initialize(void);
 void    ft_img_pixel_put_3d(int x, int y, int color);
 float   normalizeangle(float Angle);
 int     maphaswallat(float x, float y);
 float   ft_distbpoints(float x1, float y1, float x2, float y2);
-void    ft_setup(void);
 void    ft_render(void);
 int     ft_update(void);
 int     ft_presskey(int key);
@@ -230,5 +230,7 @@ int		ft_atoi(const char *str);
 void	ft_read_cub_file(int filedesc);
 int		rgb_to_hex(int r, int g, int b);
 int		get_next_line(int fd, char **line);
+void	ft_bitmap(int32_t width, int32_t height, uint16_t bitcount, int width_in_bytes);
+void	ft_is_save();
 
 #endif

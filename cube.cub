@@ -1,17 +1,19 @@
-R  500 500
+R  800 800
 
 NO images/redbrick.xpm
-SO images/wood.xpm
-WE images/greystone.xpm
+SO   images/wood.xpm
+WE images/greys tone.xpm
 EA images/mossy.xpm
 S images/pillar.xpm
+
 
 F 255,204,1 787
 C 204,255,255
 
 
+
         1111111111111111111111111
-        10000N0000110000000000001
+        10000E0000110000000000001
         1011000001110000002000001
         1001000000000000000000001
 111111111011000001110000000000001

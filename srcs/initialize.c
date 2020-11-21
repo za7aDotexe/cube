@@ -1,20 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   setup.c                                            :+:      :+:    :+:   */
+/*   initialize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: razaha <razaha@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 21:41:46 by razaha            #+#    #+#             */
-/*   Updated: 2020/11/21 10:55:52 by razaha           ###   ########.fr       */
+/*   Updated: 2020/11/21 18:01:12 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cube.h"
 
-void	ft_setup(void)
+void	ft_initialize(void)
 {
-
 	player.width = 3;
 	player.height = 3;
 	player.turndirection = 0;

@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/16 20:01:53 by razaha            #+#    #+#             */
-/*   Updated: 2020/11/21 11:48:31 by razaha           ###   ########.fr       */
+/*   Updated: 2020/11/21 18:49:48 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,12 @@ void ft_parse(char *line,char **map)
 {
 	char *temp;
 	char *temp2;
+	char *temp3;
 	if (!WINDOW_WIDTH || !WINDOW_HEIGHT || !NOTXT || !SOTXT || !WETXT
 	|| !EATXT || !SPRIT || !FCOL || !CCOL)
 	{
-		while (*line == ' ')
+		temp3 = line;
+		while (*line == ' ' && *line)
 			line++;
 		if(*line == 'R')
 			ft_fill_resolution(line);
@@ -32,6 +34,8 @@ void ft_parse(char *line,char **map)
 		}
 		if ((*line == 'F' || *line == 'C') && *(line+1) == ' ')
 			ft_fill_floorciel_color(line);
+		free(temp3);
+		return;
 	}
 	else
 	{
