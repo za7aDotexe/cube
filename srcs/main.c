@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 19:52:12 by razaha            #+#    #+#             */
-/*   Updated: 2020/11/21 20:30:03 by razaha           ###   ########.fr       */
+/*   Updated: 2020/11/22 16:45:31 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void	ft_is_save()
 {
 	// if(ft_strlen(save) != 6 || ft_strncmp("--save", save, 6))
 	// // 	ft_puterror("INVALID second argument !");
-	printf("tchaaak ");
 	ft_bitmap(0,0,0,0);
 	exit(EXIT_SUCCESS);
 }
