@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 21:58:31 by razaha            #+#    #+#             */
-/*   Updated: 2020/11/21 20:07:22 by razaha           ###   ########.fr       */
+/*   Updated: 2020/11/24 19:53:18 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,97 +24,88 @@
 # include <fcntl.h>
 # include <errno.h>
 
-# define buttonpressmask (1L<<0)
-# define keyreleasemask	(1L<<1)
-# define destroypressmask (0L)
-# define buttonpress 2
-# define keyrelease	3
-# define destroypress 17
-# define true 1
-# define false 0
+# define BUTTONPRESSMASK (1L<<0)
+# define KEYRELEASEMASK	(1L<<1)
+# define DESTROYPRESSMASK (0L)
+# define BUTTONPRESS 2
+# define KEYRELEASE	3
+# define DESTROYPRESS 17
+# define TRUE 1
+# define FALSE 0
 # define PI 3.14159265
 # define TWO_PI 6.28318530
 # define INT_MAX 2147483647
 # define TILE_SIZE 32
-# define MMAP_SCE_FACTOR 0.1
-# define FOV_ANGLE (60 * (PI / 180)) 
-# define NUM_RAYS (WINDOW_WIDTH * 1)
-# define TEXTURE_HEIGHT 64
-# define TEXTURE_WIDTH 64
+# define FOV_ANGLE (60 * (PI / 180))
+# define NUM_RAYS (g_window_width * 1)
+# define GLOBSPEED 0.03
 
+char		*g_notxt;
+char		*g_sotxt;
+char		*g_wetxt;
+char		*g_eatxt;
+char		*g_sprit;
+int			g_fcol;
+int			g_ccol;
+int			g_window_width;
+int			g_window_height;
+int			g_cols;
+int			g_rows;
+int			g_save;
+void		*g_mlx_ptr;
+void		*g_win_ptr;
+void		*g_threed_img;
 
-#define globspeed 0.03
-char	*NOTXT;
-char	*SOTXT;
-char	*WETXT;
-char	*EATXT;
-char	*SPRIT;
-int		FCOL;
-int		CCOL;
-int		WINDOW_WIDTH;
-int		WINDOW_HEIGHT;
-int		MINIMAP_WIDTH;
-int		MINIMAP_HEIGHT;
-int		cols;
-int		rows;
-int		g_save;
-void    *mlx_ptr;
-void    *win_ptr;
-void    *threed_img;
-void	*textu_img;
-
-struct Player
+struct		s_player
 {
-	int player;
-	float x;
-	float y;
-	float width;
-	float height;
-	int   turndirection;
-	int   walkupdown;
-	int   walkleftright;
-	float rotationangle;
-	float walkspeed;
-	float turnspeed;
-}   player;
+	int		player;
+	float	x;
+	float	y;
+	int		turndirection;
+	int		walkupdown;
+	int		walkleftright;
+	float	rotationangle;
+	float	walkspeed;
+	float	turnspeed;
+}			g_player;
 
-struct Ray
+struct		s_ray
 {
-	float rayangle;
-	float wallhitx;
-	float wallhity;
-	float spritehitx;
-	float spritehity;
-	float walldistance;
-	int washitvertical;
-	int israyfacingup;
-	int israyfacingdown;
-	int israyfacingleft;
-	int israyfacingright;
-	int wallhitcontent;
-	int wassphitvertical;
+	float	rayangle;
+	float	wallhitx;
+	float	wallhity;
+	float	spritehitx;
+	float	spritehity;
+	float	walldistance;
+	int		washitvertical;
+	int		israyfacingup;
+	int		israyfacingdown;
+	int		israyfacingleft;
+	int		israyfacingright;
+	int		wallhitcontent;
+	int		wassphitvertical;
 };
 
-typedef	struct tmp_sprite
+typedef	struct	s_tmp_sprite
 {
-	int			hit_horz;
-	int			hit_vert;
-	double		hit_x;
-	double		hit_y;
-	double		distance;
-	int			index_x;
-	int			index_y;
+	int		hit_horz;
+	int		hit_vert;
+	double	hit_x;
+	double	hit_y;
+	double	distance;
+	int		index_x;
+	int		index_y;
 
-} TMP_SPRITE;
+}				t_TMP_SPRITE;
 
-struct Inter
+struct		s_inter
 {
 	int		israyfacingdown;
 	int		israyfacingup;
 	int		israyfacingright;
 	int		israyfacingleft;
 	float	verthitdistance;
-	float 	horzhitdistance;
+	float	horzhitdistance;
 	float	xintercept;
 	float	yintercept;
 	float	xstep;
@@ -134,10 +125,10 @@ struct Inter
 	float	xtocheck;
 	float	ytocheck;
 	int		i_sp;
-	TMP_SPRITE	*tmp_sprite;
-}	inter;
+	t_TMP_SPRITE	*tmp_sprite;
+}	g_inter;
 
-struct Projec
+struct s_projec
 {
 	int		i;
 	int		j;
@@ -150,9 +141,9 @@ struct Projec
 	int		texttureoffestx;
 	int		texttureoffesty;
 	int		distancefromtop;
-}	projec;
+}	g_projec;
 
-typedef struct	Textu
+typedef struct	s_textu
 {
 	void *img;
 	int	*data;
@@ -161,9 +152,9 @@ typedef struct	Textu
 	int bpp;
 	int endian;
 	int sizeline;
-}	textu;
+}	t_textu;
 
-struct line
+struct s_line
 {
 	int dx;
 	int sx;
@@ -191,46 +182,42 @@ typedef struct		s_sprite
 	struct s_sprite *next;
 }					t_sprite;
 
-
-struct Ray *rays;
-t_vector	ab;
-t_vector	cb;
+struct s_ray *g_rays;
+t_vector	g_ab;
+t_vector	g_cb;
 t_sprite *g_sprites;
-textu g_textures[5];
+t_textu g_textures[5];
 
-t_list *g_grbg;
-
-void    ft_initialize(void);
-void    ft_img_pixel_put_3d(int x, int y, int color);
-float   normalizeangle(float Angle);
-int     maphaswallat(float x, float y);
-float   ft_distbpoints(float x1, float y1, float x2, float y2);
-void    ft_render(void);
-int     ft_update(void);
-int     ft_presskey(int key);
-int     ft_releasekey(int key);
+void	ft_initialize(void);
+void	ft_img_pixel_put_3d(int x, int y, int color);
+float	normalizeangle(float angle);
+int		maphaswallat(float x, float y);
+float	ft_distbpoints(float x1, float y1, float x2, float y2);
+void	ft_render(void);
+int		ft_update(void);
+int		ft_presskey(int key);
+int		ft_releasekey(int key);
 int		ft_destroywindown(void);
-void    ft_moveplayer(void);
-void    ft_castallrays(void);
+void	ft_moveplayer(void);
+void	ft_castallrays(void);
 void	ft_projection(void);
 void	horinter(float rayangle, int stripid);
 void	verinter(float rayangle, int stripid);
 int		mapinter(float x, float y);
 float	ft_get_angleabc(t_vector a, t_vector b, t_vector c);
 int		ft_get_pixel(int x, int y);
-void    ft_fill_sprite();
-void    ft_draw_sprites(void);
+void	ft_fill_sprite();
+void	ft_draw_sprites(void);
 void	ft_sprite_clear(void);
-void	ft_swap_list(t_sprite **current ,t_sprite **index);
+void	ft_swap_list(t_sprite **current, t_sprite **index);
 int		ft_sprite_exist(int index_x, int index_y);
 void	ft_sprite_add_sorted(t_sprite *new);
-void	ft_new_sprite(TMP_SPRITE tmp_sprite, int num_ray, float angle);
+void	ft_new_sprite(t_TMP_SPRITE tmp_sprite, int num_ray, float angle);
 char	**ft_split(char const *s, char c);
 int		ft_atoi(const char *str);
 void	ft_read_cub_file(int filedesc);
 int		rgb_to_hex(int r, int g, int b);
 int		get_next_line(int fd, char **line);
-void	ft_bitmap(int32_t width, int32_t height, uint16_t bitcount, int width_in_bytes);
-void	ft_is_save();
-
+int		ft_is_save(char *save);
+void	ft_screenshot(int32_t width, int32_t height, uint16_t bitcount, int width_in_bytes);
 #endif

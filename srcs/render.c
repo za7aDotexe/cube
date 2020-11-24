@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 21:38:24 by razaha            #+#    #+#             */
-/*   Updated: 2020/11/19 18:34:57 by razaha           ###   ########.fr       */
+/*   Updated: 2020/11/24 19:29:44 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,9 @@
 
 void	ft_render(void)
 {
-	mlx_destroy_image(mlx_ptr, threed_img);
-	
-	threed_img = mlx_new_image(mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT);
+	mlx_destroy_image(g_mlx_ptr, g_threed_img);
+	g_threed_img = mlx_new_image(g_mlx_ptr, g_window_width, g_window_height);
 	ft_projection();
 	ft_draw_sprites();
-	mlx_put_image_to_window(mlx_ptr, win_ptr, threed_img, 0, 0);
+	mlx_put_image_to_window(g_mlx_ptr, g_win_ptr, g_threed_img, 0, 0);
 }

@@ -6,13 +6,11 @@
 /*   By: razaha <razaha@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 19:42:40 by razaha            #+#    #+#             */
-/*   Updated: 2020/11/21 20:28:20 by razaha           ###   ########.fr       */
+/*   Updated: 2020/11/24 19:29:44 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cube.h"
-
-
 
 unsigned char g_header[54] = { 0 };
 
@@ -39,7 +37,7 @@ int width_in_bytes)
 	int				i;
 	int sl;
 
-	add = mlx_get_data_addr(threed_img, &row, &sl, &i);
+	add = mlx_get_data_addr(g_threed_img, &row, &sl, &i);
 	row = height - 1;
 	buf = malloc(imagesize);
 	while (row >= 0)
@@ -58,7 +56,7 @@ int width_in_bytes)
 	ft_bitmap_create(buf, imagesize);
 }
 
-void	ft_bitmap(int32_t width, int32_t height, uint16_t bitcount,
+void	ft_screenshot(int32_t width, int32_t height, uint16_t bitcount,
 int width_in_bytes)
 {
 	uint32_t			imagesize;
@@ -67,8 +65,8 @@ int width_in_bytes)
 	uint32_t			filesize;
 	const uint16_t		biplanes = 1;
 
-	width = WINDOW_WIDTH;
-	height = WINDOW_HEIGHT;
+	width = g_window_width;
+	height = g_window_height;
 	bitcount = 24;
 	width_in_bytes = ((width * bitcount + 31) / 32) * 4;
 	imagesize = width_in_bytes * height;
@@ -83,5 +81,5 @@ int width_in_bytes)
 	ft_memcpy(g_header + 28, &bitcount, 2);
 	ft_memcpy(g_header + 34, &imagesize, 4);
 	ft_bitmap_calc(imagesize, width, height, width_in_bytes);
-	
+	exit(EXIT_SUCCESS);
 }

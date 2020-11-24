@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 20:05:59 by razaha            #+#    #+#             */
-/*   Updated: 2020/11/21 11:17:29 by razaha           ###   ########.fr       */
+/*   Updated: 2020/11/24 19:30:58 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,17 @@ int	ft_presskey(int key)
 			|| key == 124 || key == 116 || key == 125)
 	{
 		if (key == 13)
-			player.walkupdown = +1;
+			g_player.walkupdown = +1;
 		if (key == 1)
-			player.walkupdown = -1;
+			g_player.walkupdown = -1;
 		if (key == 2)
-			player.walkleftright = +1;
+			g_player.walkleftright = +1;
 		if (key == 0)
-			player.walkleftright = -1;
+			g_player.walkleftright = -1;
 		if (key == 124)
-			player.turndirection = +2;
+			g_player.turndirection = +2;
 		if (key == 123)
-			player.turndirection = -2;
+			g_player.turndirection = -2;
 	}
 	return (0);
 }
@@ -47,17 +47,17 @@ int	ft_releasekey(int key)
 			|| key == 124)
 	{
 		if (key == 13)
-			player.walkupdown = 0;
+			g_player.walkupdown = 0;
 		if (key == 1)
-			player.walkupdown = 0;
+			g_player.walkupdown = 0;
 		if (key == 2)
-			player.walkleftright = 0;
+			g_player.walkleftright = 0;
 		if (key == 0)
-			player.walkleftright = 0;
+			g_player.walkleftright = 0;
 		if (key == 124)
-			player.turndirection = 0;
+			g_player.turndirection = 0;
 		if (key == 123)
-			player.turndirection = 0;
+			g_player.turndirection = 0;
 	}
 	return (0);
 }

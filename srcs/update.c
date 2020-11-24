@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 21:42:30 by razaha            #+#    #+#             */
-/*   Updated: 2020/11/21 20:07:10 by razaha           ###   ########.fr       */
+/*   Updated: 2020/11/23 18:01:05 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,6 @@ int	ft_update(void)
 	ft_castallrays();
 	ft_render();
 	if (g_save)
-		ft_is_save();
+		ft_screenshot(0, 0, 0, 0);
 	return (0);
 }

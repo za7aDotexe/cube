@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 21:24:52 by razaha            #+#    #+#             */
-/*   Updated: 2020/11/19 18:38:11 by razaha           ###   ########.fr       */
+/*   Updated: 2020/11/24 19:46:07 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int			ft_get_pixel(int x, int y)
 	return (p[i]);
 }
 
-void	ft_img_pixel_put_3d(int x, int y, int color)
+void		ft_img_pixel_put_3d(int x, int y, int color)
 {
 	int *add;
 	int bpp;
@@ -32,13 +32,20 @@ void	ft_img_pixel_put_3d(int x, int y, int color)
 	int endian;
 	int cord;
 
-	add = (int *)mlx_get_data_addr(threed_img, &bpp, &sizeline, &endian);
+	add = (int *)mlx_get_data_addr(g_threed_img, &bpp, &sizeline, &endian);
 	cord = (y * sizeline / 4 + x);
-	if (x < WINDOW_WIDTH && x >= 0 && y >= 0 && y < WINDOW_HEIGHT)
+	if (x < g_window_width && x >= 0 && y >= 0 && y < g_window_height)
 		add[cord] = color;
 }
 
 int			rgb_to_hex(int r, int g, int b)
 {
 	return (r << 16 | g << 8 | b);
+}
+
+int			ft_is_save(char *save)
+{
+	if (ft_strlen(save) != 6 || ft_strncmp("--save", save, 6))
+		ft_puterror("INVALID second argument !");
+	return (TRUE);
 }

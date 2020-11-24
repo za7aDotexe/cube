@@ -6,13 +6,11 @@
 /*   By: razaha <razaha@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/10 15:20:34 by razaha            #+#    #+#             */
-/*   Updated: 2020/11/21 11:32:05 by razaha           ###   ########.fr       */
+/*   Updated: 2020/11/24 19:25:20 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cube.h"
-
-
 
 void	ft_sprite_clear(void)
 {
@@ -34,9 +32,8 @@ void	ft_sprite_clear(void)
 void	ft_swap_list(t_sprite **current ,t_sprite **index)
 {
 	t_sprite *temp;
+
 	temp = *current;
-	
-	
 	(*current)->x = (*index)->x;
 	(*current)->y = (*index)->y;
 	(*current)->index_x = (*index)->index_x;
@@ -44,8 +41,6 @@ void	ft_swap_list(t_sprite **current ,t_sprite **index)
 	(*current)->distance = (*index)->distance;
 	(*current)->num_ray = (*index)->num_ray;
 	(*current)->angle = (*index)->angle;
-
-
 	(*index)->x = temp->x;
 	(*index)->y = temp->y;
 	(*index)->index_x = temp->index_x;
@@ -96,7 +91,7 @@ void	ft_sprite_add_sorted(t_sprite *new)
 	}
 }
 
-void	ft_new_sprite(TMP_SPRITE tmp_sprite, int num_ray, float angle)
+void	ft_new_sprite(t_TMP_SPRITE tmp_sprite, int num_ray, float angle)
 {
 	t_sprite *new_sprite;
 	

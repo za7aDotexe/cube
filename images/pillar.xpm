@@ -1,6 +1,6 @@
 /* XPM */
 static char *b44cda595dc14c1bf841f2cb39c9eaac[] = {
-/* columns rows colors chars-per-pixel */
+/* columns g_rows colors chars-per-pixel */
 "64 64 21 1 ",
 "  c black",
 ". c #202020",
