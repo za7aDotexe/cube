@@ -6,17 +6,13 @@
 /*   By: razaha <razaha@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/24 18:20:18 by razaha            #+#    #+#             */
-/*   Updated: 2020/11/24 19:29:14 by razaha           ###   ########.fr       */
+/*   Updated: 2020/11/24 20:12:40 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSER_H_
 # define PARSER_H_
 
-# include <fcntl.h>
-# include <stdio.h>
-# include <unistd.h>
-# include <stdlib.h>
 # include "../libft.h"
 
 char	**g_map;
