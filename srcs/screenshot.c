@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 19:42:40 by razaha            #+#    #+#             */
-/*   Updated: 2020/11/24 19:29:44 by razaha           ###   ########.fr       */
+/*   Updated: 2020/11/25 20:55:30 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,14 @@ void	ft_bitmap_create(unsigned char *buf, uint32_t imagesize)
 	free(buf);
 }
 
-void	ft_bitmap_calc(uint32_t imagesize, int32_t width, int32_t height,
-int width_in_bytes)
+void	ft_bitmap_calc(uint32_t imagesize, int32_t width, int32_t height, int width_in_bytes)
 {
-	char *add;
+	char			*add;
 	unsigned char	*buf;
 	int				row;
 	int				col;
 	int				i;
-	int sl;
+	int				sl;
 
 	add = mlx_get_data_addr(g_threed_img, &row, &sl, &i);
 	row = height - 1;

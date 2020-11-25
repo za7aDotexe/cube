@@ -48,8 +48,8 @@ void	castray(float rayangle, int stripid)
 	g_inter.israyfacingright = rayangle < PI * 0.5 || rayangle > PI * 1.5;
 	g_inter.israyfacingleft = !g_inter.israyfacingright;
 	g_inter.i_sp = 0;
-	g_inter.tmp_sprite = (t_TMP_SPRITE *)(malloc(num_sp * NUM_RAYS
-	* sizeof(t_TMP_SPRITE *)));
+	g_inter.tmp_sprite = (t_tmp_sprite *)(malloc(num_sp * NUM_RAYS
+	* sizeof(t_tmp_sprite *)));
 	horinter(rayangle, stripid);
 	verinter(rayangle, stripid);
 	g_inter.horzhitdistance = g_inter.foundhorzwallhit ? ft_distbpoints(g_player.x,

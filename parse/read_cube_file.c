@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/16 20:01:53 by razaha            #+#    #+#             */
-/*   Updated: 2020/11/24 19:29:14 by razaha           ###   ########.fr       */
+/*   Updated: 2020/11/25 17:50:08 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,10 @@ void	ft_parse(char *line, char **map)
 			line++;
 		if (*line == 'R')
 			ft_fill_resolution(line);
-		if ((*line == 'N' && *(line + 1) == 'O')
-		|| (*line == 'S' && *(line + 1) == 'O')
-		|| (*line == 'W' && *(line + 1) == 'E')
-		|| (*line == 'E' && *(line + 1) == 'A')
+		if ((*line == 'N' && *(line + 1) == 'O' && *(line + 2) == ' ')
+		|| (*line == 'S' && *(line + 1) == 'O' && *(line + 2) == ' ')
+		|| (*line == 'W' && *(line + 1) == 'E' && *(line + 2) == ' ')
+		|| (*line == 'E' && *(line + 1) == 'A' && *(line + 2) == ' ')
 		|| (*line == 'S' && *(line + 1) == ' '))
 		{
 			ft_textu(*line, *(line + 1), line);
@@ -75,6 +75,6 @@ void	ft_read_cub_file(int filedesc)
 	ft_parse(line, &map);
 	ft_fill_map(map, g_rows, g_cols);
 	free(map);
-	ft_check_map(g_rows, g_cols);
 	ft_check_elements();
+	ft_check_map(g_rows, g_cols);
 }

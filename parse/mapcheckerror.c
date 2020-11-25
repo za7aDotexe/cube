@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/14 19:56:13 by razaha            #+#    #+#             */
-/*   Updated: 2020/11/24 19:29:14 by razaha           ###   ########.fr       */
+/*   Updated: 2020/11/25 19:14:22 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,6 @@ void	ft_check_map(int g_rows, int g_cols)
 			g_map[i - 1][j - 1] == '2' ? num_sp++ : num_sp;
 		}
 	}
+	if (!g_player.player || g_player.player > 1)
+		ft_puterror("Player not Found or there is more than ONE Player!");
 }

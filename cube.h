@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 21:58:31 by razaha            #+#    #+#             */
-/*   Updated: 2020/11/24 20:14:47 by razaha           ###   ########.fr       */
+/*   Updated: 2020/11/25 19:14:44 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ typedef	struct	s_tmp_sprite
 	int		index_x;
 	int		index_y;
 
-}				t_TMP_SPRITE;
+}				t_tmp_sprite;
 
 struct		s_inter
 {
@@ -119,7 +119,7 @@ struct		s_inter
 	float	xtocheck;
 	float	ytocheck;
 	int		i_sp;
-	t_TMP_SPRITE	*tmp_sprite;
+	t_tmp_sprite	*tmp_sprite;
 }	g_inter;
 
 struct s_projec
@@ -206,7 +206,7 @@ void	ft_sprite_clear(void);
 void	ft_swap_list(t_sprite **current, t_sprite **index);
 int		ft_sprite_exist(int index_x, int index_y);
 void	ft_sprite_add_sorted(t_sprite *new);
-void	ft_new_sprite(t_TMP_SPRITE tmp_sprite, int num_ray, float angle);
+void	ft_new_sprite(t_tmp_sprite tmp_sprite, int num_ray, float angle);
 char	**ft_split(char const *s, char c);
 int		ft_atoi(const char *str);
 void	ft_read_cub_file(int filedesc);
