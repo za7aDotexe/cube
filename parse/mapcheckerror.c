@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/14 19:56:13 by razaha            #+#    #+#             */
-/*   Updated: 2020/11/25 19:14:22 by razaha           ###   ########.fr       */
+/*   Updated: 2020/11/26 19:02:47 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	ft_check_map(int g_rows, int g_cols)
 	int j;
 
 	i = 0;
-	num_sp = 0;
+	g_num_sp = 0;
 	while (i++ < g_rows)
 	{
 		j = 0;
@@ -50,7 +50,7 @@ void	ft_check_map(int g_rows, int g_cols)
 			if (g_map[i - 1][j - 1] == ' ')
 				if (!ft_check_arr_space(i - 1, j - 1, g_rows, g_cols))
 					ft_puterror("Map is vulnerable !");
-			g_map[i - 1][j - 1] == '2' ? num_sp++ : num_sp;
+			g_map[i - 1][j - 1] == '2' ? g_num_sp++ : g_num_sp;
 		}
 	}
 	if (!g_player.player || g_player.player > 1)

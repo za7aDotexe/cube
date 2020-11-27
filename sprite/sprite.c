@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/14 19:52:42 by razaha            #+#    #+#             */
-/*   Updated: 2020/11/25 19:22:19 by razaha           ###   ########.fr       */
+/*   Updated: 2020/11/27 11:48:18 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,14 @@ void	ft_draw_sprite(int x, int y, int scale, int distance)
 	i = 0;
 	while (i++ <= scale)
 	{
-		if ((x + i) < NUM_RAYS && (x + i) > 0
-				&& g_rays[x + (int)i].walldistance > distance)
+		if ((x + i - 1) <= NUM_RAYS && (x + i - 1) >= 0
+				&& g_rays[x + (int)i - 1].walldistance >= distance)
 		{
 			j = 0;
 			while (j++ <= scale)
 			{
-				if ((x + (int)i - 1) > 0 && (x + (int)i - 1) < g_window_width
-				&& (y + (int)j - 1) > 0 && (y + (int)j - 1) < g_window_height)
+				if ((x + (int)i - 1) >= 0 && (x + (int)i - 1) < g_window_width
+				&& (y + (int)j - 1) >= 0 && (y + (int)j - 1) < g_window_height)
 				{
 					color = ft_get_pixel(g_textures[4].width * (i / scale),
 							g_textures[4].height * (j / scale));

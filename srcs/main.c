@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 19:52:12 by razaha            #+#    #+#             */
-/*   Updated: 2020/11/24 19:45:56 by razaha           ###   ########.fr       */
+/*   Updated: 2020/11/27 12:23:55 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,14 @@ int	main(int argv, char **argc)
 	ft_read_cub_file(filedesc);
 	close(filedesc);
 	g_mlx_ptr = mlx_init();
-	g_win_ptr = mlx_new_window(g_mlx_ptr, g_window_width, g_window_height, "Cube 3D");
+	g_win_ptr = mlx_new_window(
+		g_mlx_ptr, g_window_width, g_window_height, "Cube 3D");
 	g_threed_img = mlx_new_image(g_mlx_ptr, g_window_width, g_window_height);
 	ft_initialize();
 	mlx_hook(g_win_ptr, BUTTONPRESS, BUTTONPRESSMASK, ft_presskey, NULL);
 	mlx_hook(g_win_ptr, KEYRELEASE, KEYRELEASEMASK, ft_releasekey, NULL);
-	mlx_hook(g_win_ptr, DESTROYPRESS, DESTROYPRESSMASK, ft_destroywindown, NULL);
+	mlx_hook(
+		g_win_ptr, DESTROYPRESS, DESTROYPRESSMASK, ft_destroywindown, NULL);
 	mlx_loop_hook(g_mlx_ptr, ft_update, NULL);
 	mlx_loop(g_mlx_ptr);
 }

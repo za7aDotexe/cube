@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   g_player.c                                           :+:      :+:    :+:   */
+/*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: razaha <razaha@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 19:54:01 by razaha            #+#    #+#             */
-/*   Updated: 2020/11/21 13:05:48 by razaha           ###   ########.fr       */
+/*   Updated: 2020/11/27 12:39:22 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ void	ft_moveplayer(void)
 
 	newplayerx = g_player.x;
 	newplayery = g_player.y;
-	g_player.rotationangle += g_player.turndirection * g_player.turnspeed * GLOBSPEED;
+	g_player.rotationangle += g_player.turndirection * g_player.turnspeed
+	* GLOBSPEED;
 	if (g_player.walkupdown)
 	{
 		movestep = g_player.walkupdown * g_player.walkspeed * GLOBSPEED;

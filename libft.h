@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 23:05:51 by razaha            #+#    #+#             */
-/*   Updated: 2020/11/21 11:44:03 by razaha           ###   ########.fr       */
+/*   Updated: 2020/11/26 13:17:43 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,5 +71,5 @@ char			*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 t_list			*ft_lstnew(void *content);
 t_list			*ft_lstlast(t_list *lst);
 void			ft_lstclear(t_list **lst, void (*del)(void*));
-void	ft_free(char **s);
+void			ft_free(char **s);
 #endif

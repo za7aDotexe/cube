@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/01 17:21:38 by razaha            #+#    #+#             */
-/*   Updated: 2020/11/24 19:23:03 by razaha           ###   ########.fr       */
+/*   Updated: 2020/11/27 11:50:15 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ float	normalizeangle(float angle)
 	return (angle);
 }
 
-float	ft_distbpoints(float x1, float y1, float x2, float y2)
+float	ft_dstbpoints(float x1, float y1, float x2, float y2)
 {
 	return (sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1)));
 }

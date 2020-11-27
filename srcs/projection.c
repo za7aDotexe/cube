@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 21:44:33 by razaha            #+#    #+#             */
-/*   Updated: 2020/11/24 19:30:58 by razaha           ###   ########.fr       */
+/*   Updated: 2020/11/27 12:06:34 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@ void	ft_right_texture(void)
 {
 	int text_id;
 
-	if (!g_rays[g_projec.i - 1].washitvertical)
+	if (!g_rays[g_projec.i - 1].washitverical)
 	{
 		if (g_rays[g_projec.i - 1].israyfacingdown)
 			text_id = 0;
 		if (g_rays[g_projec.i - 1].israyfacingup)
 			text_id = 1;
 	}
-	if (g_rays[g_projec.i - 1].washitvertical)
+	if (g_rays[g_projec.i - 1].washitverical)
 	{
 		if (g_rays[g_projec.i - 1].israyfacingright)
 			text_id = 2;
@@ -46,10 +46,12 @@ void	ft_projection2(void)
 	g_projec.j = 0;
 	while (g_projec.j++ < g_projec.walltoppixel)
 		ft_img_pixel_put_3d(g_projec.i - 1, g_projec.j - 1, g_ccol);
-	if (g_rays[g_projec.i - 1].washitvertical)
-		g_projec.texttureoffestx = (int)g_rays[g_projec.i - 1].wallhity % TILE_SIZE;
+	if (g_rays[g_projec.i - 1].washitverical)
+		g_projec.texttureoffestx =
+		(int)g_rays[g_projec.i - 1].wallhity % TILE_SIZE;
 	else
-		g_projec.texttureoffestx = (int)g_rays[g_projec.i - 1].wallhitx % TILE_SIZE;
+		g_projec.texttureoffestx =
+		(int)g_rays[g_projec.i - 1].wallhitx % TILE_SIZE;
 	g_projec.j = g_projec.walltoppixel;
 	while (g_projec.j++ < g_projec.wallbottompixel)
 	{
@@ -74,7 +76,8 @@ void	ft_projection(void)
 		g_projec.wallstripheight = (int)g_projec.projectedwallheight;
 		g_projec.walltoppixel = (g_window_height / 2)
 		- (g_projec.wallstripheight / 2);
-		g_projec.walltoppixel = g_projec.walltoppixel < 0 ? 0 : g_projec.walltoppixel;
+		g_projec.walltoppixel =
+		g_projec.walltoppixel < 0 ? 0 : g_projec.walltoppixel;
 		g_projec.wallbottompixel = (g_window_height / 2)
 		+ (g_projec.wallstripheight / 2);
 		g_projec.wallbottompixel = g_projec.wallbottompixel > g_window_height
