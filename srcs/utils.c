@@ -6,13 +6,13 @@
 /*   By: razaha <razaha@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 21:24:52 by razaha            #+#    #+#             */
-/*   Updated: 2020/11/25 19:27:13 by razaha           ###   ########.fr       */
+/*   Updated: 2020/11/27 20:28:41 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cube.h"
 
-int			ft_get_pixel(int x, int y)
+int		ft_get_pixel(int x, int y)
 {
 	int	*p;
 	int i;
@@ -24,7 +24,7 @@ int			ft_get_pixel(int x, int y)
 	return (p[i]);
 }
 
-void		ft_img_pixel_put_3d(int x, int y, int color)
+void	ft_img_pixel_put_3d(int x, int y, int color)
 {
 	int *add;
 	int bpp;
@@ -38,14 +38,24 @@ void		ft_img_pixel_put_3d(int x, int y, int color)
 		add[cord] = color;
 }
 
-int			rgb_to_hex(int r, int g, int b)
+int		rgb_to_hex(int r, int g, int b)
 {
 	return (r << 16 | g << 8 | b);
 }
 
-int			ft_is_save(char *save)
+int		ft_is_save(char *save)
 {
 	if (ft_strlen(save) != 6 || ft_strncmp("--save", save, 6))
 		ft_puterror("INVALID second argument !");
 	return (TRUE);
+}
+
+int		ft_check_extension(char *s)
+{
+	char *point;
+
+	point = ft_strrchr(s, '.');
+	if (strcmp(point, ".cub") == 0)
+		return (TRUE);
+	return (FALSE);
 }

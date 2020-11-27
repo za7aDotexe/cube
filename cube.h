@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 21:58:31 by razaha            #+#    #+#             */
-/*   Updated: 2020/11/27 12:06:34 by razaha           ###   ########.fr       */
+/*   Updated: 2020/11/27 20:26:52 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -214,6 +214,5 @@ void				ft_read_cub_file(int filedesc);
 int					rgb_to_hex(int r, int g, int b);
 int					get_next_line(int fd, char **line);
 int					ft_is_save(char *save);
-void				ft_screenshot(int32_t width, int32_t height,
-uint16_t bitcount, int width_in_bytes);
+void				ft_screenshot(uint16_t bitcount, int width_in_bytes);
 #endif

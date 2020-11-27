@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 23:05:51 by razaha            #+#    #+#             */
-/*   Updated: 2020/11/26 13:17:43 by razaha           ###   ########.fr       */
+/*   Updated: 2020/11/27 18:29:38 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,4 +72,5 @@ t_list			*ft_lstnew(void *content);
 t_list			*ft_lstlast(t_list *lst);
 void			ft_lstclear(t_list **lst, void (*del)(void*));
 void			ft_free(char **s);
+int				ft_check_extension(char *s);
 #endif
