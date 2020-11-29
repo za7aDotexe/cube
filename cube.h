@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 21:58:31 by razaha            #+#    #+#             */
-/*   Updated: 2020/11/27 20:26:52 by razaha           ###   ########.fr       */
+/*   Updated: 2020/11/29 12:17:01 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -200,7 +200,7 @@ void				verinter(float rayangle, int stripid);
 int					mapinter(float x, float y);
 float				ft_get_angleabc(t_vector a, t_vector b, t_vector c);
 int					ft_get_pixel(int x, int y);
-void				ft_fill_sprite();
+void				ft_fill_sprite(t_tmp_sprite tmp_sprite);
 void				ft_draw_sprites(void);
 void				ft_sprite_clear(void);
 void				ft_swap_list(t_sprite **current, t_sprite **index);
