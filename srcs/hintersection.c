@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/15 13:07:16 by razaha            #+#    #+#             */
-/*   Updated: 2020/11/27 12:26:37 by razaha           ###   ########.fr       */
+/*   Updated: 2020/11/29 18:59:33 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,23 +16,23 @@ void	horspinter(void)
 {
 	if (mapinter(g_inter.xtocheck, g_inter.ytocheck) == '2')
 	{
-		g_inter.tmp_sprite[g_inter.i_sp].index_x = g_inter.xtocheck / TILE_SIZE;
-		g_inter.tmp_sprite[g_inter.i_sp].index_y =
+		g_inter.tmp_sprite[g_inter.spr].index_x = g_inter.xtocheck / TILE_SIZE;
+		g_inter.tmp_sprite[g_inter.spr].index_y =
 		(g_inter.ytocheck) / TILE_SIZE;
-		g_inter.tmp_sprite[g_inter.i_sp].hit_x =
-		(g_inter.tmp_sprite[g_inter.i_sp].index_x * TILE_SIZE)
+		g_inter.tmp_sprite[g_inter.spr].hit_x =
+		(g_inter.tmp_sprite[g_inter.spr].index_x * TILE_SIZE)
 		+ (TILE_SIZE / 2);
-		g_inter.tmp_sprite[g_inter.i_sp].hit_y =
-		(g_inter.tmp_sprite[g_inter.i_sp].index_y * TILE_SIZE)
+		g_inter.tmp_sprite[g_inter.spr].hit_y =
+		(g_inter.tmp_sprite[g_inter.spr].index_y * TILE_SIZE)
 		+ (TILE_SIZE / 2);
-		g_inter.tmp_sprite[g_inter.i_sp].distance = ft_dstbpoints(g_player.x,
-		g_player.y, g_inter.tmp_sprite[g_inter.i_sp].hit_x,
-		g_inter.tmp_sprite[g_inter.i_sp].hit_y);
-		g_inter.i_sp++;
+		g_inter.tmp_sprite[g_inter.spr].distance = ft_dstbpoints(g_player.x,
+		g_player.y, g_inter.tmp_sprite[g_inter.spr].hit_x,
+		g_inter.tmp_sprite[g_inter.spr].hit_y);
+		g_inter.spr++;
 	}
 }
 
-void	horinter2(int stripid)
+void	horinter2(void)
 {
 	while (g_inter.nexthortouchx >= 0
 	&& g_inter.nexthortouchx <= g_cols * TILE_SIZE
@@ -61,7 +61,7 @@ void	horinter2(int stripid)
 	}
 }
 
-void	horinter(float rayangle, int stripid)
+void	horinter(float rayangle)
 {
 	g_inter.fndhorwallhit = FALSE;
 	g_inter.horwallhitx = 0;
@@ -78,5 +78,5 @@ void	horinter(float rayangle, int stripid)
 	g_inter.xstep *= (g_inter.israyfacingright && g_inter.xstep < 0) ? -1 : 1;
 	g_inter.nexthortouchx = g_inter.xintercept;
 	g_inter.nexthortouchy = g_inter.yintercept;
-	horinter2(stripid);
+	horinter2();
 }

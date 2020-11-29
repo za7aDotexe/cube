@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 19:52:12 by razaha            #+#    #+#             */
-/*   Updated: 2020/11/27 20:27:49 by razaha           ###   ########.fr       */
+/*   Updated: 2020/11/29 19:10:55 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	main(int argv, char **argc)
 	close(filedesc);
 	g_mlx_ptr = mlx_init();
 	g_win_ptr = mlx_new_window(
-		g_mlx_ptr, g_window_width, g_window_height, "Cube 3D");
+		g_mlx_ptr, g_window_width, g_window_height, "cub3D");
 	g_threed_img = mlx_new_image(g_mlx_ptr, g_window_width, g_window_height);
 	ft_initialize();
 	mlx_hook(g_win_ptr, BUTTONPRESS, BUTTONPRESSMASK, ft_presskey, NULL);

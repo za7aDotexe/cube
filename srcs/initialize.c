@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 21:41:46 by razaha            #+#    #+#             */
-/*   Updated: 2020/11/29 12:06:28 by razaha           ###   ########.fr       */
+/*   Updated: 2020/11/29 19:01:59 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	ft_initialize(void)
 	g_player.turndirection = 0;
 	g_player.walkupdown = 0;
 	g_player.walkleftright = 0;
-	g_player.walkspeed = 100;
+	g_player.walkspeed = 300;
 	g_player.turnspeed = 30 * (PI / 180);
 	g_rays = malloc(g_window_width * size);
 	g_sprites = NULL;

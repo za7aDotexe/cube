@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 20:17:40 by razaha            #+#    #+#             */
-/*   Updated: 2020/11/27 12:13:15 by razaha           ###   ########.fr       */
+/*   Updated: 2020/11/29 19:14:02 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,11 @@ void	castray(float rayangle, int stripid)
 	g_inter.israyfacingup = !g_inter.israyfacingdown;
 	g_inter.israyfacingright = rayangle < PI * 0.5 || rayangle > PI * 1.5;
 	g_inter.israyfacingleft = !g_inter.israyfacingright;
-	g_inter.i_sp = 0;
+	g_inter.spr = 0;
 	g_inter.tmp_sprite = (t_tmp_sprite *)(malloc(g_num_sp * NUM_RAYS
 	* sizeof(t_tmp_sprite *)));
-	horinter(rayangle, stripid);
-	verinter(rayangle, stripid);
+	horinter(rayangle);
+	verinter(rayangle);
 	g_inter.horhitdistance = g_inter.fndhorwallhit ? ft_dstbpoints(
 		g_player.x, g_player.y, g_inter.horwallhitx, g_inter.horwallhity)
 	: INT_MAX;
@@ -59,9 +59,8 @@ void	castray(float rayangle, int stripid)
 		g_player.x, g_player.y, g_inter.verwallhitx, g_inter.verwallhity)
 	: INT_MAX;
 	castray2(rayangle, stripid);
-	while (i++ < g_inter.i_sp)
-		if (g_inter.tmp_sprite[i - 1].distance <= g_rays[stripid].walldistance)
-			ft_fill_sprite(g_inter.tmp_sprite[i - 1]);
+	while (i++ < g_inter.spr)
+		ft_fill_sprite(g_inter.tmp_sprite[i - 1]);
 	if (g_inter.tmp_sprite)
 		free(g_inter.tmp_sprite);
 }

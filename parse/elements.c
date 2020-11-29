@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/16 18:31:41 by razaha            #+#    #+#             */
-/*   Updated: 2020/11/29 12:14:38 by razaha           ###   ########.fr       */
+/*   Updated: 2020/11/29 18:45:53 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,11 +73,13 @@ void	ft_fill_resolution(char *line)
 void	ft_fill_floorciel_color(char *line)
 {
 	char	**s1;
-	char	**s2;
 	int		r;
 	int		g;
 	int		b;
 
+	r = 0;
+	g = 0;
+	b = 0;
 	s1 = ft_split(line + 1, ',');
 	if (*(s1) && *(s1 + 1) && *(s1 + 2) && !*(s1 + 3))
 	{

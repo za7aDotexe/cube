@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 21:58:31 by razaha            #+#    #+#             */
-/*   Updated: 2020/11/29 12:17:01 by razaha           ###   ########.fr       */
+/*   Updated: 2020/11/29 18:58:52 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ int					g_fcol;
 int					g_ccol;
 int					g_window_width;
 int					g_window_height;
-int					g_cols;
-int					g_rows;
+size_t				g_cols;
+size_t				g_rows;
 int					g_save;
 void				*g_mlx_ptr;
 void				*g_win_ptr;
@@ -118,7 +118,7 @@ struct				s_inter
 	float			nextvertouchy;
 	float			xtocheck;
 	float			ytocheck;
-	int				i_sp;
+	int				spr;
 	t_tmp_sprite	*tmp_sprite;
 }					g_inter;
 
@@ -195,8 +195,8 @@ int					ft_destroywindown(void);
 void				ft_moveplayer(void);
 void				ft_castallrays(void);
 void				ft_projection(void);
-void				horinter(float rayangle, int stripid);
-void				verinter(float rayangle, int stripid);
+void				horinter(float rayangle);
+void				verinter(float rayangle);
 int					mapinter(float x, float y);
 float				ft_get_angleabc(t_vector a, t_vector b, t_vector c);
 int					ft_get_pixel(int x, int y);

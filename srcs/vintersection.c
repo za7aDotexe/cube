@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/01 17:54:34 by razaha            #+#    #+#             */
-/*   Updated: 2020/11/27 12:06:34 by razaha           ###   ########.fr       */
+/*   Updated: 2020/11/29 19:00:06 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,23 +16,23 @@ void	verspinter(void)
 {
 	if (mapinter(g_inter.xtocheck, g_inter.ytocheck) == '2')
 	{
-		g_inter.tmp_sprite[g_inter.i_sp].index_x = g_inter.xtocheck / TILE_SIZE;
-		g_inter.tmp_sprite[g_inter.i_sp].index_y =
+		g_inter.tmp_sprite[g_inter.spr].index_x = g_inter.xtocheck / TILE_SIZE;
+		g_inter.tmp_sprite[g_inter.spr].index_y =
 		(g_inter.ytocheck) / TILE_SIZE;
-		g_inter.tmp_sprite[g_inter.i_sp].hit_x =
-		(g_inter.tmp_sprite[g_inter.i_sp].index_x * TILE_SIZE)
+		g_inter.tmp_sprite[g_inter.spr].hit_x =
+		(g_inter.tmp_sprite[g_inter.spr].index_x * TILE_SIZE)
 		+ (TILE_SIZE / 2);
-		g_inter.tmp_sprite[g_inter.i_sp].hit_y =
-		(g_inter.tmp_sprite[g_inter.i_sp].index_y * TILE_SIZE)
+		g_inter.tmp_sprite[g_inter.spr].hit_y =
+		(g_inter.tmp_sprite[g_inter.spr].index_y * TILE_SIZE)
 		+ (TILE_SIZE / 2);
-		g_inter.tmp_sprite[g_inter.i_sp].distance = ft_dstbpoints(g_player.x,
-		g_player.y, g_inter.tmp_sprite[g_inter.i_sp].hit_x,
-		g_inter.tmp_sprite[g_inter.i_sp].hit_y);
-		g_inter.i_sp++;
+		g_inter.tmp_sprite[g_inter.spr].distance = ft_dstbpoints(g_player.x,
+		g_player.y, g_inter.tmp_sprite[g_inter.spr].hit_x,
+		g_inter.tmp_sprite[g_inter.spr].hit_y);
+		g_inter.spr++;
 	}
 }
 
-void	verinter2(int stripid)
+void	verinter2(void)
 {
 	while (g_inter.nextvertouchx >= 0
 	&& g_inter.nextvertouchx <= g_cols * TILE_SIZE
@@ -61,7 +61,7 @@ void	verinter2(int stripid)
 	}
 }
 
-void	verinter(float rayangle, int stripid)
+void	verinter(float rayangle)
 {
 	g_inter.fndverwallhit = FALSE;
 	g_inter.verwallhitx = 0;
@@ -80,5 +80,5 @@ void	verinter(float rayangle, int stripid)
 	&& g_inter.ystep < 0) ? -1 : 1;
 	g_inter.nextvertouchx = g_inter.xintercept;
 	g_inter.nextvertouchy = g_inter.yintercept;
-	verinter2(stripid);
+	verinter2();
 }
