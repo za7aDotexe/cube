@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/14 19:56:13 by razaha            #+#    #+#             */
-/*   Updated: 2020/11/29 12:12:35 by razaha           ###   ########.fr       */
+/*   Updated: 2020/11/30 12:05:56 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ int		ft_check_arr_space(int i, int j, int g_rows, int g_cols)
 	return (1);
 }
 
-void	ft_check_map(int g_rows, int g_cols)
+void	ft_check_map(void)
 {
-	int i;
-	int j;
+	size_t i;
+	size_t j;
 
 	i = 0;
 	g_num_sp = 0;

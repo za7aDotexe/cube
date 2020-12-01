@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/14 19:56:08 by razaha            #+#    #+#             */
-/*   Updated: 2020/11/24 19:31:34 by razaha           ###   ########.fr       */
+/*   Updated: 2020/11/30 12:06:33 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,12 @@ void	ft_setup_player(char dir, int x, int y)
 	g_player.player += 1;
 }
 
-void	ft_fill_map(char *map, int g_rows, int g_cols)
+void	ft_fill_map(char *map)
 {
 	char	**line;
-	int		i;
-	int		j;
-	int		var;
+	size_t	i;
+	size_t	j;
+	size_t	var;
 
 	line = ft_split(map, '\n');
 	i = 0;

@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/14 19:52:42 by razaha            #+#    #+#             */
-/*   Updated: 2020/11/29 19:13:32 by razaha           ###   ########.fr       */
+/*   Updated: 2020/12/01 13:17:44 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	ft_draw_sprite(int x, int y, int scale, int distance)
 				{
 					color = ft_get_pixel(g_textures[4].width * (i / scale),
 							g_textures[4].height * (j / scale));
-					if (color != 0x980088 && color != -1)
+					if (color != g_textures[4].data[0] && color != -1)
 						ft_img_pixel_put_3d(x + i - 1, y + j - 1, color);
 				}
 			}

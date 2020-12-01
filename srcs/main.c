@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 19:52:12 by razaha            #+#    #+#             */
-/*   Updated: 2020/11/29 19:10:55 by razaha           ###   ########.fr       */
+/*   Updated: 2020/12/01 10:31:43 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,13 @@
 
 int	main(int argv, char **argc)
 {
-	int filedesc;
-
 	if (argv < 2 || argv > 3 || open(argc[1], O_RDONLY) < 0
 	|| !ft_check_extension(argc[1]))
 		ft_puterror("(NO/INVALID) FIRST ARGUMENT or more than TWO ARGUMENT !");
 	g_save = 0;
 	if (argv == 3 && ft_is_save(argc[2]))
 		g_save = 1;
-	filedesc = open(argc[1], O_RDONLY);
-	ft_read_cub_file(filedesc);
-	close(filedesc);
+	ft_read_cub_file(open(argc[1], O_RDONLY));
 	g_mlx_ptr = mlx_init();
 	g_win_ptr = mlx_new_window(
 		g_mlx_ptr, g_window_width, g_window_height, "cub3D");

@@ -6,19 +6,19 @@
 /*   By: razaha <razaha@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 20:05:59 by razaha            #+#    #+#             */
-/*   Updated: 2020/11/24 19:30:58 by razaha           ###   ########.fr       */
+/*   Updated: 2020/12/01 16:58:21 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cube.h"
 
-int	ft_destroywindown(void)
+int		ft_destroywindown(void)
 {
 	exit(EXIT_SUCCESS);
 	return (0);
 }
 
-int	ft_presskey(int key)
+int		ft_presskey(int key)
 {
 	if (key == 53)
 		ft_destroywindown();
@@ -41,8 +41,20 @@ int	ft_presskey(int key)
 	return (0);
 }
 
-int	ft_releasekey(int key)
+void	ft_reset(void)
 {
+	g_player.walkupdown = 0;
+	g_player.walkupdown = 0;
+	g_player.walkleftright = 0;
+	g_player.walkleftright = 0;
+	g_player.turndirection = 0;
+	g_player.turndirection = 0;
+}
+
+int		ft_releasekey(int key)
+{
+	if (key == 259)
+		ft_reset();
 	if (key == 0 || key == 1 || key == 2 || key == 13 || key == 123
 			|| key == 124)
 	{

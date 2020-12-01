@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 21:58:31 by razaha            #+#    #+#             */
-/*   Updated: 2020/11/29 18:58:52 by razaha           ###   ########.fr       */
+/*   Updated: 2020/12/01 13:18:03 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,17 +34,6 @@
 # define NUM_RAYS (g_window_width * 1)
 # define GLOBSPEED 0.03
 
-char				*g_notxt;
-char				*g_sotxt;
-char				*g_wetxt;
-char				*g_eatxt;
-char				*g_sprit;
-int					g_fcol;
-int					g_ccol;
-int					g_window_width;
-int					g_window_height;
-size_t				g_cols;
-size_t				g_rows;
 int					g_save;
 void				*g_mlx_ptr;
 void				*g_win_ptr;

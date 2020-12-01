@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/16 18:31:38 by razaha            #+#    #+#             */
-/*   Updated: 2020/11/25 17:43:02 by razaha           ###   ########.fr       */
+/*   Updated: 2020/12/01 16:59:08 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,6 @@ void	ft_check_elements(void)
 		ft_puterror("East texture path INVALID !");
 	if (!g_sprit || open(g_sprit, O_RDONLY) == -1)
 		ft_puterror("Sprite texture path INVALID !");
-	if (!g_fcol || !g_ccol)
+	if (g_fcol < 0 || g_ccol < 0)
 		ft_puterror("INVALID CIEL/FLOOR OR UNSETED !");
 }

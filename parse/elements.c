@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/16 18:31:41 by razaha            #+#    #+#             */
-/*   Updated: 2020/11/29 18:45:53 by razaha           ###   ########.fr       */
+/*   Updated: 2020/12/01 16:55:33 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,12 +62,30 @@ void	ft_fill_resolution(char *line)
 	s1 = ft_split(line, ' ');
 	if (g_window_width || g_window_height)
 		ft_puterror("Double Resolution elements !");
-	if (*(s1 + 1) && *(s1 + 2))
+	if (*(s1 + 1) && *(s1 + 2) && !*(s1 + 3))
 	{
 		g_window_width = ft_atoi(*(s1 + 1));
 		g_window_height = ft_atoi(*(s1 + 2));
 	}
 	ft_free(s1);
+}
+
+void	ft_fill_floorciel_color2(char *line, int r, int g, int b)
+{
+	if (r > 255 || r < 0 || g > 255 || g < 0 || b > 255 || b < 0)
+		ft_puterror("INVALID color range ! must be between 0 and 255");
+	if (*line == 'F')
+	{
+		if (g_fcol >= 0)
+			ft_puterror("DOUBLE floor color elements !");
+		g_fcol = rgb_to_hex(r, g, b);
+	}
+	if (*line == 'C')
+	{
+		if (g_ccol >= 0)
+			ft_puterror("DOUBLE ciel color elements !");
+		g_ccol = rgb_to_hex(r, g, b);
+	}
 }
 
 void	ft_fill_floorciel_color(char *line)
@@ -77,6 +95,13 @@ void	ft_fill_floorciel_color(char *line)
 	int		g;
 	int		b;
 
+	g = 0;
+	r = 0;
+	while (line[r] != '\0')
+		if (line[r++] == ',')
+			g++;
+	if (g != 2)
+		ft_puterror("INVALID color Syntax !");
 	r = 0;
 	g = 0;
 	b = 0;
@@ -87,11 +112,6 @@ void	ft_fill_floorciel_color(char *line)
 		g = ft_atoi(*(s1 + 1));
 		b = ft_atoi(*(s1 + 2));
 	}
-	if (r > 255 || r < 0 || g > 255 || g < 0 || b > 255 || b < 0)
-		ft_puterror("INVALID color range ! must be between 0 and 255");
-	if (*line == 'F')
-		g_fcol = rgb_to_hex(r, g, b);
-	if (*line == 'C')
-		g_ccol = rgb_to_hex(r, g, b);
+	ft_fill_floorciel_color2(line, r, g, b);
 	ft_free(s1);
 }
