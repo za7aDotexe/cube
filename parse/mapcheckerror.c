@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/14 19:56:13 by razaha            #+#    #+#             */
-/*   Updated: 2020/11/30 12:05:56 by razaha           ###   ########.fr       */
+/*   Updated: 2020/12/10 12:08:44 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ void	ft_check_map(void)
 	size_t j;
 
 	i = 0;
-	g_num_sp = 0;
 	while (i++ < g_rows)
 	{
 		j = 0;
@@ -50,7 +49,8 @@ void	ft_check_map(void)
 			&& g_map[i - 1][j - 1] != 'W' && g_map[i - 1][j - 1] != 'E')
 				ft_puterror("INVALID map character !");
 			if ((i - 1 == 0 || j - 1 == 0 || i - 1 == g_rows - 1
-			|| j - 1 == g_cols - 1) && g_map[i - 1][j - 1] == '0')
+			|| j - 1 == g_cols - 1) && (g_map[i - 1][j - 1] != '1'
+			&& g_map[i - 1][j - 1] != ' '))
 				ft_puterror("One of the map borders is open !");
 			if (g_map[i - 1][j - 1] == ' ')
 				if (!ft_check_arr_space(i - 1, j - 1, g_rows, g_cols))

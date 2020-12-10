@@ -1,25 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   put_error.c                                        :+:      :+:    :+:   */
+/*   ft_lstadd_front_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: razaha <razaha@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: razaha <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/21 13:21:40 by hfadyl            #+#    #+#             */
-/*   Updated: 2020/12/10 12:08:57 by razaha           ###   ########.fr       */
+/*   Created: 2019/11/06 15:46:03 by razaha            #+#    #+#             */
+/*   Updated: 2019/11/07 00:53:34 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser.h"
-#include "../cube.h"
+#include "libft.h"
 
-int	ft_puterror(char *error)
+void	ft_lstadd_front(t_list **alst, t_list *new)
 {
-	char *e;
-
-	e = "\033[1;31m(x) error\n >> \033[0;31m";
-	write(1, e, ft_strlen(e));
-	write(1, error, ft_strlen(error));
-	write(1, "\n", 1);
-	exit(EXIT_FAILURE);
+	if (!alst)
+		*alst = ft_lstnew((void *)new);
+	else
+	{
+		new->next = *alst;
+		*alst = new;
+	}
 }

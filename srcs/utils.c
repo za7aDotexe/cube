@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 21:24:52 by razaha            #+#    #+#             */
-/*   Updated: 2020/11/27 20:28:41 by razaha           ###   ########.fr       */
+/*   Updated: 2020/12/07 18:45:08 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,12 @@ int		ft_is_save(char *save)
 	return (TRUE);
 }
 
-int		ft_check_extension(char *s)
+int		ft_check_extension(char *s, char *ext)
 {
 	char *point;
 
 	point = ft_strrchr(s, '.');
-	if (strcmp(point, ".cub") == 0)
+	if (strcmp(point, ext) == 0)
 		return (TRUE);
 	return (FALSE);
 }

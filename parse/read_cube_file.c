@@ -6,12 +6,19 @@
 /*   By: razaha <razaha@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/16 20:01:53 by razaha            #+#    #+#             */
-/*   Updated: 2020/12/01 16:58:35 by razaha           ###   ########.fr       */
+/*   Updated: 2020/12/10 14:01:47 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
 #include "../cube.h"
+
+void	ft_check_spaces(char *line)
+{
+	while (*line == ' ')
+		if (*(++line) == '\0')
+			ft_puterror("EMPTY LINE !");
+}
 
 void	ft_parse2(char *line, char **map)
 {
@@ -22,6 +29,7 @@ void	ft_parse2(char *line, char **map)
 		ft_puterror(".cub file must END with a map row !");
 	if (*line == '1' || *line == ' ' || *line == '0')
 	{
+		ft_check_spaces(line);
 		g_cols = ft_strlen(line) > g_cols ? ft_strlen(line) : g_cols;
 		temp2 = line;
 		line = ft_strjoin(line, "\n");
@@ -32,7 +40,7 @@ void	ft_parse2(char *line, char **map)
 		g_rows++;
 	}
 	else if (*line != '\0')
-		ft_puterror("INVALID LINE3 !");
+		ft_puterror("INVALID LINE !");
 	free(line);
 }
 
@@ -44,9 +52,7 @@ void	ft_parse(char *line, char **map)
 	|| !g_eatxt || !g_sprit || g_fcol < 0 || g_ccol < 0)
 	{
 		temp = line;
-		while (*line == ' ')
-			if (*(++line) == '\0')
-				ft_puterror("INVALID LINE1 !");
+		ft_check_spaces(line);
 		if (*line == 'R' && *(line + 1) == ' ')
 			ft_fill_resolution(line);
 		else if ((*line == 'N' && *(line + 1) == 'O' && *(line + 2) == ' ')
@@ -58,7 +64,7 @@ void	ft_parse(char *line, char **map)
 		else if ((*line == 'F' || *line == 'C') && *(line + 1) == ' ')
 			ft_fill_floorciel_color(line);
 		else if (*line != '\0')
-			ft_puterror("INVALID LINE2 !");
+			ft_puterror("INVALID LINE !");
 		free(temp);
 		return ;
 	}
@@ -74,6 +80,7 @@ void	ft_read_cub_file(int filedesc)
 	g_cols = 0;
 	g_fcol = -1;
 	g_ccol = -1;
+	g_num_sp = 0;
 	map = ft_strdup("");
 	while (get_next_line(filedesc, &line) != 0)
 		ft_parse(line, &map);

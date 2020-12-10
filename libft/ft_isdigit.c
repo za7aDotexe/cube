@@ -1,25 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   put_error.c                                        :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: razaha <razaha@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: razaha <razaha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/21 13:21:40 by hfadyl            #+#    #+#             */
-/*   Updated: 2020/12/10 12:08:57 by razaha           ###   ########.fr       */
+/*   Created: 2019/10/23 00:12:07 by razaha            #+#    #+#             */
+/*   Updated: 2019/10/23 00:20:22 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser.h"
-#include "../cube.h"
+#include "libft.h"
 
-int	ft_puterror(char *error)
+int	ft_isdigit(int c)
 {
-	char *e;
-
-	e = "\033[1;31m(x) error\n >> \033[0;31m";
-	write(1, e, ft_strlen(e));
-	write(1, error, ft_strlen(error));
-	write(1, "\n", 1);
-	exit(EXIT_FAILURE);
+	return (c >= '0' && c <= '9') ? 1 : 0;
 }

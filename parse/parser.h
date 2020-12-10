@@ -6,14 +6,15 @@
 /*   By: razaha <razaha@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/24 18:20:18 by razaha            #+#    #+#             */
-/*   Updated: 2020/11/30 11:50:35 by razaha           ###   ########.fr       */
+/*   Updated: 2020/12/10 12:12:51 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSER_H
 # define PARSER_H
 
-# include "../libft.h"
+# include "../libft/libft.h"
+# include "../cube.h"
 
 int		g_window_width;
 int		g_window_height;
@@ -38,4 +39,5 @@ void	ft_check_elements(void);
 int		ft_puterror(char *error);
 char	*ft_trim_spaces(char *s);
 void	ft_free(char **s);
+void	ft_check_comma(char *s);
 #endif

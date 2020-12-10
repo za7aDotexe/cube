@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 19:52:12 by razaha            #+#    #+#             */
-/*   Updated: 2020/12/01 10:31:43 by razaha           ###   ########.fr       */
+/*   Updated: 2020/12/07 18:45:36 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	main(int argv, char **argc)
 {
 	if (argv < 2 || argv > 3 || open(argc[1], O_RDONLY) < 0
-	|| !ft_check_extension(argc[1]))
+	|| !ft_check_extension(argc[1], ".cub"))
 		ft_puterror("(NO/INVALID) FIRST ARGUMENT or more than TWO ARGUMENT !");
 	g_save = 0;
 	if (argv == 3 && ft_is_save(argc[2]))

@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   put_error.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: razaha <razaha@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: razaha <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/21 13:21:40 by hfadyl            #+#    #+#             */
-/*   Updated: 2020/12/10 12:08:57 by razaha           ###   ########.fr       */
+/*   Created: 2019/11/03 22:54:49 by razaha            #+#    #+#             */
+/*   Updated: 2019/11/04 01:05:21 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser.h"
-#include "../cube.h"
+#include "libft.h"
 
-int	ft_puterror(char *error)
+void	ft_putnbr_fd(int n, int fd)
 {
-	char *e;
+	unsigned int inb;
 
-	e = "\033[1;31m(x) error\n >> \033[0;31m";
-	write(1, e, ft_strlen(e));
-	write(1, error, ft_strlen(error));
-	write(1, "\n", 1);
-	exit(EXIT_FAILURE);
+	if (n < 0)
+	{
+		ft_putchar_fd('-', fd);
+		inb = n * -1;
+	}
+	else
+		inb = n;
+	if (inb > 9)
+		ft_putnbr_fd(inb / 10, fd);
+	ft_putchar_fd(inb % 10 + '0', fd);
 }

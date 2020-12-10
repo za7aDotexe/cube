@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   put_error.c                                        :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: razaha <razaha@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: razaha <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/21 13:21:40 by hfadyl            #+#    #+#             */
-/*   Updated: 2020/12/10 12:08:57 by razaha           ###   ########.fr       */
+/*   Created: 2019/10/28 20:35:23 by razaha            #+#    #+#             */
+/*   Updated: 2019/10/28 20:49:03 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser.h"
-#include "../cube.h"
+#include "libft.h"
 
-int	ft_puterror(char *error)
+void	*ft_calloc(size_t count, size_t size)
 {
-	char *e;
+	void *ret;
 
-	e = "\033[1;31m(x) error\n >> \033[0;31m";
-	write(1, e, ft_strlen(e));
-	write(1, error, ft_strlen(error));
-	write(1, "\n", 1);
-	exit(EXIT_FAILURE);
+	if (!(ret = malloc(count * size)))
+		return (NULL);
+	ft_bzero(ret, count * size);
+	return (ret);
 }

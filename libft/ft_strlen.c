@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   put_error.c                                        :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: razaha <razaha@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: razaha <razaha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/21 13:21:40 by hfadyl            #+#    #+#             */
-/*   Updated: 2020/12/10 12:08:57 by razaha           ###   ########.fr       */
+/*   Created: 2019/10/22 19:21:30 by razaha            #+#    #+#             */
+/*   Updated: 2019/11/03 18:22:34 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser.h"
-#include "../cube.h"
+#include "libft.h"
 
-int	ft_puterror(char *error)
+size_t	ft_strlen(const char *s)
 {
-	char *e;
+	size_t len;
 
-	e = "\033[1;31m(x) error\n >> \033[0;31m";
-	write(1, e, ft_strlen(e));
-	write(1, error, ft_strlen(error));
-	write(1, "\n", 1);
-	exit(EXIT_FAILURE);
+	len = 0;
+	while (*s++)
+		len++;
+	return (len);
 }

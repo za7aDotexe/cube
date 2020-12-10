@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 21:58:31 by razaha            #+#    #+#             */
-/*   Updated: 2020/12/01 13:18:03 by razaha           ###   ########.fr       */
+/*   Updated: 2020/12/10 14:18:11 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@
 # define TILE_SIZE 32
 # define FOV_ANGLE (60 * (PI / 180))
 # define NUM_RAYS (g_window_width * 1)
-# define GLOBSPEED 0.03
+# define GLOBSPEED 0.04
 
 int					g_save;
 void				*g_mlx_ptr;
@@ -197,8 +197,7 @@ int					ft_sprite_exist(int index_x, int index_y);
 void				ft_sprite_add_sorted(t_sprite *new);
 void				ft_new_sprite(t_tmp_sprite tmp_sprite,
 int num_ray, float angle);
-char				**ft_split(char const *s, char c);
-int					ft_atoi(const char *str);
+int					ft_check_extension(char *s, char *ext);
 void				ft_read_cub_file(int filedesc);
 int					rgb_to_hex(int r, int g, int b);
 int					get_next_line(int fd, char **line);
