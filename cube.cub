@@ -1,12 +1,13 @@
 R 1600 900
+
 NO images/redbrick.xpm
 SO images/wood.xpm
 WE images/greystone.xpm
 EA images/mossy.xpm
 S images/barrel.xpm
 
-C 135,206,235  
-F 255  . ,204,055  
+C 135,206,235
+F 255,204,055
 
                                                        11111111111111111111111111111111111111111111111
                                                        100000000000000000000000000000010100000000000011

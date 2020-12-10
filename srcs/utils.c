@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 21:24:52 by razaha            #+#    #+#             */
-/*   Updated: 2020/12/07 18:45:08 by razaha           ###   ########.fr       */
+/*   Updated: 2020/12/10 18:33:49 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int		ft_check_extension(char *s, char *ext)
 	char *point;
 
 	point = ft_strrchr(s, '.');
-	if (strcmp(point, ext) == 0)
+	if (point != NULL && ft_strncmp(point, ext, 4) == 0)
 		return (TRUE);
 	return (FALSE);
 }
